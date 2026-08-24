@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>โลกจะแตกแต่การบ้านยังไม่เสร็จ</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, "Tahoma", sans-serif;
+            background: #eef8fc;
+            color: #444;
+        }
+
+        .header {
+            width: 1100px;
+            max-width: 95%;
+            margin: 30px auto 10px;
+        }
+
+        .header h1 {
+            margin: 0;
+            color: #555;
+            font-size: 28px;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-bottom: 15px;
+            padding: 9px 18px;
+            background: #ff7b22;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .back-button:hover {
+            background: #e86610;
+        }
+
+        .container {
+            width: 1100px;
+            max-width: 95%;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: 180px 1fr 250px;
+            gap: 25px;
+            align-items: start;
+        }
+
+        .book-cover {
+            text-align: center;
+        }
+
+        .book-cover img {
+            width: 150px;
+            height: 210px;
+            object-fit: cover;
+            background: white;
+            padding: 10px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+        }
+
+        .details {
+            background: white;
+            padding: 25px;
+            border-radius: 3px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.12);
+            min-height: 300px;
+        }
+
+        .details h2 {
+            color: #0087c8;
+            font-size: 18px;
+            margin-top: 0;
+        }
+
+        .details p {
+            font-size: 13px;
+            line-height: 1.7;
+            margin-top: 0;
+        }
+
+        .book-info {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .info-box h3 {
+            margin: 0 0 5px;
+            color: #0087c8;
+            font-size: 14px;
+            font-weight: normal;
+        }
+
+        .info-box p {
+            margin: 0;
+        }
+
+        .related h2 {
+            font-size: 18px;
+            color: #555;
+            margin-top: 0;
+        }
+
+        .related-book {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 18px;
+            background: rgba(255,255,255,0.5);
+            padding: 5px;
+        }
+
+        .related-book img {
+            width: 50px;
+            height: 70px;
+            object-fit: cover;
+        }
+
+        .related-book div {
+            font-size: 11px;
+        }
+
+        .related-book h3 {
+            margin: 3px 0;
+            font-size: 12px;
+            color: #555;
+        }
+
+        .related-book p {
+            margin: 3px 0;
+            color: #777;
+        }
+
+        @media (max-width: 800px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .book-cover {
+                text-align: center;
+            }
+
+            .details {
+                width: 100%;
+            }
+
+            .book-info {
+                grid-template-columns: 1fr;
+            }
+
+            .related {
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+
+        <a class="back-button" href="INDEX.html">
+            ← ไปหน้าหลัก (Page 1)
+        </a>
+
+        <h1>โลกจะแตกแต่การบ้านยังไม่เสร็จ</h1>
+
+    </div>
+
+
+    <div class="container">
+
+        <!-- รูปปกหนังสือ -->
+        <div class="book-cover">
+
+            <img src="1.png"
+                 alt="ปกหนังสือ โลกจะแตกแต่การบ้านยังไม่เสร็จ">
+
+        </div>
+
+
+        <!-- รายละเอียดหนังสือ -->
+        <div class="details">
+
+            <h2>รายละเอียดหนังสือ</h2>
+
+            <p>
+                วันหนึ่งนักเรียนคนหนึ่งกำลังนั่งทำการบ้านตามปกติ
+                ก่อนจะได้รับข่าวว่าโลกกำลังเข้าสู่จุดจบ
+                ผู้คนกำลังอพยพ ท้องฟ้าเต็มไปด้วยวัตถุประหลาด
+                เมืองกำลังวุ่นวาย
+                แต่สิ่งที่อยู่ตรงหน้าเขาคือ...
+                <br><br>
+
+                <b>การบ้านที่ยังทำไม่เสร็จ!</b>
+            </p>
+
+            <div class="book-info">
+
+                <div class="info-box">
+                    <h3>ผู้เขียน</h3>
+                    <p>MR.Ambatukam</p>
+                </div>
+
+                <div class="info-box">
+                    <h3>ผู้แปล</h3>
+                    <p>นาย กฤตภาส ก้องไตรภพ</p>
+                </div>
+
+                <div class="info-box">
+                    <h3>สำนักพิมพ์</h3>
+                    <p>-</p>
+                </div>
+
+                <div class="info-box">
+                    <h3>ประเภทหนังสือ</h3>
+                    <p>นิยาย / ตลก</p>
+                </div>
+
+                <div class="info-box">
+                    <h3>ราคา</h3>
+                    <p>79 บาท</p>
+                </div>
+
+                <div class="info-box">
+                    <h3>ISBN</h3>
+                    <p>-</p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- หนังสือที่เกี่ยวข้อง -->
+        <div class="related">
+
+            <h2>หนังสือที่เกี่ยวข้อง</h2>
+
+            <div class="related-book">
+                <img src="2.png" alt="หนังสือที่เกี่ยวข้อง">
+
+                <div>
+                    <h3>เรื่องราวสุดป่วน</h3>
+                    <p>รวมเรื่องราวสุดฮา</p>
+                    <p>📅 17 ก.พ. 69</p>
+                </div>
+            </div>
+
+            <div class="related-book">
+                <img src="3.png" alt="หนังสือที่เกี่ยวข้อง">
+
+                <div>
+                    <h3>ชีวิตวุ่น ๆ ของนักเรียน</h3>
+                    <p>เรื่องราวสุดกวน</p>
+                    <p>📅 17 ก.พ. 69</p>
+                </div>
+            </div>
+
+            <div class="related-book">
+                <img src="4.png" alt="หนังสือที่เกี่ยวข้อง">
+
+                <div>
+                    <h3>การบ้านมหาภัย</h3>
+                    <p>นิยายตลก</p>
+                    <p>📅 17 ก.พ. 69</p>
+                </div>
+            </div>
+
+            <div class="related-book">
+                <img src="5.png" alt="หนังสือที่เกี่ยวข้อง">
+
+                <div>
+                    <h3>วันสิ้นโลก</h3>
+                    <p>เรื่องราวแฟนตาซี</p>
+                    <p>📅 17 ก.พ. 69</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
