@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="th">
 <head>
@@ -17,6 +18,10 @@
             background: #eef8fc;
             color: #444;
         }
+
+        /* =========================
+           HEADER
+        ========================== */
 
         .header {
             width: 1100px;
@@ -46,6 +51,10 @@
             background: #e86610;
         }
 
+        /* =========================
+           BOOK CONTAINER
+        ========================== */
+
         .container {
             width: 1100px;
             max-width: 95%;
@@ -56,6 +65,10 @@
             gap: 25px;
             align-items: start;
         }
+
+        /* =========================
+           BOOK COVER
+        ========================== */
 
         .book-cover {
             text-align: center;
@@ -69,6 +82,10 @@
             padding: 10px;
             box-shadow: 0 3px 12px rgba(0,0,0,0.15);
         }
+
+        /* =========================
+           BOOK DETAILS
+        ========================== */
 
         .details {
             background: white;
@@ -108,6 +125,10 @@
             margin: 0;
         }
 
+        /* =========================
+           RELATED BOOKS
+        ========================== */
+
         .related h2 {
             font-size: 18px;
             color: #555;
@@ -143,10 +164,9 @@
             color: #777;
         }
 
-
         /* =========================
-           ระบบคอมเมนต์
-        ========================= */
+           COMMENTS
+        ========================== */
 
         .comments {
             width: 1100px;
@@ -249,10 +269,9 @@
             padding: 20px;
         }
 
-
         /* =========================
-           Responsive
-        ========================= */
+           RESPONSIVE
+        ========================== */
 
         @media (max-width: 800px) {
 
@@ -287,13 +306,11 @@
     </style>
 </head>
 
-
 <body>
 
-
     <!-- =========================
-         ส่วนหัว
-    ========================= -->
+         HEADER
+    ========================== -->
 
     <div class="header">
 
@@ -306,16 +323,13 @@
     </div>
 
 
-
     <!-- =========================
-         ข้อมูลหนังสือ
-    ========================= -->
+         BOOK
+    ========================== -->
 
     <div class="container">
 
-
-        <!-- รูปปกหนังสือ -->
-
+        <!-- ปกหนังสือ -->
         <div class="book-cover">
 
             <img src="1.png"
@@ -324,9 +338,7 @@
         </div>
 
 
-
-        <!-- รายละเอียดหนังสือ -->
-
+        <!-- รายละเอียด -->
         <div class="details">
 
             <h2>รายละเอียดหนังสือ</h2>
@@ -380,15 +392,10 @@
         </div>
 
 
-
-        <!-- =========================
-             หนังสือที่เกี่ยวข้อง
-        ========================= -->
-
+        <!-- หนังสือที่เกี่ยวข้อง -->
         <div class="related">
 
             <h2>หนังสือที่เกี่ยวข้อง</h2>
-
 
             <div class="related-book">
 
@@ -398,17 +405,11 @@
                 </a>
 
                 <div>
-
-                    <h3>
-                        อย่าปลุกผม โลกกำลังพังอยู่
-                    </h3>
-
+                    <h3>อย่าปลุกผม โลกกำลังพังอยู่</h3>
                     <p>📅 17 ก.พ. 69</p>
-
                 </div>
 
             </div>
-
 
 
             <div class="related-book">
@@ -419,17 +420,11 @@
                 </a>
 
                 <div>
-
-                    <h3>
-                        อาณาจักรล่มสลาย แต่ Wi-Fi ยังไม่มี
-                    </h3>
-
+                    <h3>อาณาจักรล่มสลาย แต่ Wi-Fi ยังไม่มี</h3>
                     <p>📅 17 ก.พ. 69</p>
-
                 </div>
 
             </div>
-
 
 
             <div class="related-book">
@@ -440,15 +435,11 @@
                 </a>
 
                 <div>
-
                     <h3>SPY067</h3>
-
                     <p>📅 17 ก.พ. 69</p>
-
                 </div>
 
             </div>
-
 
 
             <div class="related-book">
@@ -459,11 +450,8 @@
                 </a>
 
                 <div>
-
                     <h3>มังกรจ๋า ไม่ไหวแล้ว</h3>
-
                     <p>📅 17 ก.พ. 69</p>
-
                 </div>
 
             </div>
@@ -473,18 +461,15 @@
     </div>
 
 
-
     <!-- =========================
-         ระบบคอมเมนต์
-    ========================= -->
+         COMMENT SYSTEM
+    ========================== -->
 
     <div class="comments">
 
         <h2>💬 แสดงความคิดเห็น</h2>
 
-
         <form class="comment-form" id="commentForm">
-
 
             <input
                 type="text"
@@ -494,7 +479,6 @@
                 required
             >
 
-
             <textarea
                 id="commentText"
                 placeholder="เขียนความคิดเห็น..."
@@ -502,38 +486,38 @@
                 required
             ></textarea>
 
-
             <button type="submit">
                 แสดงความคิดเห็น
             </button>
 
-
         </form>
 
 
-        <!-- แสดงคอมเมนต์ -->
-
-        <div
-            class="comment-list"
-            id="commentList">
-        </div>
+        <div class="comment-list" id="commentList"></div>
 
     </div>
 
 
-
     <!-- =========================
-         JavaScript
-    ========================= -->
+         JAVASCRIPT
+    ========================== -->
 
     <script>
-
 
         /*
          * ==========================================
          * สำคัญมาก!
          *
-         * แต่ละหน้าต้องมี bookID ไม่เหมือนกัน
+         * หน้านี้ใช้ book1
+         *
+         * ถ้าก๊อปไป p2.html
+         * เปลี่ยนเป็น book2
+         *
+         * p3.html = book3
+         * p4.html = book4
+         * p5.html = book5
+         *
+         * ห้ามใช้ bookID ซ้ำกัน
          * ==========================================
          */
 
@@ -547,44 +531,30 @@
             document.getElementById("commentList");
 
 
-
         /*
-         * สร้างชื่อ Storage ตามหนังสือ
+         * โหลดเฉพาะคอมเมนต์ของหนังสือเล่มนี้
          *
+         * เช่น book1 จะใช้
          * book1_comments
+         *
+         * book2 จะใช้
          * book2_comments
-         * book3_comments
-         * ฯลฯ
-         */
-
-        const storageKey =
-            bookID + "_comments";
-
-
-
-        /*
-         * โหลดคอมเมนต์ของหนังสือเล่มนี้
          */
 
         let comments =
             JSON.parse(
-                localStorage.getItem(storageKey)
+                localStorage.getItem(bookID + "_comments")
             ) || [];
 
 
-
-        /*
-         * แสดงคอมเมนต์
-         */
+        /* =========================
+           แสดงคอมเมนต์
+        ========================== */
 
         function showComments() {
 
             commentList.innerHTML = "";
 
-
-            /*
-             * ถ้ายังไม่มีคอมเมนต์
-             */
 
             if (comments.length === 0) {
 
@@ -599,70 +569,53 @@
             }
 
 
+            comments.forEach((comment, index) => {
 
-            /*
-             * วนแสดงคอมเมนต์
-             */
+                const commentBox =
+                    document.createElement("div");
 
-            comments.forEach(
-                (comment, index) => {
-
-
-                    const commentBox =
-                        document.createElement("div");
+                commentBox.className = "comment";
 
 
-                    commentBox.className =
-                        "comment";
+                commentBox.innerHTML = `
+
+                    <div class="comment-name">
+                        👤 ${escapeHTML(comment.name)}
+                    </div>
+
+                    <div class="comment-text">
+                        ${escapeHTML(comment.text)}
+                    </div>
+
+                    <div class="comment-date">
+                        📅 ${comment.date}
+                    </div>
+
+                    <button
+                        class="delete-comment"
+                        onclick="deleteComment(${index})">
+
+                        ลบความคิดเห็น
+
+                    </button>
+
+                `;
 
 
-                    commentBox.innerHTML = `
+                commentList.appendChild(commentBox);
 
-                        <div class="comment-name">
-                            👤 ${escapeHTML(comment.name)}
-                        </div>
-
-
-                        <div class="comment-text">
-                            ${escapeHTML(comment.text)}
-                        </div>
-
-
-                        <div class="comment-date">
-                            📅 ${comment.date}
-                        </div>
-
-
-                        <button
-                            class="delete-comment"
-                            onclick="deleteComment(${index})">
-
-                            ลบความคิดเห็น
-
-                        </button>
-
-                    `;
-
-
-                    commentList.appendChild(
-                        commentBox
-                    );
-
-                }
-            );
+            });
 
         }
 
 
-
-        /*
-         * เพิ่มคอมเมนต์
-         */
+        /* =========================
+           เพิ่มคอมเมนต์
+        ========================== */
 
         commentForm.addEventListener(
             "submit",
             function(event) {
-
 
                 event.preventDefault();
 
@@ -681,15 +634,7 @@
                     .trim();
 
 
-
-                /*
-                 * ตรวจสอบข้อมูล
-                 */
-
-                if (
-                    name === "" ||
-                    text === ""
-                ) {
+                if (name === "" || text === "") {
 
                     alert(
                         "กรุณากรอกชื่อและความคิดเห็น"
@@ -698,11 +643,6 @@
                     return;
                 }
 
-
-
-                /*
-                 * สร้างคอมเมนต์
-                 */
 
                 const newComment = {
 
@@ -717,39 +657,25 @@
                 };
 
 
-
-                /*
-                 * เพิ่มคอมเมนต์เข้า Array
-                 */
-
-                comments.push(
-                    newComment
-                );
-
+                comments.push(newComment);
 
 
                 /*
-                 * บันทึกเฉพาะของหนังสือเล่มนี้
+                 * บันทึกด้วย KEY ของหนังสือ
+                 *
+                 * book1_comments
+                 * book2_comments
+                 * book3_comments
                  */
 
                 localStorage.setItem(
-                    storageKey,
+                    bookID + "_comments",
                     JSON.stringify(comments)
                 );
 
 
-
-                /*
-                 * ล้างช่องกรอก
-                 */
-
                 commentForm.reset();
 
-
-
-                /*
-                 * แสดงคอมเมนต์ใหม่
-                 */
 
                 showComments();
 
@@ -757,13 +683,11 @@
         );
 
 
-
-        /*
-         * ลบคอมเมนต์
-         */
+        /* =========================
+           ลบคอมเมนต์
+        ========================== */
 
         function deleteComment(index) {
-
 
             if (
                 confirm(
@@ -771,15 +695,11 @@
                 )
             ) {
 
-
-                comments.splice(
-                    index,
-                    1
-                );
+                comments.splice(index, 1);
 
 
                 localStorage.setItem(
-                    storageKey,
+                    bookID + "_comments",
                     JSON.stringify(comments)
                 );
 
@@ -791,31 +711,25 @@
         }
 
 
-
-        /*
-         * ป้องกัน HTML / JavaScript
-         * ถูกใส่เข้ามาในคอมเมนต์
-         */
+        /* =========================
+           ป้องกัน HTML / JavaScript
+        ========================== */
 
         function escapeHTML(text) {
 
             const div =
                 document.createElement("div");
 
-
-            div.textContent =
-                text;
-
+            div.textContent = text;
 
             return div.innerHTML;
 
         }
 
 
-
-        /*
-         * โหลดคอมเมนต์เมื่อเปิดหน้า
-         */
+        /* =========================
+           เริ่มต้นระบบ
+        ========================== */
 
         showComments();
 
@@ -823,3 +737,4 @@
 
 </body>
 </html>
+```
