@@ -143,7 +143,119 @@
             color: #777;
         }
 
+
+        /* =========================
+           ระบบคอมเมนต์
+        ========================= */
+
+        .comments {
+            width: 1100px;
+            max-width: 95%;
+            margin: 30px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 5px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.12);
+        }
+
+        .comments h2 {
+            margin-top: 0;
+            color: #0087c8;
+            font-size: 20px;
+        }
+
+        .comment-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .comment-form input,
+        .comment-form textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: Arial, "Tahoma", sans-serif;
+            font-size: 14px;
+        }
+
+        .comment-form textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        .comment-form button {
+            width: 160px;
+            padding: 10px;
+            border: none;
+            border-radius: 20px;
+            background: #0087c8;
+            color: white;
+            cursor: pointer;
+        }
+
+        .comment-form button:hover {
+            background: #006b9e;
+        }
+
+        .comment-list {
+            margin-top: 25px;
+        }
+
+        .comment {
+            border-bottom: 1px solid #ddd;
+            padding: 15px 0;
+        }
+
+        .comment:last-child {
+            border-bottom: none;
+        }
+
+        .comment-name {
+            font-weight: bold;
+            color: #0087c8;
+        }
+
+        .comment-text {
+            margin: 7px 0;
+            line-height: 1.6;
+            white-space: pre-wrap;
+        }
+
+        .comment-date {
+            font-size: 11px;
+            color: #999;
+        }
+
+        .delete-comment {
+            margin-top: 7px;
+            padding: 4px 10px;
+            border: none;
+            border-radius: 10px;
+            background: #ff5555;
+            color: white;
+            cursor: pointer;
+            font-size: 11px;
+        }
+
+        .delete-comment:hover {
+            background: #dd3333;
+        }
+
+        .no-comment {
+            color: #999;
+            text-align: center;
+            padding: 20px;
+        }
+
+
+        /* =========================
+           Responsive
+        ========================= */
+
         @media (max-width: 800px) {
+
             .container {
                 grid-template-columns: 1fr;
             }
@@ -163,11 +275,25 @@
             .related {
                 margin-top: 20px;
             }
+
+            .comments {
+                width: 95%;
+            }
+
+            .comment-form button {
+                width: 100%;
+            }
         }
     </style>
 </head>
 
+
 <body>
+
+
+    <!-- =========================
+         ส่วนหัว
+    ========================= -->
 
     <div class="header">
 
@@ -180,9 +306,16 @@
     </div>
 
 
+
+    <!-- =========================
+         ข้อมูลหนังสือ
+    ========================= -->
+
     <div class="container">
 
+
         <!-- รูปปกหนังสือ -->
+
         <div class="book-cover">
 
             <img src="1.png"
@@ -191,7 +324,9 @@
         </div>
 
 
+
         <!-- รายละเอียดหนังสือ -->
+
         <div class="details">
 
             <h2>รายละเอียดหนังสือ</h2>
@@ -206,6 +341,7 @@
 
                 <b>การบ้านที่ยังทำไม่เสร็จ!</b>
             </p>
+
 
             <div class="book-info">
 
@@ -244,62 +380,446 @@
         </div>
 
 
-        <!-- หนังสือที่เกี่ยวข้อง -->
+
+        <!-- =========================
+             หนังสือที่เกี่ยวข้อง
+        ========================= -->
+
         <div class="related">
 
             <h2>หนังสือที่เกี่ยวข้อง</h2>
 
+
             <div class="related-book">
+
                 <a href="p2.html">
-                  <img src="2.png" alt="ปุ่มไปหน้าอื่น">
+                    <img src="2.png"
+                         alt="อย่าปลุกผม โลกกำลังพังอยู่">
                 </a>
 
                 <div>
-                    <h3>อย่าปลุกผม โลกกำลังพังอยู่</h3>
-                    
+
+                    <h3>
+                        อย่าปลุกผม โลกกำลังพังอยู่
+                    </h3>
+
                     <p>📅 17 ก.พ. 69</p>
+
                 </div>
+
             </div>
 
+
+
             <div class="related-book">
+
                 <a href="p3.html">
-                  <img src="3.png" alt="ปุ่มไปหน้าอื่น">
+                    <img src="3.png"
+                         alt="อาณาจักรล่มสลาย แต่ Wi-Fi ยังไม่มี">
                 </a>
 
                 <div>
-                    <h3>อาณาจักรล่มสลาย แต่ Wi-Fi ยังไม่มี</h3>
-                    
+
+                    <h3>
+                        อาณาจักรล่มสลาย แต่ Wi-Fi ยังไม่มี
+                    </h3>
+
                     <p>📅 17 ก.พ. 69</p>
+
                 </div>
+
             </div>
 
+
+
             <div class="related-book">
+
                 <a href="p4.html">
-                  <img src="4.png" alt="ปุ่มไปหน้าอื่น">
+                    <img src="4.png"
+                         alt="SPY067">
                 </a>
 
                 <div>
+
                     <h3>SPY067</h3>
-                    
+
                     <p>📅 17 ก.พ. 69</p>
+
                 </div>
+
             </div>
 
+
+
             <div class="related-book">
+
                 <a href="p5.html">
-                  <img src="5.png" alt="ปุ่มไปหน้าอื่น">
+                    <img src="5.png"
+                         alt="มังกรจ๋า ไม่ไหวแล้ว">
                 </a>
 
                 <div>
+
                     <h3>มังกรจ๋า ไม่ไหวแล้ว</h3>
-                    
+
                     <p>📅 17 ก.พ. 69</p>
+
                 </div>
+
             </div>
 
         </div>
 
     </div>
+
+
+
+    <!-- =========================
+         ระบบคอมเมนต์
+    ========================= -->
+
+    <div class="comments">
+
+        <h2>💬 แสดงความคิดเห็น</h2>
+
+
+        <form class="comment-form" id="commentForm">
+
+
+            <input
+                type="text"
+                id="commentName"
+                placeholder="ชื่อของคุณ"
+                maxlength="50"
+                required
+            >
+
+
+            <textarea
+                id="commentText"
+                placeholder="เขียนความคิดเห็น..."
+                maxlength="500"
+                required
+            ></textarea>
+
+
+            <button type="submit">
+                แสดงความคิดเห็น
+            </button>
+
+
+        </form>
+
+
+        <!-- แสดงคอมเมนต์ -->
+
+        <div
+            class="comment-list"
+            id="commentList">
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         JavaScript
+    ========================= -->
+
+    <script>
+
+
+        /*
+         * ==========================================
+         * สำคัญมาก!
+         *
+         * แต่ละหน้าต้องมี bookID ไม่เหมือนกัน
+         * ==========================================
+         */
+
+        const bookID = "book1";
+
+
+        const commentForm =
+            document.getElementById("commentForm");
+
+        const commentList =
+            document.getElementById("commentList");
+
+
+
+        /*
+         * สร้างชื่อ Storage ตามหนังสือ
+         *
+         * book1_comments
+         * book2_comments
+         * book3_comments
+         * ฯลฯ
+         */
+
+        const storageKey =
+            bookID + "_comments";
+
+
+
+        /*
+         * โหลดคอมเมนต์ของหนังสือเล่มนี้
+         */
+
+        let comments =
+            JSON.parse(
+                localStorage.getItem(storageKey)
+            ) || [];
+
+
+
+        /*
+         * แสดงคอมเมนต์
+         */
+
+        function showComments() {
+
+            commentList.innerHTML = "";
+
+
+            /*
+             * ถ้ายังไม่มีคอมเมนต์
+             */
+
+            if (comments.length === 0) {
+
+                commentList.innerHTML = `
+                    <div class="no-comment">
+                        ยังไม่มีความคิดเห็น
+                        เป็นคนแรกที่แสดงความคิดเห็นเลย! 😊
+                    </div>
+                `;
+
+                return;
+            }
+
+
+
+            /*
+             * วนแสดงคอมเมนต์
+             */
+
+            comments.forEach(
+                (comment, index) => {
+
+
+                    const commentBox =
+                        document.createElement("div");
+
+
+                    commentBox.className =
+                        "comment";
+
+
+                    commentBox.innerHTML = `
+
+                        <div class="comment-name">
+                            👤 ${escapeHTML(comment.name)}
+                        </div>
+
+
+                        <div class="comment-text">
+                            ${escapeHTML(comment.text)}
+                        </div>
+
+
+                        <div class="comment-date">
+                            📅 ${comment.date}
+                        </div>
+
+
+                        <button
+                            class="delete-comment"
+                            onclick="deleteComment(${index})">
+
+                            ลบความคิดเห็น
+
+                        </button>
+
+                    `;
+
+
+                    commentList.appendChild(
+                        commentBox
+                    );
+
+                }
+            );
+
+        }
+
+
+
+        /*
+         * เพิ่มคอมเมนต์
+         */
+
+        commentForm.addEventListener(
+            "submit",
+            function(event) {
+
+
+                event.preventDefault();
+
+
+                const name =
+                    document
+                    .getElementById("commentName")
+                    .value
+                    .trim();
+
+
+                const text =
+                    document
+                    .getElementById("commentText")
+                    .value
+                    .trim();
+
+
+
+                /*
+                 * ตรวจสอบข้อมูล
+                 */
+
+                if (
+                    name === "" ||
+                    text === ""
+                ) {
+
+                    alert(
+                        "กรุณากรอกชื่อและความคิดเห็น"
+                    );
+
+                    return;
+                }
+
+
+
+                /*
+                 * สร้างคอมเมนต์
+                 */
+
+                const newComment = {
+
+                    name: name,
+
+                    text: text,
+
+                    date:
+                        new Date()
+                        .toLocaleString("th-TH")
+
+                };
+
+
+
+                /*
+                 * เพิ่มคอมเมนต์เข้า Array
+                 */
+
+                comments.push(
+                    newComment
+                );
+
+
+
+                /*
+                 * บันทึกเฉพาะของหนังสือเล่มนี้
+                 */
+
+                localStorage.setItem(
+                    storageKey,
+                    JSON.stringify(comments)
+                );
+
+
+
+                /*
+                 * ล้างช่องกรอก
+                 */
+
+                commentForm.reset();
+
+
+
+                /*
+                 * แสดงคอมเมนต์ใหม่
+                 */
+
+                showComments();
+
+            }
+        );
+
+
+
+        /*
+         * ลบคอมเมนต์
+         */
+
+        function deleteComment(index) {
+
+
+            if (
+                confirm(
+                    "ต้องการลบความคิดเห็นนี้หรือไม่?"
+                )
+            ) {
+
+
+                comments.splice(
+                    index,
+                    1
+                );
+
+
+                localStorage.setItem(
+                    storageKey,
+                    JSON.stringify(comments)
+                );
+
+
+                showComments();
+
+            }
+
+        }
+
+
+
+        /*
+         * ป้องกัน HTML / JavaScript
+         * ถูกใส่เข้ามาในคอมเมนต์
+         */
+
+        function escapeHTML(text) {
+
+            const div =
+                document.createElement("div");
+
+
+            div.textContent =
+                text;
+
+
+            return div.innerHTML;
+
+        }
+
+
+
+        /*
+         * โหลดคอมเมนต์เมื่อเปิดหน้า
+         */
+
+        showComments();
+
+    </script>
 
 </body>
 </html>
