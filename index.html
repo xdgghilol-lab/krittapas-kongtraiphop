@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>รวมผลงานการเขียนของ Ambatukam</title>
+    <title>รีวิวหนังสือ</title>
 
     <style>
 
@@ -16,87 +16,131 @@
         body {
             margin: 0;
             font-family: Arial, "Tahoma", sans-serif;
-            background: #eef8fc;
+            background: #ffffff;
             color: #555;
         }
 
-        /* หัวเว็บไซต์ */
+        /* =========================
+           HEADER
+        ========================= */
+
         .header {
             width: 1100px;
             max-width: 95%;
-            margin: 35px auto 25px;
+            margin: 25px auto 20px;
+            text-align: center;
         }
 
         .header h1 {
             font-size: 28px;
             color: #555;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
-        /* ประวัติ */
-        .profile {
-            width: 1100px;
-            max-width: 95%;
-            margin: auto;
-            background: white;
-            padding: 25px;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+
+        /* =========================
+           ระบบค้นหา
+        ========================= */
+
+        .review-search {
+            display: flex;
+            justify-content: center;
+            align-items: end;
+            gap: 10px;
+            flex-wrap: wrap;
+            text-align: left;
         }
 
-        .profile h2 {
-            color: #0087c8;
-            font-size: 20px;
-            margin-top: 0;
+        .search-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
         }
 
-        .profile h3 {
-            color: #0087c8;
-            font-size: 14px;
-            margin-bottom: 4px;
-        }
-
-        .profile p {
-            font-size: 13px;
-            line-height: 1.7;
-        }
-
-        .counter-box {
-            text-align: center;
-            padding: 10px;
-            margin-bottom: 15px;
-        }
-
-        .counter-box p {
-            margin: 0;
-        }
-
-        .counter-number {
-            font-size: 35px;
-            font-weight: bold;
-            color: #333;
-        }
-
-        /* หัวข้อผลงาน */
-        .works-title {
-            width: 1100px;
-            max-width: 95%;
-            margin: 35px auto 20px;
-        }
-
-        .works-title h2 {
+        .search-group label {
+            font-size: 11px;
             color: #555;
-            font-size: 22px;
         }
 
-        /* การ์ดหนังสือ */
-        .books {
+        .search-group select,
+        .search-group input {
+            height: 25px;
+            border: 1px solid #ccd6dc;
+            border-radius: 15px;
+            padding: 0 12px;
+            font-size: 11px;
+            outline: none;
+            background: white;
+            min-width: 140px;
+        }
+
+        .search-group input {
+            width: 195px;
+        }
+
+        .search-group select:focus,
+        .search-group input:focus {
+            border-color: #1596d1;
+        }
+
+        .search-btn {
+            height: 26px;
+            border: none;
+            border-radius: 15px;
+            padding: 0 28px;
+            background: #008fd0;
+            color: white;
+            cursor: pointer;
+            font-size: 11px;
+        }
+
+        .search-btn:hover {
+            background: #007ab5;
+        }
+
+        .write-review-btn {
+            height: 26px;
+            border: none;
+            border-radius: 15px;
+            padding: 0 35px;
+            background: #19a0b5;
+            color: white;
+            cursor: pointer;
+            font-size: 11px;
+        }
+
+        .write-review-btn:hover {
+            background: #128b9e;
+        }
+
+
+        /* =========================
+           ผลงาน
+        ========================= */
+
+        .books-section {
             width: 1100px;
             max-width: 95%;
-            margin: auto;
+            margin: 40px auto 0;
+            background: #d9f2ff;
+            padding: 40px 35px;
+        }
 
+        .pick-title {
+            color: #008ed0;
+            font-size: 20px;
+            margin: 0 0 15px;
+        }
+
+
+        /* =========================
+           การ์ดหนังสือ
+        ========================= */
+
+        .books {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 25px;
+            gap: 35px;
         }
 
         .book {
@@ -104,10 +148,10 @@
             padding: 12px;
             text-decoration: none;
             color: #555;
-
             box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-
             transition: 0.2s;
+            cursor: pointer;
+            display: block;
         }
 
         .book:hover {
@@ -139,27 +183,234 @@
             font-size: 10px;
             color: #888;
             margin-top: 8px;
+            overflow: hidden;
         }
 
-        /* ดาว */
         .rating {
             float: right;
-            color: #4aa8d8;
+            color: #159bd4;
         }
 
-        /* มือถือ */
+        .rating-average {
+            color: #f2a900;
+            font-weight: bold;
+        }
+
+        .review-summary {
+            font-size: 10px;
+            color: #888;
+            margin-top: 5px;
+        }
+
+        .no-result {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 40px;
+            color: #777;
+            display: none;
+        }
+
+
+        /* =========================
+           รีวิวล่าสุด
+        ========================= */
+
+        .reviews-area {
+            width: 1100px;
+            max-width: 95%;
+            margin: 30px auto;
+        }
+
+        .reviews-area h2 {
+            color: #555;
+        }
+
+        .review-item {
+            background: white;
+            border-left: 4px solid #159bd4;
+            padding: 15px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .review-book {
+            color: #008ed0;
+            font-weight: bold;
+        }
+
+        .review-stars {
+            color: #ffc107;
+            margin: 5px 0;
+        }
+
+        .review-text {
+            margin: 8px 0 0;
+            font-size: 13px;
+        }
+
+
+        /* =========================
+           MODAL
+        ========================= */
+
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.45);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-box {
+            width: 450px;
+            max-width: 100%;
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+            position: relative;
+        }
+
+        .modal-box h2 {
+            margin-top: 0;
+            color: #008ed0;
+            font-size: 20px;
+        }
+
+        .close-btn {
+            position: absolute;
+            right: 15px;
+            top: 12px;
+            border: none;
+            background: none;
+            font-size: 25px;
+            cursor: pointer;
+            color: #777;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            margin-bottom: 6px;
+            color: #555;
+        }
+
+        .form-group select,
+        .form-group textarea,
+        .form-group input {
+            width: 100%;
+            border: 1px solid #ccd6dc;
+            border-radius: 7px;
+            padding: 10px;
+            font-family: inherit;
+            outline: none;
+        }
+
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+
+        /* =========================
+           ดาวตอนเขียนรีวิว
+        ========================= */
+
+        .star-input {
+            display: flex;
+            gap: 5px;
+            direction: rtl;
+            justify-content: flex-end;
+        }
+
+        .star-input input {
+            display: none;
+        }
+
+        .star-input label {
+            font-size: 30px;
+            color: #ccc;
+            cursor: pointer;
+            margin: 0;
+        }
+
+        .star-input input:checked ~ label,
+        .star-input label:hover,
+        .star-input label:hover ~ label {
+            color: #ffc107;
+        }
+
+
+        /* =========================
+           ปุ่มส่งรีวิว
+        ========================= */
+
+        .submit-review {
+            width: 100%;
+            border: none;
+            border-radius: 7px;
+            background: #008fd0;
+            color: white;
+            padding: 11px;
+            cursor: pointer;
+        }
+
+        .submit-review:hover {
+            background: #0078b2;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
         @media (max-width: 900px) {
 
             .books {
                 grid-template-columns: repeat(2, 1fr);
             }
 
+            .review-search {
+                align-items: stretch;
+            }
+
         }
+
 
         @media (max-width: 500px) {
 
             .books {
                 grid-template-columns: 1fr;
+            }
+
+            .books-section {
+                padding: 25px 15px;
+            }
+
+            .review-search {
+                flex-direction: column;
+            }
+
+            .search-group select,
+            .search-group input,
+            .search-btn,
+            .write-review-btn {
+                width: 100%;
+            }
+
+            .header h1 {
+                font-size: 23px;
             }
 
         }
@@ -170,321 +421,1274 @@
 
 <body>
 
-    <!-- หัวเว็บไซต์ -->
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
     <div class="header">
 
-        <h1>
-            รวมผลงานการเขียนของ Ambatukam
-        </h1>
+        <h1>รีวิวหนังสือ</h1>
 
-    </div>
+        <div class="review-search">
 
 
-    <!-- ประวัติ -->
-    <div class="profile">
+            <!-- อ่านรีวิว -->
 
-        <h2>ประวัติของ Ambatukam</h2>
+            <div class="search-group">
+
+                <label>อ่านรีวิว</label>
+
+                <select id="reviewFilter">
+
+                    <option value="all">
+                        อ่านรีวิวทั้งหมด
+                    </option>
+
+                    <option value="reviewed">
+                        เฉพาะหนังสือที่มีรีวิว
+                    </option>
+
+                </select>
+
+            </div>
 
 
-        <!-- ตัวนับจำนวนผู้เข้าชม -->
-        <div class="counter-box">
+            <!-- ประเภทหนังสือ -->
 
-            <p>Page views:</p>
+            <div class="search-group">
 
-            <span class="มีคนเข้าชมแล้ว" id="count">
-                0
-            </span>
+                <label>
+                    เลือกอ่านตามประเภทหนังสือ
+                </label>
+
+                <select id="categoryFilter">
+
+                    <option value="all">
+                        ประเภทหนังสือทั้งหมด
+                    </option>
+
+                    <option value="แฟนตาซี">
+                        แฟนตาซี
+                    </option>
+
+                    <option value="เรื่องสั้น">
+                        เรื่องสั้น
+                    </option>
+
+                    <option value="เหนือจินตนาการ">
+                        เหนือจินตนาการ
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- ค้นหา -->
+
+            <div class="search-group">
+
+                <label>
+                    ค้นหาหนังสือ
+                </label>
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="ชื่อหนังสือที่ต้องการค้นหา / ผู้เขียน">
+
+            </div>
+
+
+            <button
+                class="search-btn"
+                onclick="filterBooks()">
+
+                ค้นหา
+
+            </button>
+
+
+            <button
+                class="write-review-btn"
+                onclick="openReviewModal()">
+
+                ✎ &nbsp;เขียนรีวิวหนังสือ
+
+            </button>
 
         </div>
 
-
-        <h3>ชื่อ:</h3>
-        <p>Ambatukam</p>
+    </div>
 
 
-        <h3>อาชีพ:</h3>
-        <p>นักเขียนอิสระ</p>
+
+    <!-- =========================
+         หนังสือ
+    ========================= -->
+
+    <div class="books-section">
+
+        <h2 class="pick-title">
+            B2S Club's Pick
+        </h2>
 
 
-        <h3>สัญชาติ:</h3>
-        <p>ไทย</p>
+        <div class="books" id="booksContainer">
 
 
-        <hr>
+            <!-- หนังสือ 1 -->
+
+            <a
+                href="p1.html"
+                class="book"
+                data-category="เรื่องสั้น"
+                data-title="โลกจะแตกแต่การบ้านยังไม่เสร็จ"
+                data-author="Ambatukam">
+
+                <img
+                    src="1.png"
+                    alt="โลกจะแตกแต่การบ้านยังไม่เสร็จ">
+
+                <div class="book-title">
+                    โลกจะแตกแต่การบ้านยังไม่เสร็จ
+                </div>
+
+                <div class="book-author">
+                    เรื่องโดย Ambatukam
+                </div>
+
+                <div class="book-info">
+
+                    📅 17 ก.พ. 69
+
+                    <span class="rating">
+                        ☆ 5
+                    </span>
+
+                </div>
+
+                <div
+                    class="review-summary"
+                    data-book-id="1">
+
+                    ยังไม่มีรีวิว
+
+                </div>
+
+            </a>
 
 
-        <h3>แนวงาน:</h3>
 
-        <p>
-            เรื่องสั้น แฟนตาซี และเรื่องราวเหนือจินตนาการ
-            Ambatukam เป็นนักเขียนสมมติที่มีความสนใจในการสร้าง
-            เรื่องราวแปลกใหม่และตัวละครที่มีเอกลักษณ์
-            เขาเริ่มสนใจการเขียนตั้งแต่วัยเด็ก
-            โดยมักนำเหตุการณ์รอบตัว จินตนาการ
-            และเรื่องราวจากโลกออนไลน์มาผสมผสานกัน
-            จนกลายเป็นผลงานของตัวเอง
+            <!-- หนังสือ 2 -->
 
-            <br><br>
+            <a
+                href="p2.html"
+                class="book"
+                data-category="เหนือจินตนาการ"
+                data-title="อย่าปลุกผม โลกกำลังพังอยู่"
+                data-author="Ambatukam">
 
-            ผลงานของ Ambatukam มีจุดเด่นด้านการใช้ความคิดสร้างสรรค์
-            และอารมณ์ขัน โดยมักสร้างสถานการณ์ที่คาดเดาได้ยาก
-            ทำให้ผู้อ่านรู้สึกสนุกและอยากติดตามเรื่องราวต่อไป
+                <img
+                    src="2.png"
+                    alt="อย่าปลุกผม โลกกำลังพังอยู่">
 
-            <br><br>
+                <div class="book-title">
+                    อย่าปลุกผม โลกกำลังพังอยู่
+                </div>
 
-            แม้ชื่อ Ambatukam จะเป็นนามปากกาที่ใช้ในโลกออนไลน์
-            แต่ตัวตนของเขาถูกสร้างขึ้นเพื่อเป็นส่วนหนึ่งของโลกสมมติ
-            และไม่มีประวัติหรือข้อมูลส่วนตัวที่อ้างอิงถึงบุคคลจริง
+                <div class="book-author">
+                    เรื่องโดย Ambatukam
+                </div>
 
-            <br><br>
+                <div class="book-info">
 
-            ปัจจุบัน Ambatukam ยังคงสร้างสรรค์ผลงานเขียนบนโลกออนไลน์
-            และมีเป้าหมายที่จะพัฒนาผลงานของตนเอง
-            ให้มีความน่าสนใจและเป็นที่จดจำมากยิ่งขึ้น
-        </p>
+                    📅 17 ก.พ. 69
+
+                    <span class="rating">
+                        ☆ 5
+                    </span>
+
+                </div>
+
+                <div
+                    class="review-summary"
+                    data-book-id="2">
+
+                    ยังไม่มีรีวิว
+
+                </div>
+
+            </a>
+
+
+
+            <!-- หนังสือ 3 -->
+
+            <a
+                href="p3.html"
+                class="book"
+                data-category="แฟนตาซี"
+                data-title="อาณาจักรล่มสลาย แต่ Wi-Fi ยังไม่มี"
+                data-author="Ambatukam">
+
+                <img
+                    src="3.png"
+                    alt="อาณาจักรล่มสลาย แต่ Wi-Fi ยังไม่มี">
+
+                <div class="book-title">
+                    อาณาจักรล่มสลาย แต่ Wi-Fi ยังไม่มี
+                </div>
+
+                <div class="book-author">
+                    เรื่องโดย Ambatukam
+                </div>
+
+                <div class="book-info">
+
+                    📅 17 ก.พ. 69
+
+                    <span class="rating">
+                        ☆ 5
+                    </span>
+
+                </div>
+
+                <div
+                    class="review-summary"
+                    data-book-id="3">
+
+                    ยังไม่มีรีวิว
+
+                </div>
+
+            </a>
+
+
+
+            <!-- หนังสือ 4 -->
+
+            <a
+                href="p4.html"
+                class="book"
+                data-category="แฟนตาซี"
+                data-title="SPY067"
+                data-author="Ambatukam">
+
+                <img
+                    src="4.png"
+                    alt="SPY067">
+
+                <div class="book-title">
+                    SPY067
+                </div>
+
+                <div class="book-author">
+                    เรื่องโดย Ambatukam
+                </div>
+
+                <div class="book-info">
+
+                    📅 17 ก.พ. 69
+
+                    <span class="rating">
+                        ☆ 5
+                    </span>
+
+                </div>
+
+                <div
+                    class="review-summary"
+                    data-book-id="4">
+
+                    ยังไม่มีรีวิว
+
+                </div>
+
+            </a>
+
+
+
+            <!-- หนังสือ 5 -->
+
+            <a
+                href="p5.html"
+                class="book"
+                data-category="แฟนตาซี"
+                data-title="มังกรจ๋า ไม่ไหวแล้ว"
+                data-author="Ambatukam">
+
+                <img
+                    src="5.png"
+                    alt="มังกรจ๋า ไม่ไหวแล้ว">
+
+                <div class="book-title">
+                    มังกรจ๋า ไม่ไหวแล้ว
+                </div>
+
+                <div class="book-author">
+                    เรื่องโดย Ambatukam
+                </div>
+
+                <div class="book-info">
+
+                    📅 17 ก.พ. 69
+
+                    <span class="rating">
+                        ☆ 5
+                    </span>
+
+                </div>
+
+                <div
+                    class="review-summary"
+                    data-book-id="5">
+
+                    ยังไม่มีรีวิว
+
+                </div>
+
+            </a>
+
+
+
+            <!-- หนังสือ 6 -->
+
+            <a
+                href="p6.html"
+                class="book"
+                data-category="เรื่องสั้น"
+                data-title="พี่จ๋า กรุงจะแตกแล้ว"
+                data-author="Ambatukam">
+
+                <img
+                    src="6.png"
+                    alt="พี่จ๋า กรุงจะแตกแล้ว">
+
+                <div class="book-title">
+                    พี่จ๋า กรุงจะแตกแล้ว
+                </div>
+
+                <div class="book-author">
+                    เรื่องโดย Ambatukam
+                </div>
+
+                <div class="book-info">
+
+                    📅 17 ก.พ. 69
+
+                    <span class="rating">
+                        ☆ 5
+                    </span>
+
+                </div>
+
+                <div
+                    class="review-summary"
+                    data-book-id="6">
+
+                    ยังไม่มีรีวิว
+
+                </div>
+
+            </a>
+
+
+
+            <!-- หนังสือ 7 -->
+
+            <a
+                href="p7.html"
+                class="book"
+                data-category="เหนือจินตนาการ"
+                data-title="โยมไม่มีบ้าน: THE DOOMDAY"
+                data-author="Ambatukam">
+
+                <img
+                    src="7.png"
+                    alt="โยมไม่มีบ้าน THE DOOMDAY">
+
+                <div class="book-title">
+                    โยมไม่มีบ้าน: THE DOOMDAY
+                </div>
+
+                <div class="book-author">
+                    เรื่องโดย Ambatukam
+                </div>
+
+                <div class="book-info">
+
+                    📅 17 ก.พ. 69
+
+                    <span class="rating">
+                        ☆ 5
+                    </span>
+
+                </div>
+
+                <div
+                    class="review-summary"
+                    data-book-id="7">
+
+                    ยังไม่มีรีวิว
+
+                </div>
+
+            </a>
+
+
+
+            <!-- หนังสือ 8 -->
+
+            <a
+                href="p8.html"
+                class="book"
+                data-category="แฟนตาซี"
+                data-title="เกิดใหม่อีกทีก็เป็นนิสสานนนนไปซะละ"
+                data-author="Ambatukam">
+
+                <img
+                    src="8.png"
+                    alt="เกิดใหม่อีกทีก็เป็นนิสสานนนนไปซะละ">
+
+                <div class="book-title">
+                    เกิดใหม่อีกทีก็เป็นนิสสานนนนไปซะละ
+                </div>
+
+                <div class="book-author">
+                    เรื่องโดย Ambatukam
+                </div>
+
+                <div class="book-info">
+
+                    📅 17 ก.พ. 69
+
+                    <span class="rating">
+                        ☆ 5
+                    </span>
+
+                </div>
+
+                <div
+                    class="review-summary"
+                    data-book-id="8">
+
+                    ยังไม่มีรีวิว
+
+                </div>
+
+            </a>
+
+
+
+            <!-- หนังสือ 9 -->
+
+            <a
+                href="p9.html"
+                class="book"
+                data-category="เรื่องสั้น"
+                data-title="รักรักรักรักรักเธอหมดหัวใจจากแฟนสาว 100 คน"
+                data-author="Ambatukam">
+
+                <img
+                    src="9.png"
+                    alt="รักรักรักรักรักเธอหมดหัวใจจากแฟนสาว 100 คน">
+
+                <div class="book-title">
+                    รักรักรักรักรักเธอหมดหัวใจจากแฟนสาว 100 คน
+                </div>
+
+                <div class="book-author">
+                    เรื่องโดย Ambatukam
+                </div>
+
+                <div class="book-info">
+
+                    📅 17 ก.พ. 69
+
+                    <span class="rating">
+                        ☆ 5
+                    </span>
+
+                </div>
+
+                <div
+                    class="review-summary"
+                    data-book-id="9">
+
+                    ยังไม่มีรีวิว
+
+                </div>
+
+            </a>
+
+
+
+            <!-- หนังสือ 10 -->
+
+            <a
+                href="p10.html"
+                class="book"
+                data-category="เหนือจินตนาการ"
+                data-title="DIDDY PARTY"
+                data-author="Ambatukam">
+
+                <img
+                    src="10.png"
+                    alt="DIDDY PARTY">
+
+                <div class="book-title">
+                    DIDDY PARTY
+                </div>
+
+                <div class="book-author">
+                    เรื่องโดย Ambatukam
+                </div>
+
+                <div class="book-info">
+
+                    📅 17 ก.พ. 69
+
+                    <span class="rating">
+                        ☆ 5
+                    </span>
+
+                </div>
+
+                <div
+                    class="review-summary"
+                    data-book-id="10">
+
+                    ยังไม่มีรีวิว
+
+                </div>
+
+            </a>
+
+
+
+            <div
+                class="no-result"
+                id="noResult">
+
+                ไม่พบหนังสือที่ค้นหา
+
+            </div>
+
+        </div>
 
     </div>
 
 
-    <!-- ผลงาน -->
-    <div class="works-title">
 
-        <h2>ผลงาน</h2>
+    <!-- =========================
+         รีวิวล่าสุด
+    ========================= -->
+
+    <div class="reviews-area">
+
+        <h2>
+            รีวิวล่าสุด
+        </h2>
+
+        <div id="reviewsList">
+            ยังไม่มีรีวิว
+        </div>
 
     </div>
 
 
-    <div class="books">
 
+    <!-- =========================
+         MODAL เขียนรีวิว
+    ========================= -->
 
-        <!-- หนังสือ 1 -->
-        <a href="p1.html" class="book">
+    <div
+        class="modal"
+        id="reviewModal">
 
-            <img src="1.png" alt="หนังสือเล่มที่ 1">
+        <div class="modal-box">
 
-            <div class="book-title">
-                โลกจะแตกแต่การบ้านยังไม่เสร็จ
-            </div>
+            <button
+                class="close-btn"
+                onclick="closeReviewModal()">
 
-            <div class="book-author">
-                เรื่องโดย Ambatukam
-            </div>
+                ×
 
-            <div class="book-info">
-                📅 17 ก.พ. 69
-                <span class="rating">☆ 5</span>
-            </div>
+            </button>
 
-        </a>
 
+            <h2>
+                เขียนรีวิวหนังสือ
+            </h2>
 
-        <!-- หนังสือ 2 -->
-        <a href="p2.html" class="book">
 
-            <img src="2.png" alt="หนังสือเล่มที่ 2">
+            <form id="reviewForm">
 
-            <div class="book-title">
-              อย่าปลุกผม โลกกำลังพังอยู่
-            </div>
 
-            <div class="book-author">
-                เรื่องโดย Ambatukam
-            </div>
+                <!-- เลือกหนังสือ -->
 
-            <div class="book-info">
-                📅 17 ก.พ. 69
-                <span class="rating">☆ 5</span>
-            </div>
+                <div class="form-group">
 
-        </a>
+                    <label>
+                        เลือกหนังสือ
+                    </label>
 
+                    <select
+                        id="reviewBook"
+                        required>
 
-        <!-- หนังสือ 3 -->
-        <a href="p3.html" class="book">
+                        <option value="">
+                            -- เลือกหนังสือ --
+                        </option>
 
-            <img src="3.png" alt="หนังสือเล่มที่ 3">
+                        <option value="1">
+                            โลกจะแตกแต่การบ้านยังไม่เสร็จ
+                        </option>
 
-            <div class="book-title">
-                อาณาจักรล่มสลาย แต่ Wi-Fi ยังไม่มี
-            </div>
+                        <option value="2">
+                            อย่าปลุกผม โลกกำลังพังอยู่
+                        </option>
 
-            <div class="book-author">
-                เรื่องโดย Ambatukam
-            </div>
+                        <option value="3">
+                            อาณาจักรล่มสลาย แต่ Wi-Fi ยังไม่มี
+                        </option>
 
-            <div class="book-info">
-                📅 17 ก.พ. 69
-                <span class="rating">☆ 5</span>
-            </div>
+                        <option value="4">
+                            SPY067
+                        </option>
 
-        </a>
+                        <option value="5">
+                            มังกรจ๋า ไม่ไหวแล้ว
+                        </option>
 
+                        <option value="6">
+                            พี่จ๋า กรุงจะแตกแล้ว
+                        </option>
 
-        <!-- หนังสือ 4 -->
-        <a href="p4.html" class="book">
+                        <option value="7">
+                            โยมไม่มีบ้าน: THE DOOMDAY
+                        </option>
 
-            <img src="4.png" alt="หนังสือเล่มที่ 4">
+                        <option value="8">
+                            เกิดใหม่อีกทีก็เป็นนิสสานนนนไปซะละ
+                        </option>
 
-            <div class="book-title">
-     SPY067
-            </div>
+                        <option value="9">
+                            รักรักรักรักรักเธอหมดหัวใจจากแฟนสาว 100 คน
+                        </option>
 
-            <div class="book-author">
-                เรื่องโดย Ambatukam
-            </div>
+                        <option value="10">
+                            DIDDY PARTY
+                        </option>
 
-            <div class="book-info">
-                📅 17 ก.พ. 69
-                <span class="rating">☆ 5</span>
-            </div>
+                    </select>
 
-        </a>
+                </div>
 
 
-        <!-- หนังสือ 5 -->
-        <a href="p5.html" class="book">
 
-            <img src="5.png" alt="หนังสือเล่มที่ 5">
+                <!-- ดาว -->
 
-            <div class="book-title">
-                มังกรจ๋า ไม่ไหวแล้ว
-            </div>
+                <div class="form-group">
 
-            <div class="book-author">
-                เรื่องโดย Ambatukam
-            </div>
+                    <label>
+                        ให้คะแนน
+                    </label>
 
-            <div class="book-info">
-                📅 17 ก.พ. 69
-                <span class="rating">☆ 5</span>
-            </div>
+                    <div class="star-input">
 
-        </a>
 
+                        <input
+                            type="radio"
+                            name="rating"
+                            id="star5"
+                            value="5"
+                            required>
 
-        <!-- หนังสือ 6 -->
-        <a href="p6.html" class="book">
+                        <label for="star5">
+                            ★
+                        </label>
 
-            <img src="6.png" alt="หนังสือเล่มที่ 6">
 
-            <div class="book-title">
-               พี่จ๋า กรุงจะแตกแล้ว
-            </div>
+                        <input
+                            type="radio"
+                            name="rating"
+                            id="star4"
+                            value="4">
 
-            <div class="book-author">
-                เรื่องโดย Ambatukam
-            </div>
+                        <label for="star4">
+                            ★
+                        </label>
 
-            <div class="book-info">
-                📅 17 ก.พ. 69
-                <span class="rating">☆ 5</span>
-            </div>
 
-        </a>
+                        <input
+                            type="radio"
+                            name="rating"
+                            id="star3"
+                            value="3">
 
+                        <label for="star3">
+                            ★
+                        </label>
 
-        <!-- หนังสือ 7 -->
-        <a href="p7.html" class="book">
 
-            <img src="7.png" alt="หนังสือเล่มที่ 7">
+                        <input
+                            type="radio"
+                            name="rating"
+                            id="star2"
+                            value="2">
 
-            <div class="book-title">
-               โยมไม่มีบ้าน: THE DOOMDAY
-            </div>
+                        <label for="star2">
+                            ★
+                        </label>
 
-            <div class="book-author">
-                เรื่องโดย Ambatukam
-            </div>
 
-            <div class="book-info">
-                📅 17 ก.พ. 69
-                <span class="rating">☆ 5</span>
-            </div>
+                        <input
+                            type="radio"
+                            name="rating"
+                            id="star1"
+                            value="1">
 
-        </a>
+                        <label for="star1">
+                            ★
+                        </label>
 
+                    </div>
 
-        <!-- หนังสือ 8 -->
-        <a href="p8.html" class="book">
+                </div>
 
-            <img src="8.png" alt="หนังสือเล่มที่ 8">
 
-            <div class="book-title">
-                เกิดใหม่อีกทีก็เป็นนิสสานนนนไปซะละ
-            </div>
 
-            <div class="book-author">
-                เรื่องโดย Ambatukam
-            </div>
+                <!-- ชื่อ -->
 
-            <div class="book-info">
-                📅 17 ก.พ. 69
-                <span class="rating">☆ 5</span>
-            </div>
+                <div class="form-group">
 
-        </a>
+                    <label>
+                        ชื่อผู้รีวิว
+                    </label>
 
+                    <input
+                        type="text"
+                        id="reviewName"
+                        placeholder="ชื่อของคุณ"
+                        required>
 
-        <!-- หนังสือ 9 -->
-        <a href="p9.html" class="book">
+                </div>
 
-            <img src="9.png" alt="หนังสือเล่มที่ 9">
 
-            <div class="book-title">
-                รักรักรักรักรักเธอหมดหัวใจจากแฟนสาว 100 คน
-            </div>
 
-            <div class="book-author">
-                เรื่องโดย Ambatukam
-            </div>
+                <!-- ข้อความ -->
 
-            <div class="book-info">
-                📅 17 ก.พ. 69
-                <span class="rating">☆ 5</span>
-            </div>
+                <div class="form-group">
 
-        </a>
+                    <label>
+                        รีวิว
+                    </label>
 
+                    <textarea
+                        id="reviewText"
+                        placeholder="เขียนความคิดเห็นของคุณ..."
+                        required></textarea>
 
-        <!-- หนังสือ 10 -->
-        <a href="p10.html" class="book">
+                </div>
 
-            <img src="10.png" alt="หนังสือเล่มที่ 10">
 
-            <div class="book-title">
-  DIDDY PARTY
-            </div>
 
-            <div class="book-author">
-                เรื่องโดย Ambatukam
-            </div>
+                <button
+                    type="submit"
+                    class="submit-review">
 
-            <div class="book-info">
-                📅 17 ก.พ. 69
-                <span class="rating">☆ 5</span>
-            </div>
+                    ส่งรีวิว
 
-        </a>
+                </button>
+
+            </form>
+
+        </div>
 
     </div>
 
 
-    <!-- ระบบนับจำนวนผู้เข้าชม -->
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
     <script>
 
-        let count = localStorage.getItem('page_view');
 
-        if (count) {
-            count = Number(count) + 1;
-        } else {
-            count = 1;
+        /* =========================
+           โหลดรีวิว
+        ========================= */
+
+        let reviews =
+            JSON.parse(
+                localStorage.getItem('book_reviews')
+            ) || [];
+
+
+
+        /* =========================
+           เปิด Modal
+        ========================= */
+
+        function openReviewModal() {
+
+            document
+                .getElementById('reviewModal')
+                .classList.add('active');
+
         }
 
-        localStorage.setItem('page_view', count);
 
-        document.getElementById('count').innerText = count;
+
+        /* =========================
+           ปิด Modal
+        ========================= */
+
+        function closeReviewModal() {
+
+            document
+                .getElementById('reviewModal')
+                .classList.remove('active');
+
+        }
+
+
+
+        /* คลิกด้านนอกเพื่อปิด */
+
+        document
+            .getElementById('reviewModal')
+            .addEventListener(
+                'click',
+                function(event) {
+
+                    if (event.target === this) {
+
+                        closeReviewModal();
+
+                    }
+
+                }
+            );
+
+
+
+        /* =========================
+           ส่งรีวิว
+        ========================= */
+
+        document
+            .getElementById('reviewForm')
+            .addEventListener(
+                'submit',
+                function(event) {
+
+                    event.preventDefault();
+
+
+                    const bookSelect =
+                        document
+                            .getElementById('reviewBook');
+
+
+                    const bookId =
+                        bookSelect.value;
+
+
+                    const bookName =
+                        bookSelect
+                            .options[
+                                bookSelect.selectedIndex
+                            ]
+                            .text;
+
+
+                    const name =
+                        document
+                            .getElementById('reviewName')
+                            .value
+                            .trim();
+
+
+                    const text =
+                        document
+                            .getElementById('reviewText')
+                            .value
+                            .trim();
+
+
+                    const rating =
+                        document
+                            .querySelector(
+                                'input[name="rating"]:checked'
+                            )
+                            .value;
+
+
+                    const review = {
+
+                        id: Date.now(),
+
+                        bookId: bookId,
+
+                        bookName: bookName,
+
+                        name: name,
+
+                        text: text,
+
+                        rating: Number(rating),
+
+                        date:
+                            new Date()
+                                .toLocaleDateString('th-TH')
+
+                    };
+
+
+                    reviews.unshift(review);
+
+
+                    localStorage.setItem(
+                        'book_reviews',
+                        JSON.stringify(reviews)
+                    );
+
+
+                    document
+                        .getElementById('reviewForm')
+                        .reset();
+
+
+                    closeReviewModal();
+
+
+                    updateReviewDisplay();
+
+
+                    alert(
+                        'ส่งรีวิวเรียบร้อยแล้ว ⭐'
+                    );
+
+                }
+            );
+
+
+
+        /* =========================
+           ดึงรีวิวของหนังสือ
+        ========================= */
+
+        function getBookReviews(bookId) {
+
+            return reviews.filter(
+                review =>
+                    review.bookId === String(bookId)
+            );
+
+        }
+
+
+
+        /* =========================
+           อัปเดตคะแนนบนการ์ด
+        ========================= */
+
+        function updateReviewDisplay() {
+
+            document
+                .querySelectorAll('.review-summary')
+                .forEach(function(element) {
+
+
+                    const bookId =
+                        element.dataset.bookId;
+
+
+                    const bookReviews =
+                        getBookReviews(bookId);
+
+
+                    if (
+                        bookReviews.length === 0
+                    ) {
+
+                        element.innerHTML =
+                            'ยังไม่มีรีวิว';
+
+                        return;
+
+                    }
+
+
+                    const total =
+                        bookReviews.reduce(
+                            function(sum, review) {
+
+                                return sum +
+                                    review.rating;
+
+                            },
+                            0
+                        );
+
+
+                    const average =
+                        (
+                            total /
+                            bookReviews.length
+                        ).toFixed(1);
+
+
+                    element.innerHTML =
+                        '<span class="rating-average">' +
+                        '★ ' +
+                        average +
+                        '</span> · ' +
+                        bookReviews.length +
+                        ' รีวิว';
+
+                });
+
+
+            displayReviews();
+
+        }
+
+
+
+        /* =========================
+           แสดงรีวิวล่าสุด
+        ========================= */
+
+        function displayReviews() {
+
+            const reviewsList =
+                document
+                    .getElementById('reviewsList');
+
+
+            if (reviews.length === 0) {
+
+                reviewsList.innerHTML =
+                    'ยังไม่มีรีวิว';
+
+                return;
+
+            }
+
+
+            reviewsList.innerHTML =
+                reviews
+                    .slice(0, 10)
+                    .map(function(review) {
+
+
+                        return `
+
+                            <div class="review-item">
+
+                                <div class="review-book">
+                                    ${escapeHTML(review.bookName)}
+                                </div>
+
+                                <div class="review-stars">
+                                    ${'★'.repeat(review.rating)}
+                                    ${'☆'.repeat(5 - review.rating)}
+                                </div>
+
+                                <strong>
+                                    ${escapeHTML(review.name)}
+                                </strong>
+
+                                <small>
+                                    · ${review.date}
+                                </small>
+
+                                <p class="review-text">
+                                    ${escapeHTML(review.text)}
+                                </p>
+
+                            </div>
+
+                        `;
+
+                    })
+                    .join('');
+
+        }
+
+
+
+        /* =========================
+           ป้องกัน HTML Injection
+        ========================= */
+
+        function escapeHTML(text) {
+
+            const div =
+                document.createElement('div');
+
+            div.textContent = text;
+
+            return div.innerHTML;
+
+        }
+
+
+
+        /* =========================
+           ระบบค้นหา
+        ========================= */
+
+        function filterBooks() {
+
+            const search =
+                document
+                    .getElementById('searchInput')
+                    .value
+                    .toLowerCase()
+                    .trim();
+
+
+            const category =
+                document
+                    .getElementById('categoryFilter')
+                    .value;
+
+
+            const reviewFilter =
+                document
+                    .getElementById('reviewFilter')
+                    .value;
+
+
+            const books =
+                document.querySelectorAll('.book');
+
+
+            let visible = 0;
+
+
+            books.forEach(function(book) {
+
+
+                const title =
+                    book.dataset.title
+                        .toLowerCase();
+
+
+                const author =
+                    book.dataset.author
+                        .toLowerCase();
+
+
+                const bookCategory =
+                    book.dataset.category;
+
+
+                const summary =
+                    book.querySelector(
+                        '.review-summary'
+                    );
+
+
+                const bookId =
+                    summary.dataset.bookId;
+
+
+                const hasReview =
+                    getBookReviews(bookId).length > 0;
+
+
+                const matchSearch =
+                    title.includes(search) ||
+                    author.includes(search);
+
+
+                const matchCategory =
+                    category === 'all' ||
+                    bookCategory === category;
+
+
+                const matchReview =
+                    reviewFilter === 'all' ||
+                    hasReview;
+
+
+                if (
+                    matchSearch &&
+                    matchCategory &&
+                    matchReview
+                ) {
+
+                    book.style.display =
+                        'block';
+
+                    visible++;
+
+                } else {
+
+                    book.style.display =
+                        'none';
+
+                }
+
+            });
+
+
+            document
+                .getElementById('noResult')
+                .style.display =
+                    visible === 0
+                        ? 'block'
+                        : 'none';
+
+        }
+
+
+
+        /* =========================
+           ค้นหาแบบทันที
+        ========================= */
+
+        document
+            .getElementById('searchInput')
+            .addEventListener(
+                'input',
+                filterBooks
+            );
+
+
+        document
+            .getElementById('categoryFilter')
+            .addEventListener(
+                'change',
+                filterBooks
+            );
+
+
+        document
+            .getElementById('reviewFilter')
+            .addEventListener(
+                'change',
+                filterBooks
+            );
+
+
+
+        /* =========================
+           เริ่มระบบ
+        ========================= */
+
+        updateReviewDisplay();
 
     </script>
 
 </body>
+
 </html>
