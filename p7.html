@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>พี่จ๋า กรุงจะแตกแล้ว</title>
+
+    <style>
+        /* =========================
+           RESET
+        ========================== */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, "Tahoma", sans-serif;
+            background: #f5f9fc;
+            color: #3f4a54;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================== */
+
+        .header {
+            width: 1100px;
+            max-width: calc(100% - 40px);
+            margin: 40px auto 25px;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+
+            padding: 9px 17px;
+
+            background: #ffffff;
+            color: #0087c8;
+
+            border: 1px solid #d9eaf3;
+            border-radius: 8px;
+
+            font-size: 14px;
+            font-weight: 600;
+
+            transition: 0.2s ease;
+        }
+
+        .back-button:hover {
+            background: #0087c8;
+            color: white;
+            border-color: #0087c8;
+            transform: translateX(-2px);
+        }
+
+        .header h1 {
+            margin: 22px 0 0;
+
+            color: #263746;
+            font-size: 30px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .header h1::after {
+            content: "";
+            display: block;
+
+            width: 55px;
+            height: 4px;
+
+            margin-top: 12px;
+
+            background: #0087c8;
+            border-radius: 10px;
+        }
+
+
+        /* =========================
+           MAIN BOOK LAYOUT
+        ========================== */
+
+        .container {
+            width: 1100px;
+            max-width: calc(100% - 40px);
+            margin: 0 auto;
+
+            display: grid;
+            grid-template-columns: 190px minmax(0, 1fr) 260px;
+            gap: 25px;
+
+            align-items: start;
+        }
+
+
+        /* =========================
+           BOOK COVER
+        ========================== */
+
+        .book-cover {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .book-cover-card {
+            width: 100%;
+            padding: 15px;
+
+            background: white;
+            border: 1px solid #e7eef3;
+            border-radius: 12px;
+
+            box-shadow: 0 8px 25px rgba(35, 70, 90, 0.08);
+
+            text-align: center;
+        }
+
+        .book-cover img {
+            width: 100%;
+            max-width: 160px;
+            height: 225px;
+
+            object-fit: cover;
+
+            display: block;
+            margin: auto;
+
+            border-radius: 7px;
+
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+
+            transition: 0.25s ease;
+        }
+
+        .book-cover img:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.18);
+        }
+
+        .cover-label {
+            margin-top: 12px;
+
+            font-size: 12px;
+            color: #8a98a5;
+        }
+
+
+        /* =========================
+           DETAILS CARD
+        ========================== */
+
+        .details {
+            background: #ffffff;
+
+            padding: 30px;
+
+            border: 1px solid #e7eef3;
+            border-radius: 12px;
+
+            box-shadow: 0 8px 25px rgba(35, 70, 90, 0.07);
+        }
+
+        .section-title {
+            margin: 0 0 15px;
+
+            color: #0087c8;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .details-description {
+            color: #5f6c77;
+            font-size: 14px;
+            line-height: 1.9;
+
+            margin: 0;
+        }
+
+        .details-description strong {
+            color: #263746;
+        }
+
+
+        /* =========================
+           BOOK INFORMATION
+        ========================== */
+
+        .book-info {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 12px;
+
+            margin-top: 25px;
+            padding-top: 22px;
+
+            border-top: 1px solid #edf2f5;
+        }
+
+        .info-box {
+            padding: 14px;
+
+            background: #f8fbfd;
+
+            border: 1px solid #edf3f6;
+            border-radius: 8px;
+
+            transition: 0.2s ease;
+        }
+
+        .info-box:hover {
+            border-color: #cfe8f4;
+            background: #f4fbfe;
+        }
+
+        .info-box h3 {
+            margin: 0 0 4px;
+
+            color: #0087c8;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .info-box p {
+            margin: 0;
+
+            color: #46535e;
+            font-size: 13px;
+        }
+
+
+        /* =========================
+           RELATED BOOKS
+        ========================== */
+
+        .related {
+            background: white;
+
+            padding: 22px;
+
+            border: 1px solid #e7eef3;
+            border-radius: 12px;
+
+            box-shadow: 0 8px 25px rgba(35, 70, 90, 0.07);
+        }
+
+        .related h2 {
+            margin: 0 0 17px;
+
+            color: #263746;
+            font-size: 18px;
+        }
+
+        .related h2::after {
+            content: "";
+            display: block;
+
+            width: 35px;
+            height: 3px;
+
+            margin-top: 7px;
+
+            background: #0087c8;
+            border-radius: 10px;
+        }
+
+        .related-book {
+            display: flex;
+            gap: 12px;
+
+            padding: 10px;
+            margin-bottom: 10px;
+
+            background: #f8fbfd;
+
+            border: 1px solid #edf2f5;
+            border-radius: 8px;
+
+            transition: 0.2s ease;
+        }
+
+        .related-book:last-child {
+            margin-bottom: 0;
+        }
+
+        .related-book:hover {
+            background: #f1f9fd;
+            border-color: #cde7f3;
+            transform: translateY(-2px);
+        }
+
+        .related-book a {
+            flex-shrink: 0;
+        }
+
+        .related-book img {
+            width: 50px;
+            height: 70px;
+
+            object-fit: cover;
+
+            border-radius: 5px;
+
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+        }
+
+        .related-book-info {
+            min-width: 0;
+        }
+
+        .related-book h3 {
+            margin: 2px 0 5px;
+
+            color: #354552;
+            font-size: 12px;
+            line-height: 1.5;
+
+            font-weight: 600;
+        }
+
+        .related-book p {
+            margin: 0;
+
+            color: #8b98a3;
+            font-size: 11px;
+        }
+
+
+        /* =========================
+           COMMENTS
+        ========================== */
+
+        .comments {
+            width: 1100px;
+            max-width: calc(100% - 40px);
+
+            margin: 30px auto 50px;
+
+            padding: 30px;
+
+            background: white;
+
+            border: 1px solid #e7eef3;
+            border-radius: 12px;
+
+            box-shadow: 0 8px 25px rgba(35, 70, 90, 0.07);
+        }
+
+        .comments h2 {
+            margin: 0 0 20px;
+
+            color: #263746;
+            font-size: 20px;
+        }
+
+        .comments h2 span {
+            color: #0087c8;
+        }
+
+
+        /* =========================
+           COMMENT FORM
+        ========================== */
+
+        .comment-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .comment-form input,
+        .comment-form textarea {
+            width: 100%;
+
+            padding: 12px 14px;
+
+            background: #fafcfd;
+
+            border: 1px solid #dfe8ed;
+            border-radius: 8px;
+
+            color: #3f4a54;
+
+            font-family: Arial, "Tahoma", sans-serif;
+            font-size: 14px;
+
+            outline: none;
+
+            transition: 0.2s ease;
+        }
+
+        .comment-form input:focus,
+        .comment-form textarea:focus {
+            background: white;
+
+            border-color: #0087c8;
+
+            box-shadow: 0 0 0 3px rgba(0, 135, 200, 0.08);
+        }
+
+        .comment-form input::placeholder,
+        .comment-form textarea::placeholder {
+            color: #a4afb7;
+        }
+
+        .comment-form textarea {
+            min-height: 110px;
+
+            resize: vertical;
+        }
+
+        .comment-form button {
+            width: 180px;
+
+            padding: 11px 18px;
+
+            background: #0087c8;
+            color: white;
+
+            border: none;
+            border-radius: 8px;
+
+            font-size: 14px;
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: 0.2s ease;
+        }
+
+        .comment-form button:hover {
+            background: #006f9f;
+            transform: translateY(-1px);
+            box-shadow: 0 5px 12px rgba(0, 135, 200, 0.18);
+        }
+
+
+        /* =========================
+           COMMENT LIST
+        ========================== */
+
+        .comment-list {
+            margin-top: 30px;
+        }
+
+        .comment {
+            padding: 18px 0;
+
+            border-top: 1px solid #edf1f3;
+        }
+
+        .comment:first-child {
+            border-top: none;
+        }
+
+        .comment-name {
+            color: #0087c8;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .comment-text {
+            margin: 7px 0;
+
+            color: #505d67;
+            font-size: 14px;
+            line-height: 1.7;
+
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        .comment-date {
+            color: #9aa6af;
+            font-size: 11px;
+        }
+
+        .delete-comment {
+            margin-top: 8px;
+
+            padding: 5px 10px;
+
+            background: #fff3f3;
+            color: #e14b4b;
+
+            border: 1px solid #ffd6d6;
+            border-radius: 6px;
+
+            font-size: 11px;
+
+            cursor: pointer;
+
+            transition: 0.2s ease;
+        }
+
+        .delete-comment:hover {
+            background: #e14b4b;
+            color: white;
+            border-color: #e14b4b;
+        }
+
+        .no-comment {
+            padding: 30px 15px;
+
+            background: #f8fbfd;
+
+            border: 1px dashed #d9e5eb;
+            border-radius: 8px;
+
+            color: #98a5ae;
+
+            text-align: center;
+            font-size: 13px;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================== */
+
+        @media (max-width: 950px) {
+
+            .container {
+                grid-template-columns: 170px 1fr;
+            }
+
+            .related {
+                grid-column: 1 / -1;
+            }
+
+            .related-book {
+                display: inline-flex;
+                vertical-align: top;
+
+                width: calc(50% - 7px);
+
+                margin-right: 8px;
+            }
+        }
+
+
+        @media (max-width: 700px) {
+
+            .header {
+                margin-top: 25px;
+            }
+
+            .header h1 {
+                font-size: 24px;
+            }
+
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .book-cover {
+                margin-bottom: 5px;
+            }
+
+            .book-cover-card {
+                width: 200px;
+            }
+
+            .book-cover img {
+                max-width: 160px;
+            }
+
+            .details {
+                padding: 22px;
+            }
+
+            .book-info {
+                grid-template-columns: 1fr;
+            }
+
+            .related {
+                grid-column: auto;
+            }
+
+            .related-book {
+                display: flex;
+                width: 100%;
+                margin-right: 0;
+            }
+
+            .comments {
+                padding: 22px;
+            }
+
+            .comment-form button {
+                width: 100%;
+            }
+        }
+
+
+        @media (max-width: 450px) {
+
+            .header,
+            .container,
+            .comments {
+                max-width: calc(100% - 24px);
+            }
+
+            .header h1 {
+                font-size: 21px;
+            }
+
+            .details {
+                padding: 18px;
+            }
+
+            .comments {
+                padding: 18px;
+            }
+
+            .section-title {
+                font-size: 18px;
+            }
+
+            .details-description {
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <div class="header">
+
+        <a class="back-button" href="index.html">
+            ← กลับหน้าหลัก
+        </a>
+
+        <h1>
+            มังกรจ๋า ไม่ไหวแล้ว
+        </h1>
+
+    </div>
+
+
+    <!-- =========================
+         BOOK
+    ========================== -->
+
+    <div class="container">
+
+
+        <!-- =========================
+             BOOK COVER
+        ========================== -->
+
+        <div class="book-cover">
+
+            <div class="book-cover-card">
+
+                <img
+                    src="6.png"
+                    alt="พี่จ๋า กรุงจะแตกแล้ว"
+                >
+
+                <div class="cover-label">
+                    รายละเอียดหนังสือ
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             DETAILS
+        ========================== -->
+
+        <div class="details">
+
+            <h2 class="section-title">
+                รายละเอียดหนังสือ
+            </h2>
+
+            <p class="details-description">
+
+               อาณาจักรแห่งหนึ่งกำลังถูกกองทัพศัตรูล้อมเมือง กำแพงกำลังจะพัง ทหารกำลังถอย ประชาชนกำลังแตกตื่น และราชวังกำลังเตรียมอพยพ
+               แต่ในช่วงเวลาที่ทุกคนกำลังหวาดกลัว
+
+                <br><br>
+
+                เจ้าผู้ครองนครกลับมีปัญหาเพียงอย่างเดียวคือ...
+
+                <br><br>
+
+                <strong>
+                    พี่จ๋า กรุงจะแตก!!!!
+                </strong>
+
+            </p>
+
+
+            <!-- =========================
+                 BOOK INFORMATION
+            ========================== -->
+
+            <div class="book-info">
+
+                <div class="info-box">
+                    <h3>ผู้เขียน</h3>
+                    <p>MR.Ambatukam</p>
+                </div>
+
+                <div class="info-box">
+                    <h3>ผู้แปล</h3>
+                    <p>-</p>
+                </div>
+
+                <div class="info-box">
+                    <h3>สำนักพิมพ์</h3>
+                    <p>-</p>
+                </div>
+
+                <div class="info-box">
+                    <h3>ประเภทหนังสือ</h3>
+                    <p>แฟนตาซี / สงคราม / ตลก / การเมืองแบบเสียดสี</p>
+                </div>
+
+                <div class="info-box">
+                    <h3>ราคา</h3>
+                    <p>199 บาท</p>
+                </div>
+
+                <div class="info-box">
+                    <h3>ISBN</h3>
+                    <p>-</p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             RELATED BOOKS
+        ========================== -->
+
+        <div class="related">
+
+            <h2>
+                หนังสือที่เกี่ยวข้อง
+            </h2>
+
+
+            <div class="related-book">
+
+                <a href="p1.html">
+
+                    <img
+                        src="1.png"
+                        alt="โลกจะแตกแต่การบ้านยังไม่เสร็จ"
+                    >
+
+                </a>
+
+                <div class="related-book-info">
+
+                    <h3>
+                        โลกจะแตกแต่การบ้านยังไม่เสร็จ
+                    </h3>
+
+                    <p>
+                        📅 17 ก.พ. 69
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="related-book">
+
+                <a href="p10.html">
+
+                    <img
+                        src="10.png"
+                        alt="DIDDY PARTY"
+                    >
+
+                </a>
+
+                <div class="related-book-info">
+
+                    <h3>
+                        DIDDY PARTY
+                    </h3>
+
+                    <p>
+                        📅 17 ก.พ. 69
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="related-book">
+
+                <a href="p3.html">
+
+                    <img
+                        src="3.png"
+                        alt="อาณาจักรล่มสลาย แต่ Wi-Fi ยังไม่มี"
+                    >
+
+                </a>
+
+                <div class="related-book-info">
+
+                    <h3>
+                        อาณาจักรล่มสลาย แต่ Wi-Fi ยังไม่มี
+                    </h3>
+
+                    <p>
+                        📅 17 ก.พ. 69
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="related-book">
+
+                <a href="p4.html">
+
+                    <img
+                        src="4.png"
+                        alt="SPY067"
+                    >
+
+                </a>
+
+                <div class="related-book-info">
+
+                    <h3>
+                        มังกรจ๋า ไม่ไหวแล้ว
+                    </h3>
+
+                    <p>
+                        📅 17 ก.พ. 69
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         COMMENTS
+    ========================== -->
+
+    <div class="comments">
+
+        <h2>
+            <span>💬</span> แสดงความคิดเห็น
+        </h2>
+
+
+        <form
+            class="comment-form"
+            id="commentForm"
+        >
+
+            <input
+                type="text"
+                id="commentName"
+                placeholder="ชื่อของคุณ"
+                maxlength="50"
+                required
+            >
+
+            <textarea
+                id="commentText"
+                placeholder="เขียนความคิดเห็นเกี่ยวกับหนังสือ..."
+                maxlength="500"
+                required
+            ></textarea>
+
+            <button type="submit">
+                แสดงความคิดเห็น
+            </button>
+
+        </form>
+
+
+        <div
+            class="comment-list"
+            id="commentList"
+        ></div>
+
+    </div>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        /*
+         * ==========================================
+         * BOOK ID
+         *
+         * หน้านี้ = book1
+         *
+         * p2.html = book2
+         * p3.html = book3
+         * p4.html = book4
+         * p5.html = book5
+         *
+         * ห้ามใช้ bookID ซ้ำกัน
+         * ==========================================
+         */
+
+        const bookID = "book7";
+
+
+        const commentForm =
+            document.getElementById("commentForm");
+
+        const commentList =
+            document.getElementById("commentList");
+
+
+        /*
+         * ==========================================
+         * โหลดคอมเมนต์เฉพาะหนังสือเล่มนี้
+         * ==========================================
+         */
+
+        let comments =
+            JSON.parse(
+                localStorage.getItem(
+                    bookID + "_comments"
+                )
+            ) || [];
+
+
+        /*
+         * ==========================================
+         * แสดงคอมเมนต์
+         * ==========================================
+         */
+
+        function showComments() {
+
+            commentList.innerHTML = "";
+
+
+            if (comments.length === 0) {
+
+                commentList.innerHTML = `
+                    <div class="no-comment">
+                        ยังไม่มีความคิดเห็น
+                        <br>
+                        เป็นคนแรกที่แสดงความคิดเห็นเลย! 😊
+                    </div>
+                `;
+
+                return;
+            }
+
+
+            comments.forEach((comment, index) => {
+
+                const commentBox =
+                    document.createElement("div");
+
+                commentBox.className = "comment";
+
+
+                commentBox.innerHTML = `
+
+                    <div class="comment-name">
+                        👤 ${escapeHTML(comment.name)}
+                    </div>
+
+                    <div class="comment-text">
+                        ${escapeHTML(comment.text)}
+                    </div>
+
+                    <div class="comment-date">
+                        📅 ${comment.date}
+                    </div>
+
+                    <button
+                        class="delete-comment"
+                        onclick="deleteComment(${index})"
+                    >
+                        ลบความคิดเห็น
+                    </button>
+
+                `;
+
+
+                commentList.appendChild(commentBox);
+
+            });
+
+        }
+
+
+        /*
+         * ==========================================
+         * เพิ่มคอมเมนต์
+         * ==========================================
+         */
+
+        commentForm.addEventListener(
+            "submit",
+            function(event) {
+
+                event.preventDefault();
+
+
+                const name =
+                    document
+                    .getElementById("commentName")
+                    .value
+                    .trim();
+
+
+                const text =
+                    document
+                    .getElementById("commentText")
+                    .value
+                    .trim();
+
+
+                if (
+                    name === "" ||
+                    text === ""
+                ) {
+
+                    alert(
+                        "กรุณากรอกชื่อและความคิดเห็น"
+                    );
+
+                    return;
+                }
+
+
+                const newComment = {
+
+                    name: name,
+
+                    text: text,
+
+                    date:
+                        new Date()
+                        .toLocaleString("th-TH")
+
+                };
+
+
+                comments.push(newComment);
+
+
+                /*
+                 * บันทึกคอมเมนต์
+                 * แยกตามหนังสือ
+                 */
+
+                localStorage.setItem(
+                    bookID + "_comments",
+                    JSON.stringify(comments)
+                );
+
+
+                commentForm.reset();
+
+
+                showComments();
+
+            }
+        );
+
+
+        /*
+         * ==========================================
+         * ลบคอมเมนต์
+         * ==========================================
+         */
+
+        function deleteComment(index) {
+
+            if (
+                confirm(
+                    "ต้องการลบความคิดเห็นนี้หรือไม่?"
+                )
+            ) {
+
+                comments.splice(index, 1);
+
+
+                localStorage.setItem(
+                    bookID + "_comments",
+                    JSON.stringify(comments)
+                );
+
+
+                showComments();
+
+            }
+
+        }
+
+
+        /*
+         * ==========================================
+         * ป้องกัน HTML / JavaScript
+         * ==========================================
+         */
+
+        function escapeHTML(text) {
+
+            const div =
+                document.createElement("div");
+
+            div.textContent = text;
+
+            return div.innerHTML;
+
+        }
+
+
+        /*
+         * ==========================================
+         * เริ่มระบบ
+         * ==========================================
+         */
+
+        showComments();
+
+    </script>
+
+</body>
+</html>
