@@ -20,6 +20,7 @@
             color: #555;
         }
 
+
         /* =========================
            HEADER
         ========================= */
@@ -34,7 +35,28 @@
         .header h1 {
             font-size: 28px;
             color: #555;
-            margin-bottom: 25px;
+            margin-bottom: 15px;
+        }
+
+
+        /* =========================
+           จำนวนผู้เข้าชม
+        ========================= */
+
+        .visitor-counter {
+            display: inline-block;
+            margin: 5px auto 20px;
+            padding: 9px 22px;
+            border-radius: 20px;
+            background: #eef8fc;
+            color: #666;
+            font-size: 13px;
+        }
+
+        .visitor-counter strong {
+            color: #008fd0;
+            font-size: 18px;
+            margin: 0 5px;
         }
 
 
@@ -115,7 +137,7 @@
 
 
         /* =========================
-           ผลงาน
+           หนังสือ
         ========================= */
 
         .books-section {
@@ -131,11 +153,6 @@
             font-size: 20px;
             margin: 0 0 15px;
         }
-
-
-        /* =========================
-           การ์ดหนังสือ
-        ========================= */
 
         .books {
             display: grid;
@@ -324,7 +341,7 @@
 
 
         /* =========================
-           ดาวตอนเขียนรีวิว
+           ดาว
         ========================= */
 
         .star-input {
@@ -428,16 +445,36 @@
 
     <div class="header">
 
-        <h1>รีวิวหนังสือ</h1>
+        <h1>
+            รีวิวหนังสือ
+        </h1>
+
+
+        <!-- จำนวนผู้เข้าชม -->
+
+        <div class="visitor-counter">
+
+            👥 ผู้เข้าชมเว็บไซต์
+
+            <strong id="visitorCount">
+                0
+            </strong>
+
+            คน
+
+        </div>
+
+
+        <!-- ระบบค้นหา -->
 
         <div class="review-search">
 
 
-            <!-- อ่านรีวิว -->
-
             <div class="search-group">
 
-                <label>อ่านรีวิว</label>
+                <label>
+                    อ่านรีวิว
+                </label>
 
                 <select id="reviewFilter">
 
@@ -453,8 +490,6 @@
 
             </div>
 
-
-            <!-- ประเภทหนังสือ -->
 
             <div class="search-group">
 
@@ -484,8 +519,6 @@
 
             </div>
 
-
-            <!-- ค้นหา -->
 
             <div class="search-group">
 
@@ -1001,7 +1034,7 @@
 
 
     <!-- =========================
-         MODAL เขียนรีวิว
+         MODAL รีวิว
     ========================= -->
 
     <div
@@ -1026,8 +1059,6 @@
 
             <form id="reviewForm">
 
-
-                <!-- เลือกหนังสือ -->
 
                 <div class="form-group">
 
@@ -1089,8 +1120,6 @@
 
 
 
-                <!-- ดาว -->
-
                 <div class="form-group">
 
                     <label>
@@ -1098,7 +1127,6 @@
                     </label>
 
                     <div class="star-input">
-
 
                         <input
                             type="radio"
@@ -1161,8 +1189,6 @@
 
 
 
-                <!-- ชื่อ -->
-
                 <div class="form-group">
 
                     <label>
@@ -1178,8 +1204,6 @@
                 </div>
 
 
-
-                <!-- ข้อความ -->
 
                 <div class="form-group">
 
@@ -1220,7 +1244,39 @@
 
 
         /* =========================
-           โหลดรีวิว
+           ระบบนับจำนวนผู้เข้าชม
+        ========================= */
+
+        let count =
+            localStorage.getItem('page_view');
+
+
+        if (count) {
+
+            count =
+                Number(count) + 1;
+
+        } else {
+
+            count = 1;
+
+        }
+
+
+        localStorage.setItem(
+            'page_view',
+            count
+        );
+
+
+        document
+            .getElementById('visitorCount')
+            .innerText = count;
+
+
+
+        /* =========================
+           ระบบรีวิว
         ========================= */
 
         let reviews =
@@ -1266,7 +1322,9 @@
                 'click',
                 function(event) {
 
-                    if (event.target === this) {
+                    if (
+                        event.target === this
+                    ) {
 
                         closeReviewModal();
 
@@ -1292,7 +1350,9 @@
 
                     const bookSelect =
                         document
-                            .getElementById('reviewBook');
+                            .getElementById(
+                                'reviewBook'
+                            );
 
 
                     const bookId =
@@ -1309,14 +1369,18 @@
 
                     const name =
                         document
-                            .getElementById('reviewName')
+                            .getElementById(
+                                'reviewName'
+                            )
                             .value
                             .trim();
 
 
                     const text =
                         document
-                            .getElementById('reviewText')
+                            .getElementById(
+                                'reviewText'
+                            )
                             .value
                             .trim();
 
@@ -1333,24 +1397,33 @@
 
                         id: Date.now(),
 
-                        bookId: bookId,
+                        bookId:
+                            bookId,
 
-                        bookName: bookName,
+                        bookName:
+                            bookName,
 
-                        name: name,
+                        name:
+                            name,
 
-                        text: text,
+                        text:
+                            text,
 
-                        rating: Number(rating),
+                        rating:
+                            Number(rating),
 
                         date:
                             new Date()
-                                .toLocaleDateString('th-TH')
+                                .toLocaleDateString(
+                                    'th-TH'
+                                )
 
                     };
 
 
-                    reviews.unshift(review);
+                    reviews.unshift(
+                        review
+                    );
 
 
                     localStorage.setItem(
@@ -1360,7 +1433,9 @@
 
 
                     document
-                        .getElementById('reviewForm')
+                        .getElementById(
+                            'reviewForm'
+                        )
                         .reset();
 
 
@@ -1380,14 +1455,15 @@
 
 
         /* =========================
-           ดึงรีวิวของหนังสือ
+           รีวิวของหนังสือ
         ========================= */
 
         function getBookReviews(bookId) {
 
             return reviews.filter(
                 review =>
-                    review.bookId === String(bookId)
+                    review.bookId ===
+                    String(bookId)
             );
 
         }
@@ -1395,64 +1471,75 @@
 
 
         /* =========================
-           อัปเดตคะแนนบนการ์ด
+           อัปเดตคะแนน
         ========================= */
 
         function updateReviewDisplay() {
 
             document
-                .querySelectorAll('.review-summary')
-                .forEach(function(element) {
+                .querySelectorAll(
+                    '.review-summary'
+                )
+                .forEach(
+                    function(element) {
 
 
-                    const bookId =
-                        element.dataset.bookId;
+                        const bookId =
+                            element.dataset.bookId;
 
 
-                    const bookReviews =
-                        getBookReviews(bookId);
+                        const bookReviews =
+                            getBookReviews(
+                                bookId
+                            );
 
 
-                    if (
-                        bookReviews.length === 0
-                    ) {
+                        if (
+                            bookReviews.length === 0
+                        ) {
+
+                            element.innerHTML =
+                                'ยังไม่มีรีวิว';
+
+                            return;
+
+                        }
+
+
+                        const total =
+                            bookReviews.reduce(
+                                function(
+                                    sum,
+                                    review
+                                ) {
+
+                                    return (
+                                        sum +
+                                        review.rating
+                                    );
+
+                                },
+                                0
+                            );
+
+
+                        const average =
+                            (
+                                total /
+                                bookReviews.length
+                            ).toFixed(1);
+
 
                         element.innerHTML =
-                            'ยังไม่มีรีวิว';
-
-                        return;
+                            '<span class="rating-average">' +
+                            '★ ' +
+                            average +
+                            '</span> · ' +
+                            bookReviews.length +
+                            ' รีวิว';
 
                     }
-
-
-                    const total =
-                        bookReviews.reduce(
-                            function(sum, review) {
-
-                                return sum +
-                                    review.rating;
-
-                            },
-                            0
-                        );
-
-
-                    const average =
-                        (
-                            total /
-                            bookReviews.length
-                        ).toFixed(1);
-
-
-                    element.innerHTML =
-                        '<span class="rating-average">' +
-                        '★ ' +
-                        average +
-                        '</span> · ' +
-                        bookReviews.length +
-                        ' รีวิว';
-
-                });
+                );
 
 
             displayReviews();
@@ -1462,17 +1549,21 @@
 
 
         /* =========================
-           แสดงรีวิวล่าสุด
+           แสดงรีวิว
         ========================= */
 
         function displayReviews() {
 
             const reviewsList =
                 document
-                    .getElementById('reviewsList');
+                    .getElementById(
+                        'reviewsList'
+                    );
 
 
-            if (reviews.length === 0) {
+            if (
+                reviews.length === 0
+            ) {
 
                 reviewsList.innerHTML =
                     'ยังไม่มีรีวิว';
@@ -1485,39 +1576,40 @@
             reviewsList.innerHTML =
                 reviews
                     .slice(0, 10)
-                    .map(function(review) {
+                    .map(
+                        function(review) {
 
+                            return `
 
-                        return `
+                                <div class="review-item">
 
-                            <div class="review-item">
+                                    <div class="review-book">
+                                        ${escapeHTML(review.bookName)}
+                                    </div>
 
-                                <div class="review-book">
-                                    ${escapeHTML(review.bookName)}
+                                    <div class="review-stars">
+                                        ${'★'.repeat(review.rating)}
+                                        ${'☆'.repeat(5 - review.rating)}
+                                    </div>
+
+                                    <strong>
+                                        ${escapeHTML(review.name)}
+                                    </strong>
+
+                                    <small>
+                                        · ${review.date}
+                                    </small>
+
+                                    <p class="review-text">
+                                        ${escapeHTML(review.text)}
+                                    </p>
+
                                 </div>
 
-                                <div class="review-stars">
-                                    ${'★'.repeat(review.rating)}
-                                    ${'☆'.repeat(5 - review.rating)}
-                                </div>
+                            `;
 
-                                <strong>
-                                    ${escapeHTML(review.name)}
-                                </strong>
-
-                                <small>
-                                    · ${review.date}
-                                </small>
-
-                                <p class="review-text">
-                                    ${escapeHTML(review.text)}
-                                </p>
-
-                            </div>
-
-                        `;
-
-                    })
+                        }
+                    )
                     .join('');
 
         }
@@ -1525,13 +1617,15 @@
 
 
         /* =========================
-           ป้องกัน HTML Injection
+           ป้องกัน HTML
         ========================= */
 
         function escapeHTML(text) {
 
             const div =
-                document.createElement('div');
+                document.createElement(
+                    'div'
+                );
 
             div.textContent = text;
 
@@ -1549,7 +1643,9 @@
 
             const search =
                 document
-                    .getElementById('searchInput')
+                    .getElementById(
+                        'searchInput'
+                    )
                     .value
                     .toLowerCase()
                     .trim();
@@ -1557,92 +1653,110 @@
 
             const category =
                 document
-                    .getElementById('categoryFilter')
+                    .getElementById(
+                        'categoryFilter'
+                    )
                     .value;
 
 
             const reviewFilter =
                 document
-                    .getElementById('reviewFilter')
+                    .getElementById(
+                        'reviewFilter'
+                    )
                     .value;
 
 
             const books =
-                document.querySelectorAll('.book');
+                document.querySelectorAll(
+                    '.book'
+                );
 
 
             let visible = 0;
 
 
-            books.forEach(function(book) {
+            books.forEach(
+                function(book) {
 
 
-                const title =
-                    book.dataset.title
-                        .toLowerCase();
+                    const title =
+                        book.dataset.title
+                            .toLowerCase();
 
 
-                const author =
-                    book.dataset.author
-                        .toLowerCase();
+                    const author =
+                        book.dataset.author
+                            .toLowerCase();
 
 
-                const bookCategory =
-                    book.dataset.category;
+                    const bookCategory =
+                        book.dataset.category;
 
 
-                const summary =
-                    book.querySelector(
-                        '.review-summary'
-                    );
+                    const summary =
+                        book.querySelector(
+                            '.review-summary'
+                        );
 
 
-                const bookId =
-                    summary.dataset.bookId;
+                    const bookId =
+                        summary.dataset.bookId;
 
 
-                const hasReview =
-                    getBookReviews(bookId).length > 0;
+                    const hasReview =
+                        getBookReviews(
+                            bookId
+                        ).length > 0;
 
 
-                const matchSearch =
-                    title.includes(search) ||
-                    author.includes(search);
+                    const matchSearch =
+                        title.includes(
+                            search
+                        ) ||
+                        author.includes(
+                            search
+                        );
 
 
-                const matchCategory =
-                    category === 'all' ||
-                    bookCategory === category;
+                    const matchCategory =
+                        category === 'all' ||
+                        bookCategory ===
+                            category;
 
 
-                const matchReview =
-                    reviewFilter === 'all' ||
-                    hasReview;
+                    const matchReview =
+                        reviewFilter ===
+                            'all' ||
+                        hasReview;
 
 
-                if (
-                    matchSearch &&
-                    matchCategory &&
-                    matchReview
-                ) {
+                    if (
+                        matchSearch &&
+                        matchCategory &&
+                        matchReview
+                    ) {
 
-                    book.style.display =
-                        'block';
+                        book.style.display =
+                            'block';
 
-                    visible++;
+                        visible++;
 
-                } else {
+                    } else {
 
-                    book.style.display =
-                        'none';
+                        book.style.display =
+                            'none';
+
+                    }
 
                 }
-
-            });
+            );
 
 
             document
-                .getElementById('noResult')
+                .getElementById(
+                    'noResult'
+                )
                 .style.display =
                     visible === 0
                         ? 'block'
@@ -1657,7 +1771,9 @@
         ========================= */
 
         document
-            .getElementById('searchInput')
+            .getElementById(
+                'searchInput'
+            )
             .addEventListener(
                 'input',
                 filterBooks
@@ -1665,7 +1781,9 @@
 
 
         document
-            .getElementById('categoryFilter')
+            .getElementById(
+                'categoryFilter'
+            )
             .addEventListener(
                 'change',
                 filterBooks
@@ -1673,7 +1791,9 @@
 
 
         document
-            .getElementById('reviewFilter')
+            .getElementById(
+                'reviewFilter'
+            )
             .addEventListener(
                 'change',
                 filterBooks
