@@ -530,6 +530,81 @@
         }
 
 
+
+        /* =========================
+           REVIEWER REVIEWS
+        ========================== */
+        .reviewer-reviews {
+            width: 1100px;
+            max-width: calc(100% - 40px);
+            margin: 30px auto 0;
+            padding: 30px;
+            background: #ffffff;
+            border: 1px solid #e7eef3;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(35, 70, 90, 0.07);
+        }
+
+        .reviewer-reviews h2 {
+            margin: 0 0 20px;
+            color: #263746;
+            font-size: 20px;
+        }
+
+        .reviewer-reviews h2 span {
+            color: #0087c8;
+        }
+
+        .reviewer-card {
+            padding: 22px;
+            background: #f8fbfd;
+            border: 1px solid #edf2f5;
+            border-radius: 10px;
+        }
+
+        .reviewer-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e5edf1;
+        }
+
+        .reviewer-name {
+            color: #263746;
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .reviewer-role {
+            margin-top: 2px;
+            color: #8b98a3;
+            font-size: 11px;
+        }
+
+        .reviewer-rating {
+            color: #f3b400;
+            font-size: 16px;
+            letter-spacing: 2px;
+            white-space: nowrap;
+        }
+
+        .reviewer-text {
+            margin: 18px 0;
+            color: #505d67;
+            font-size: 14px;
+            line-height: 1.9;
+        }
+
+        .reviewer-footer {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            color: #8b98a3;
+            font-size: 11px;
+        }
+
         /* =========================
            RESPONSIVE
         ========================== */
@@ -603,6 +678,20 @@
                 padding: 22px;
             }
 
+            .reviewer-reviews {
+                padding: 22px;
+            }
+
+            .reviewer-header {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .reviewer-footer {
+                flex-direction: column;
+                gap: 5px;
+            }
+
             .comment-form button {
                 width: 100%;
             }
@@ -627,6 +716,14 @@
 
             .comments {
                 padding: 18px;
+            }
+
+            .reviewer-reviews {
+                padding: 18px;
+            }
+
+            .reviewer-card {
+                padding: 17px;
             }
 
             .section-title {
@@ -710,7 +807,7 @@
                 <br><br>
 
                 <strong>
-                    เมื่อ SPY067 ปรากฏตัว ภารกิจนั้นจะไม่ธรรมดา
+                เมื่อ SPY067 ปรากฏตัว ภารกิจนั้นจะไม่ธรรมดา
                 </strong>
 
             </p>
@@ -729,7 +826,7 @@
 
                 <div class="info-box">
                     <h3>ผู้แปล</h3>
-                    <p>โอตะ</p>
+                    <p>-</p>
                 </div>
 
                 <div class="info-box">
@@ -744,7 +841,7 @@
 
                 <div class="info-box">
                     <h3>ราคา</h3>
-                    <p>67 บาท</p>
+                    <p>59 บาท</p>
                 </div>
 
                 <div class="info-box">
@@ -875,6 +972,38 @@
 
     </div>
 
+
+
+    <!-- =========================
+         REVIEWS FROM REVIEWERS
+    ========================== -->
+
+    <section class="reviewer-reviews">
+        <h2><span>⭐</span> รีวิวจากนักรีวิว</h2>
+
+        <div class="reviewer-card">
+            <div class="reviewer-header">
+                <div>
+                    <div class="reviewer-name">นักรีวิวประจำเว็บไซต์</div>
+                    <div class="reviewer-role">Book Reviewer</div>
+                </div>
+                <div class="reviewer-rating">★★★★</div>
+            </div>
+
+            <p class="reviewer-text">
+SPY067 แตกต่างจากหนังสือเล่มอื่นตรงที่พยายามสร้างภาพลักษณ์แบบหนังสายลับจริงจัง แต่ใช้ความวุ่นวายและความเกินจริงเป็นหัวใจของเรื่อง
+รหัส “067” ทำหน้าที่สร้างความรู้สึกว่าตัวละครมีอดีต มีความลับ และเป็นส่วนหนึ่งขององค์กรขนาดใหญ่ตั้งแต่ต้น ขณะที่โครงเรื่องสามารถพาเขาไปสู่ภารกิจต่าง ๆ ที่ค่อย ๆ เปิดเผยตัวตนของตัวละคร
+จุดแข็งคือบรรยากาศ หากสามารถรักษาภาพของสายลับลึกลับเอาไว้ได้ เรื่องจะมีความเท่มาก แม้จะสอดแทรกมุกตลกก็ตาม
+สิ่งที่ควรระวังคือการพึ่งฉากแอ็กชันมากเกินไป เพราะสายลับที่ดีไม่จำเป็นต้องทำทุกอย่างด้วยความรุนแรง ความลับ การหลอกลวง และการตัดสินใจของตัวละครสามารถทำให้เรื่องน่าสนใจได้มากกว่า
+สรุป: หนังสือที่เอาความเท่ของสายลับมาชนกับความวุ่นวายของตัวเอกที่เหมือนจะไม่มีอะไรเป็นไปตามแผน
+            </p>
+
+            <div class="reviewer-footer">
+                <span>📚 รีวิวโดยนักรีวิว</span>
+                <span>คะแนน 4/5</span>
+            </div>
+        </div>
+    </section>
 
     <!-- =========================
          COMMENTS
