@@ -603,11 +603,101 @@
                 padding: 22px;
             }
 
+            .reviewer-reviews {
+                padding: 22px;
+            }
+
+            .reviewer-header {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .reviewer-footer {
+                flex-direction: column;
+                gap: 5px;
+            }
+
             .comment-form button {
                 width: 100%;
             }
         }
 
+
+
+        /* =========================
+           REVIEWER REVIEWS
+        ========================== */
+
+        .reviewer-reviews {
+            width: 1100px;
+            max-width: calc(100% - 40px);
+            margin: 30px auto;
+            padding: 30px;
+            background: #ffffff;
+            border: 1px solid #e7eef3;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(35, 70, 90, 0.07);
+        }
+
+        .reviewer-reviews h2 {
+            margin: 0 0 20px;
+            color: #263746;
+            font-size: 20px;
+        }
+
+        .reviewer-reviews h2 span {
+            color: #0087c8;
+        }
+
+        .reviewer-card {
+            padding: 22px;
+            background: #f8fbfd;
+            border: 1px solid #edf2f5;
+            border-radius: 10px;
+        }
+
+        .reviewer-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e5edf1;
+        }
+
+        .reviewer-name {
+            color: #263746;
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .reviewer-role {
+            margin-top: 2px;
+            color: #8b98a3;
+            font-size: 11px;
+        }
+
+        .reviewer-rating {
+            color: #f3b400;
+            font-size: 16px;
+            letter-spacing: 2px;
+            white-space: nowrap;
+        }
+
+        .reviewer-text {
+            margin: 18px 0;
+            color: #505d67;
+            font-size: 14px;
+            line-height: 1.9;
+        }
+
+        .reviewer-footer {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            color: #8b98a3;
+            font-size: 11px;
+        }
 
         @media (max-width: 450px) {
 
@@ -627,6 +717,14 @@
 
             .comments {
                 padding: 18px;
+            }
+
+            .reviewer-reviews {
+                padding: 18px;
+            }
+
+            .reviewer-card {
+                padding: 17px;
             }
 
             .section-title {
@@ -758,6 +856,7 @@
             </div>
 
         </div>
+
 
 
         <!-- =========================
@@ -926,9 +1025,36 @@
 
 
     <!-- =========================
+         REVIEWS FROM REVIEWERS
+    ========================== -->
+    <section class="reviewer-reviews">
+        <h2><span>⭐</span> รีวิวจากนักรีวิว</h2>
+
+        <div class="reviewer-card">
+            <div class="reviewer-header">
+                <div>
+                    <div class="reviewer-name">นักรีวิวประจำเว็บไซต์</div>
+                    <div class="reviewer-role">Book Reviewer</div>
+                </div>
+                <div class="reviewer-rating">★★★★★</div>
+            </div>
+
+            <p class="reviewer-text">
+                หนังสือเรื่องนี้นำสถานการณ์วันสิ้นโลกมาผสมกับเรื่องใกล้ตัวอย่างการบ้าน
+                ทำให้เกิดความขัดแย้งที่ทั้งตลกและน่าสนใจ จุดเด่นคือแนวคิดที่เข้าใจง่าย
+                และสามารถสร้างภาพสถานการณ์ชวนวุ่นวายได้ตั้งแต่ต้นจนจบ
+            </p>
+
+            <div class="reviewer-footer">
+                <span>📚 รีวิวโดยนักรีวิว</span>
+                <span>คะแนน 5/5</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================
          JAVASCRIPT
     ========================== -->
-
     <script>
 
         /*
@@ -1032,7 +1158,6 @@
             });
 
         }
-
 
         /*
          * ==========================================
