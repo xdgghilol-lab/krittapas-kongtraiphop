@@ -530,6 +530,81 @@
         }
 
 
+
+        /* =========================
+           REVIEWER REVIEWS
+        ========================== */
+        .reviewer-reviews {
+            width: 1100px;
+            max-width: calc(100% - 40px);
+            margin: 30px auto 0;
+            padding: 30px;
+            background: #ffffff;
+            border: 1px solid #e7eef3;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(35, 70, 90, 0.07);
+        }
+
+        .reviewer-reviews h2 {
+            margin: 0 0 20px;
+            color: #263746;
+            font-size: 20px;
+        }
+
+        .reviewer-reviews h2 span {
+            color: #0087c8;
+        }
+
+        .reviewer-card {
+            padding: 22px;
+            background: #f8fbfd;
+            border: 1px solid #edf2f5;
+            border-radius: 10px;
+        }
+
+        .reviewer-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e5edf1;
+        }
+
+        .reviewer-name {
+            color: #263746;
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .reviewer-role {
+            margin-top: 2px;
+            color: #8b98a3;
+            font-size: 11px;
+        }
+
+        .reviewer-rating {
+            color: #f3b400;
+            font-size: 16px;
+            letter-spacing: 2px;
+            white-space: nowrap;
+        }
+
+        .reviewer-text {
+            margin: 18px 0;
+            color: #505d67;
+            font-size: 14px;
+            line-height: 1.9;
+        }
+
+        .reviewer-footer {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            color: #8b98a3;
+            font-size: 11px;
+        }
+
         /* =========================
            RESPONSIVE
         ========================== */
@@ -603,6 +678,20 @@
                 padding: 22px;
             }
 
+            .reviewer-reviews {
+                padding: 22px;
+            }
+
+            .reviewer-header {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .reviewer-footer {
+                flex-direction: column;
+                gap: 5px;
+            }
+
             .comment-form button {
                 width: 100%;
             }
@@ -627,6 +716,14 @@
 
             .comments {
                 padding: 18px;
+            }
+
+            .reviewer-reviews {
+                padding: 18px;
+            }
+
+            .reviewer-card {
+                padding: 17px;
             }
 
             .section-title {
@@ -677,7 +774,7 @@
 
                 <img
                     src="10.png"
-                    alt="DIDDY PARTY"
+                    alt="ปกหนังสือ DIDDY PARTY"
                 >
 
                 <div class="cover-label">
@@ -706,12 +803,12 @@
 
                 <br><br>
 
-                แต่เมื่อค่ำคืนดำเนินไป ความลับหลายอย่างภายในงานก็เริ่มถูกเปิดเผย
+                ตัวละครหลักจึงต้องพยายามค้นหาว่าเกิดอะไรขึ้น และใครกันแน่ที่กำลังควบคุมเหตุการณ์ทั้งหมด
 
                 <br><br>
 
                 <strong>
-                    ตัวละครหลักจึงต้องพยายามค้นหาว่าเกิดอะไรขึ้น และใครกันแน่ที่กำลังควบคุมเหตุการณ์ทั้งหมด
+                    นอน
                 </strong>
 
             </p>
@@ -730,22 +827,22 @@
 
                 <div class="info-box">
                     <h3>ผู้แปล</h3>
-                    <p>นาย สุทธิพงษ์ กุลชลิต</p>
-                </div>
-
-                <div class="info-box">
-                    <h3>สำนักพิมพ์</h3>
                     <p>-</p>
                 </div>
 
                 <div class="info-box">
+                    <h3>สำนักพิมพ์</h3>
+                    <p>นาย กฤตภาส ก้องไตรภพ</p>
+                </div>
+
+                <div class="info-box">
                     <h3>ประเภทหนังสือ</h3>
-                    <p>เสียดสี / ปาร์ตี้ / ดราม่า / Mystery Fiction</p>
+                    <p>นิยาย / ตลก</p>
                 </div>
 
                 <div class="info-box">
                     <h3>ราคา</h3>
-                    <p>299 บาท</p>
+                    <p>59 บาท</p>
                 </div>
 
                 <div class="info-box">
@@ -771,11 +868,11 @@
 
             <div class="related-book">
 
-                <a href="p4.html">
+                <a href="p2.html">
 
                     <img
-                        src="4.png"
-                        alt="SPY067"
+                        src="2.png"
+                        alt="อย่าปลุกผม โลกกำลังพังอยู่"
                     >
 
                 </a>
@@ -783,33 +880,7 @@
                 <div class="related-book-info">
 
                     <h3>
-                        SPY067
-                    </h3>
-
-                    <p>
-                        📅 17 ก.พ. 69
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="related-book">
-
-                <a href="p9.html">
-
-                    <img
-                        src="9.png"
-                        alt="รักรักรักรักรักเธอหมดหัวใจจากแฟนสาว 100 คน"
-                    >
-
-                </a>
-
-                <div class="related-book-info">
-
-                    <h3>
-                        รักรักรักรักรักเธอหมดหัวใจจากแฟนสาว 100 คน
+                        อย่าปลุกผม โลกกำลังพังอยู่
                     </h3>
 
                     <p>
@@ -849,11 +920,11 @@
 
             <div class="related-book">
 
-                <a href="p1.html">
+                <a href="p4.html">
 
                     <img
-                        src="1.png"
-                        alt="โลกจะแตกแต่การบ้านยังไม่เสร็จ"
+                        src="4.png"
+                        alt="SPY067"
                     >
 
                 </a>
@@ -861,7 +932,33 @@
                 <div class="related-book-info">
 
                     <h3>
-                        โลกจะแตกแต่การบ้านยังไม่เสร็จ
+                        SPY067
+                    </h3>
+
+                    <p>
+                        📅 17 ก.พ. 69
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="related-book">
+
+                <a href="p5.html">
+
+                    <img
+                        src="5.png"
+                        alt="มังกรจ๋า ไม่ไหวแล้ว"
+                    >
+
+                </a>
+
+                <div class="related-book-info">
+
+                    <h3>
+                        มังกรจ๋า ไม่ไหวแล้ว
                     </h3>
 
                     <p>
@@ -876,6 +973,39 @@
 
     </div>
 
+
+
+    <!-- =========================
+         REVIEWS FROM REVIEWERS
+    ========================== -->
+
+    <section class="reviewer-reviews">
+        <h2><span>⭐</span> รีวิวจากนักรีวิว</h2>
+
+        <div class="reviewer-card">
+            <div class="reviewer-header">
+                <div>
+                    <div class="reviewer-name">นักรีวิวประจำเว็บไซต์</div>
+                    <div class="reviewer-role">Book Reviewer</div>
+                </div>
+                <div class="reviewer-rating">★★★★★</div>
+            </div>
+
+            <p class="reviewer-text">
+DIDDY PARTY เป็นเล่มที่มีบรรยากาศแตกต่างจากหนังสือทั้งหมดในชุดอย่างชัดเจน เพราะเปลี่ยนจากแฟนตาซีและวันสิ้นโลกมาเป็นเรื่องลึกลับที่เกิดขึ้นภายในงานปาร์ตี้ขนาดใหญ่
+จุดแข็งของเรื่องคือ สถานที่ งานปาร์ตี้สามารถทำหน้าที่เป็นเหมือนเขาวงกตที่เต็มไปด้วยผู้คน แต่ละคนมีเป้าหมาย ความลับ และเหตุผลที่ไม่อยากให้ใครรู้ว่าตัวเองมาที่นี่ทำไม
+โครงสร้างแบบ Mystery ทำให้หนังสือมีศักยภาพในการสร้างคำถามให้ผู้อ่านตลอดเรื่องว่า ใครกำลังโกหก? ใครรู้อะไรมากกว่าที่พูด? และเหตุการณ์ทั้งหมดเกี่ยวข้องกันอย่างไร?
+อย่างไรก็ตาม หนังสือแนวนี้ต้องควบคุมข้อมูลอย่างระมัดระวัง หากเปิดเผยความลับเร็วเกินไป ความน่าสนใจจะลดลง แต่ถ้าเก็บข้อมูลไว้นานเกินไป ผู้อ่านอาจรู้สึกว่าถูกหลอก
+ดังนั้นความสำเร็จของเล่มนี้จะขึ้นอยู่กับ การวางเบาะแสและการเฉลย มากกว่าความอลังการของฉากปาร์ตี้
+สรุป: งานปาร์ตี้ที่ดูเหมือนจะมีแค่ความสนุก แต่ยิ่งอ่านก็ยิ่งรู้สึกว่า “เดี๋ยวนะ...ทำไมทุกคนดูมีความลับ?”
+            </p>
+
+            <div class="reviewer-footer">
+                <span>📚 รีวิวโดยนักรีวิว</span>
+                <span>คะแนน 5/5</span>
+            </div>
+        </div>
+    </section>
 
     <!-- =========================
          COMMENTS
