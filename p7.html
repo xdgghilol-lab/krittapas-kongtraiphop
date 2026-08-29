@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>โยมไม่มีบ้าน: THE DOOMDAY</title>
+    <title>THE DOOMDAY</title>
 
     <style>
         /* =========================
@@ -530,6 +530,81 @@
         }
 
 
+
+        /* =========================
+           REVIEWER REVIEWS
+        ========================== */
+        .reviewer-reviews {
+            width: 1100px;
+            max-width: calc(100% - 40px);
+            margin: 30px auto 0;
+            padding: 30px;
+            background: #ffffff;
+            border: 1px solid #e7eef3;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(35, 70, 90, 0.07);
+        }
+
+        .reviewer-reviews h2 {
+            margin: 0 0 20px;
+            color: #263746;
+            font-size: 20px;
+        }
+
+        .reviewer-reviews h2 span {
+            color: #0087c8;
+        }
+
+        .reviewer-card {
+            padding: 22px;
+            background: #f8fbfd;
+            border: 1px solid #edf2f5;
+            border-radius: 10px;
+        }
+
+        .reviewer-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e5edf1;
+        }
+
+        .reviewer-name {
+            color: #263746;
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .reviewer-role {
+            margin-top: 2px;
+            color: #8b98a3;
+            font-size: 11px;
+        }
+
+        .reviewer-rating {
+            color: #f3b400;
+            font-size: 16px;
+            letter-spacing: 2px;
+            white-space: nowrap;
+        }
+
+        .reviewer-text {
+            margin: 18px 0;
+            color: #505d67;
+            font-size: 14px;
+            line-height: 1.9;
+        }
+
+        .reviewer-footer {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            color: #8b98a3;
+            font-size: 11px;
+        }
+
         /* =========================
            RESPONSIVE
         ========================== */
@@ -603,6 +678,20 @@
                 padding: 22px;
             }
 
+            .reviewer-reviews {
+                padding: 22px;
+            }
+
+            .reviewer-header {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .reviewer-footer {
+                flex-direction: column;
+                gap: 5px;
+            }
+
             .comment-form button {
                 width: 100%;
             }
@@ -627,6 +716,14 @@
 
             .comments {
                 padding: 18px;
+            }
+
+            .reviewer-reviews {
+                padding: 18px;
+            }
+
+            .reviewer-card {
+                padding: 17px;
             }
 
             .section-title {
@@ -654,7 +751,7 @@
         </a>
 
         <h1>
-            โยมไม่มีบ้าน: THE DOOMDAY
+            THE DOOMDAY
         </h1>
 
     </div>
@@ -677,7 +774,7 @@
 
                 <img
                     src="7.png"
-                    alt="โยมไม่มีบ้าน: THE DOOMDAY"
+                    alt="ปกหนังสือ THE DOOMDAY"
                 >
 
                 <div class="cover-label">
@@ -701,7 +798,7 @@
 
             <p class="details-description">
 
-              หลังจากเหตุการณ์ประหลาดทำให้โลกเข้าสู่ยุควันสิ้นโลก เมืองต่าง ๆ ถูกทิ้งร้าง ผู้คนต้องหลบซ่อน และระบบสังคมเดิมทั้งหมดพังทลาย
+                หลังจากเหตุการณ์ประหลาดทำให้โลกเข้าสู่ยุควันสิ้นโลก เมืองต่าง ๆ ถูกทิ้งร้าง ผู้คนต้องหลบซ่อน และระบบสังคมเดิมทั้งหมดพังทลาย
 
                 <br><br>
 
@@ -710,7 +807,7 @@
                 <br><br>
 
                 <strong>
-                    แล้วคืนนี้กูนอนที่ไหน?
+             แล้วคืนนี้กูนอนที่ไหน?
                 </strong>
 
             </p>
@@ -729,7 +826,7 @@
 
                 <div class="info-box">
                     <h3>ผู้แปล</h3>
-                    <p>นาย กฤตภาส ก้องไตรภพ</p>
+                    <p>-</p>
                 </div>
 
                 <div class="info-box">
@@ -744,7 +841,7 @@
 
                 <div class="info-box">
                     <h3>ราคา</h3>
-                    <p>59 บาท</p>
+                    <p>199 บาท</p>
                 </div>
 
                 <div class="info-box">
@@ -875,6 +972,39 @@
 
     </div>
 
+
+
+    <!-- =========================
+         REVIEWS FROM REVIEWERS
+    ========================== -->
+
+    <section class="reviewer-reviews">
+        <h2><span>⭐</span> รีวิวจากนักรีวิว</h2>
+
+        <div class="reviewer-card">
+            <div class="reviewer-header">
+                <div>
+                    <div class="reviewer-name">นักรีวิวประจำเว็บไซต์</div>
+                    <div class="reviewer-role">Book Reviewer</div>
+                </div>
+                <div class="reviewer-rating">★★★★★</div>
+            </div>
+
+            <p class="reviewer-text">
+ในบรรดาหนังสือชุดนี้ โยมไม่มีบ้าน: THE DOOMDAY เป็นเล่มที่มีศักยภาพในการสร้างทั้งเสียงหัวเราะและความรู้สึกเหงาได้มากที่สุด
+คอนเซปต์ “วันสิ้นโลก แต่ปัญหาหลักคือไม่มีบ้าน” ดูเหมือนเป็นเรื่องตลก แต่เมื่อขยายออกไปกลับกลายเป็นคำถามเกี่ยวกับความหมายของคำว่า บ้าน และความรู้สึกปลอดภัยของมนุษย์
+จุดเด่นคือการใช้ปัญหาเล็ก ๆ เช่น ที่นอน อาหาร และการหาที่พัก มาเป็นเครื่องมือเล่าโลกที่กำลังพังลง สิ่งเหล่านี้ทำให้วันสิ้นโลกดูใกล้ตัวกว่าการพูดถึงเมืองที่ถูกทำลายเพียงอย่างเดียว
+หากต้นฉบับจริงพัฒนาความสัมพันธ์ระหว่างผู้รอดชีวิตให้ลึกขึ้น เรื่องนี้สามารถก้าวจากนิยายตลกวันสิ้นโลกไปเป็นนิยายที่มีอารมณ์ได้อย่างน่าประหลาด
+จุดอ่อนคือชื่อเรื่องและคอนเซปต์อาจทำให้ผู้อ่านคาดหวังว่าจะเป็นนิยายมีมเต็มรูปแบบ ดังนั้นหากมีช่วงจริงจังมากเกินไปโดยไม่มีการปูพื้น อาจทำให้โทนสะดุด
+สรุป: หนังสือที่พิสูจน์ว่า ต่อให้โลกแตก สิ่งที่มนุษย์ยังต้องการก็อาจเป็นเพียงสถานที่ให้กลับไปนอน
+            </p>
+
+            <div class="reviewer-footer">
+                <span>📚 รีวิวโดยนักรีวิว</span>
+                <span>คะแนน 5/5</span>
+            </div>
+        </div>
+    </section>
 
     <!-- =========================
          COMMENTS
