@@ -1,0 +1,1479 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>📚 Book Tier Ranking</title>
+
+<style>
+
+/* =========================
+   GLOBAL
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #111827;
+    color: white;
+}
+
+
+/* =========================
+   TOP MENU
+========================= */
+
+.top-menu {
+    width: 100%;
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 30px;
+    padding: 0 15px;
+
+    min-height: 48px;
+}
+
+.top-menu a {
+    color: #374151;
+    text-decoration: none;
+
+    font-size: 14px;
+
+    padding: 15px 4px;
+
+    position: relative;
+
+    transition: 0.2s;
+}
+
+.top-menu a:hover {
+    color: #2563eb;
+}
+
+.top-menu a.active-menu {
+    color: #2563eb;
+}
+
+.top-menu a.active-menu::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 2px;
+
+    background: #2563eb;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    text-align: center;
+    padding: 35px 15px;
+    background: #0f172a;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 38px;
+}
+
+header p {
+    color: #cbd5e1;
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.nav {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+.nav button {
+    border: none;
+    padding: 12px 22px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.nav .active {
+    background: #22c55e;
+    color: white;
+}
+
+
+/* =========================
+   PAGE
+========================= */
+
+.page {
+    display: none;
+
+    width: 95%;
+    max-width: 1200px;
+
+    margin: auto;
+}
+
+.page.active-page {
+    display: block;
+}
+
+
+/* =========================
+   RESULTS
+========================= */
+
+.result-card {
+    background: #1f2937;
+
+    padding: 20px;
+    margin-bottom: 20px;
+
+    border-radius: 15px;
+}
+
+.result-title {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.result-image {
+    width: 100px;
+    height: 125px;
+
+    object-fit: cover;
+
+    border-radius: 10px;
+}
+
+.stats {
+    display: flex;
+
+    gap: 8px;
+
+    flex-wrap: wrap;
+
+    margin-top: 15px;
+}
+
+.stat {
+    padding: 8px 12px;
+
+    border-radius: 8px;
+
+    color: #111;
+
+    font-weight: bold;
+}
+
+.stat-S {
+    background: #ff5252;
+}
+
+.stat-A {
+    background: #ff914d;
+}
+
+.stat-B {
+    background: #ffd84d;
+}
+
+.stat-C {
+    background: #72d572;
+}
+
+.stat-D {
+    background: #64b5f6;
+}
+
+.total {
+    margin-top: 10px;
+
+    color: #cbd5e1;
+}
+
+
+/* =========================
+   TIER LIST
+========================= */
+
+.tier {
+    display: flex;
+
+    min-height: 145px;
+
+    margin-bottom: 12px;
+
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    background: #1f2937;
+}
+
+.tier-name {
+    width: 110px;
+    min-width: 110px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 48px;
+
+    font-weight: bold;
+
+    color: #111;
+}
+
+.S {
+    background: #ff5252;
+}
+
+.A {
+    background: #ff914d;
+}
+
+.B {
+    background: #ffd84d;
+}
+
+.C {
+    background: #72d572;
+}
+
+.D {
+    background: #64b5f6;
+}
+
+.drop-zone {
+    flex: 1;
+
+    padding: 12px;
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    align-content: flex-start;
+
+    min-width: 0;
+}
+
+
+/* =========================
+   BOOK IMAGE
+========================= */
+
+.image-item {
+    width: 95px;
+    height: 120px;
+
+    border-radius: 9px;
+
+    overflow: hidden;
+
+    cursor: grab;
+
+    box-shadow: 0 4px 10px rgba(0,0,0,.4);
+
+    flex-shrink: 0;
+}
+
+.image-item img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+.image-item:active {
+    cursor: grabbing;
+}
+
+
+/* =========================
+   IMAGE POOL
+========================= */
+
+.pool {
+    background: #1f2937;
+
+    padding: 20px;
+
+    border-radius: 15px;
+
+    margin-top: 25px;
+}
+
+#imagePool {
+    min-height: 140px;
+
+    border: 2px dashed #64748b;
+
+    border-radius: 10px;
+
+    padding: 12px;
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.buttons {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    margin: 25px 0 50px;
+
+    flex-wrap: wrap;
+}
+
+button {
+    border: none;
+
+    padding: 12px 20px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    font-size: 15px;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+.submit {
+    background: #22c55e;
+
+    color: white;
+}
+
+.reset {
+    background: #ef4444;
+
+    color: white;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 900px) {
+
+    header {
+        padding: 30px 15px;
+    }
+
+    header h1 {
+        font-size: 32px;
+    }
+
+    .page {
+        width: 92%;
+    }
+
+    .tier {
+        min-height: 130px;
+    }
+
+    .tier-name {
+        width: 90px;
+        min-width: 90px;
+
+        font-size: 40px;
+    }
+
+    .image-item {
+        width: 85px;
+        height: 110px;
+    }
+
+    .drop-zone {
+        gap: 10px;
+        padding: 10px;
+    }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    body {
+        font-size: 14px;
+
+        overflow-x: hidden;
+    }
+
+
+    /* TOP MENU */
+
+    .top-menu {
+        justify-content: flex-start;
+
+        overflow-x: auto;
+
+        white-space: nowrap;
+
+        gap: 22px;
+
+        padding: 0 12px;
+
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .top-menu a {
+        font-size: 13px;
+
+        padding: 14px 2px;
+
+        flex-shrink: 0;
+    }
+
+
+    /* HEADER */
+
+    header {
+        padding: 25px 12px;
+    }
+
+    header h1 {
+        font-size: 26px;
+
+        line-height: 1.3;
+    }
+
+    header p {
+        font-size: 14px;
+
+        line-height: 1.5;
+    }
+
+
+    /* NAV */
+
+    .nav {
+        padding: 12px;
+
+        gap: 8px;
+    }
+
+    .nav button {
+        flex: 1;
+
+        min-width: 140px;
+
+        padding: 11px 12px;
+
+        font-size: 14px;
+    }
+
+
+    /* PAGE */
+
+    .page {
+        width: 94%;
+
+        max-width: 100%;
+    }
+
+    .page h2 {
+        font-size: 21px;
+    }
+
+
+    /* TIER */
+
+    .tier {
+        min-height: 115px;
+
+        margin-bottom: 10px;
+
+        border-radius: 10px;
+    }
+
+    .tier-name {
+        width: 55px;
+
+        min-width: 55px;
+
+        font-size: 28px;
+    }
+
+    .drop-zone {
+        padding: 8px;
+
+        gap: 7px;
+
+        min-width: 0;
+    }
+
+
+    /* BOOK */
+
+    .image-item {
+        width: 62px;
+
+        height: 82px;
+
+        border-radius: 7px;
+    }
+
+
+    /* IMAGE POOL */
+
+    .pool {
+        padding: 14px;
+
+        margin-top: 18px;
+
+        border-radius: 12px;
+    }
+
+    #imagePool {
+        padding: 8px;
+
+        gap: 7px;
+
+        min-height: 110px;
+    }
+
+
+    /* RESULT */
+
+    .result-card {
+        padding: 15px;
+
+        border-radius: 12px;
+    }
+
+    .result-title {
+        font-size: 17px;
+    }
+
+    .result-image {
+        width: 80px;
+
+        height: 105px;
+    }
+
+
+    /* STATS */
+
+    .stats {
+        gap: 5px;
+    }
+
+    .stat {
+        padding: 6px 9px;
+
+        font-size: 12px;
+    }
+
+
+    /* BUTTON */
+
+    .buttons {
+        flex-direction: column;
+
+        gap: 8px;
+
+        margin: 20px 0 35px;
+    }
+
+    .buttons button {
+        width: 100%;
+
+        padding: 13px;
+
+        font-size: 14px;
+    }
+
+}
+
+
+/* =========================
+   VERY SMALL MOBILE
+========================= */
+
+@media (max-width: 380px) {
+
+    header h1 {
+        font-size: 23px;
+    }
+
+    .nav button {
+        min-width: 100%;
+    }
+
+    .tier-name {
+        width: 48px;
+
+        min-width: 48px;
+
+        font-size: 24px;
+    }
+
+    .image-item {
+        width: 55px;
+
+        height: 73px;
+    }
+
+    .drop-zone {
+        gap: 5px;
+
+        padding: 6px;
+    }
+
+    .result-image {
+        width: 70px;
+
+        height: 92px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     TOP MENU
+========================= -->
+
+<nav class="top-menu">
+
+    <a href="activity.html">
+        กิจกรรม
+    </a>
+
+    <a href="knowledge.html">
+        เรื่องน่ารู้
+    </a>
+
+    <a href="index.html" class="active-menu">
+        รีวิวหนังสือ
+    </a>
+
+    <a href="stories.html">
+        แบ่งปันเรื่องราวดีๆ
+    </a>
+
+    <a href="online.html">
+        ช้อปออนไลน์
+    </a>
+
+    <a href="about.html">
+        เกี่ยวกับเรา
+    </a>
+
+</nav>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+    <h1>
+        📚 Book Tier Ranking
+    </h1>
+
+    <p>
+        ดูอันดับหนังสือจากผู้จัดอันดับทั้งหมด
+    </p>
+
+</header>
+
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<div class="nav">
+
+    <button
+        id="resultButton"
+        class="active"
+        onclick="showPage('results')">
+
+        📊 ผลการจัดอันดับ
+
+    </button>
+
+
+    <button
+        id="rankingButton"
+        onclick="showPage('ranking')">
+
+        🎯 จัดอันดับของฉัน
+
+    </button>
+
+</div>
+
+
+<!-- =========================
+     RESULT PAGE
+========================= -->
+
+<section
+    id="results"
+    class="page active-page">
+
+    <h2>
+        📊 ผลการจัดอันดับจากผู้ใช้
+    </h2>
+
+    <p style="color:#cbd5e1;">
+
+        ดูว่าผู้จัดอันดับส่วนใหญ่นำหนังสือแต่ละเล่มไว้ Tier ไหน
+
+    </p>
+
+    <div id="resultsContainer"></div>
+
+</section>
+
+
+<!-- =========================
+     RANKING PAGE
+========================= -->
+
+<section
+    id="ranking"
+    class="page">
+
+    <h2>
+        🎯 จัดอันดับหนังสือ
+    </h2>
+
+    <p style="color:#cbd5e1;">
+
+        ลากหนังสือทั้ง 10 เล่มไปยัง Tier ที่คุณคิดว่าเหมาะสม
+
+    </p>
+
+
+    <!-- S -->
+
+    <div class="tier">
+
+        <div class="tier-name S">
+            S
+        </div>
+
+        <div
+            id="tierS"
+            class="drop-zone"
+            ondrop="dropHandler(event)"
+            ondragover="dragoverHandler(event)">
+        </div>
+
+    </div>
+
+
+    <!-- A -->
+
+    <div class="tier">
+
+        <div class="tier-name A">
+            A
+        </div>
+
+        <div
+            id="tierA"
+            class="drop-zone"
+            ondrop="dropHandler(event)"
+            ondragover="dragoverHandler(event)">
+        </div>
+
+    </div>
+
+
+    <!-- B -->
+
+    <div class="tier">
+
+        <div class="tier-name B">
+            B
+        </div>
+
+        <div
+            id="tierB"
+            class="drop-zone"
+            ondrop="dropHandler(event)"
+            ondragover="dragoverHandler(event)">
+        </div>
+
+    </div>
+
+
+    <!-- C -->
+
+    <div class="tier">
+
+        <div class="tier-name C">
+            C
+        </div>
+
+        <div
+            id="tierC"
+            class="drop-zone"
+            ondrop="dropHandler(event)"
+            ondragover="dragoverHandler(event)">
+        </div>
+
+    </div>
+
+
+    <!-- D -->
+
+    <div class="tier">
+
+        <div class="tier-name D">
+            D
+        </div>
+
+        <div
+            id="tierD"
+            class="drop-zone"
+            ondrop="dropHandler(event)"
+            ondragover="dragoverHandler(event)">
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         IMAGE POOL
+    ========================== -->
+
+    <div class="pool">
+
+        <h3>
+            🖼️ หนังสือทั้งหมด
+        </h3>
+
+        <div
+            id="imagePool"
+            ondrop="dropHandler(event)"
+            ondragover="dragoverHandler(event)"
+        >
+
+
+            <!-- 1 -->
+
+            <div
+                id="image1"
+                class="image-item"
+                draggable="true"
+                ondragstart="dragstartHandler(event)">
+
+                <img src="image1.jpg">
+
+            </div>
+
+
+            <!-- 2 -->
+
+            <div
+                id="image2"
+                class="image-item"
+                draggable="true"
+                ondragstart="dragstartHandler(event)">
+
+                <img src="image2.jpg">
+
+            </div>
+
+
+            <!-- 3 -->
+
+            <div
+                id="image3"
+                class="image-item"
+                draggable="true"
+                ondragstart="dragstartHandler(event)">
+
+                <img src="image3.jpg">
+
+            </div>
+
+
+            <!-- 4 -->
+
+            <div
+                id="image4"
+                class="image-item"
+                draggable="true"
+                ondragstart="dragstartHandler(event)">
+
+                <img src="image4.jpg">
+
+            </div>
+
+
+            <!-- 5 -->
+
+            <div
+                id="image5"
+                class="image-item"
+                draggable="true"
+                ondragstart="dragstartHandler(event)">
+
+                <img src="image5.jpg">
+
+            </div>
+
+
+            <!-- 6 -->
+
+            <div
+                id="image6"
+                class="image-item"
+                draggable="true"
+                ondragstart="dragstartHandler(event)">
+
+                <img src="image6.jpg">
+
+            </div>
+
+
+            <!-- 7 -->
+
+            <div
+                id="image7"
+                class="image-item"
+                draggable="true"
+                ondragstart="dragstartHandler(event)">
+
+                <img src="image7.jpg">
+
+            </div>
+
+
+            <!-- 8 -->
+
+            <div
+                id="image8"
+                class="image-item"
+                draggable="true"
+                ondragstart="dragstartHandler(event)">
+
+                <img src="image8.jpg">
+
+            </div>
+
+
+            <!-- 9 -->
+
+            <div
+                id="image9"
+                class="image-item"
+                draggable="true"
+                ondragstart="dragstartHandler(event)">
+
+                <img src="image9.jpg">
+
+            </div>
+
+
+            <!-- 10 -->
+
+            <div
+                id="image10"
+                class="image-item"
+                draggable="true"
+                ondragstart="dragstartHandler(event)">
+
+                <img src="image10.jpg">
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         BUTTONS
+    ========================== -->
+
+    <div class="buttons">
+
+        <button
+            class="submit"
+            onclick="submitRanking()">
+
+            🚀 ส่งการจัดอันดับ
+
+        </button>
+
+
+        <button
+            class="reset"
+            onclick="resetRanking()">
+
+            🔄 เริ่มใหม่
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<script>
+
+
+/* =====================================
+   DRAG AND DROP API
+===================================== */
+
+function dragstartHandler(ev) {
+
+    ev.dataTransfer.setData(
+        "text",
+        ev.target.id
+    );
+
+}
+
+
+function dragoverHandler(ev) {
+
+    ev.preventDefault();
+
+}
+
+
+function dropHandler(ev) {
+
+    ev.preventDefault();
+
+
+    const data =
+        ev.dataTransfer.getData("text");
+
+
+    const image =
+        document.getElementById(data);
+
+
+    if (!image) return;
+
+
+    let target = ev.target;
+
+
+    if (
+        !target.classList.contains("drop-zone") &&
+        target.id !== "imagePool"
+    ) {
+
+        target =
+            target.closest(
+                ".drop-zone, #imagePool"
+            );
+
+    }
+
+
+    if (target) {
+
+        target.appendChild(image);
+
+    }
+
+}
+
+
+/* =====================================
+   PAGE SWITCH
+===================================== */
+
+function showPage(page) {
+
+    document
+        .querySelectorAll(".page")
+        .forEach(p => {
+
+            p.classList.remove(
+                "active-page"
+            );
+
+        });
+
+
+    document
+        .getElementById(page)
+        .classList.add(
+            "active-page"
+        );
+
+
+    document
+        .querySelectorAll(".nav button")
+        .forEach(b => {
+
+            b.classList.remove(
+                "active"
+            );
+
+        });
+
+
+    if (page === "results") {
+
+        document
+            .getElementById(
+                "resultButton"
+            )
+            .classList.add("active");
+
+    } else {
+
+        document
+            .getElementById(
+                "rankingButton"
+            )
+            .classList.add("active");
+
+    }
+
+}
+
+
+/* =====================================
+   SUBMIT RANKING
+===================================== */
+
+function submitRanking() {
+
+    const tiers = [
+        "tierS",
+        "tierA",
+        "tierB",
+        "tierC",
+        "tierD"
+    ];
+
+
+    let ranking = {};
+
+    let total = 0;
+
+
+    tiers.forEach(tier => {
+
+        document
+            .getElementById(tier)
+            .querySelectorAll(".image-item")
+            .forEach(image => {
+
+                ranking[image.id] =
+                    tier.replace(
+                        "tier",
+                        ""
+                    );
+
+                total++;
+
+            });
+
+    });
+
+
+    /* ต้องจัดครบ 10 รูป */
+
+    if (total !== 10) {
+
+        alert(
+            "⚠️ กรุณาจัดอันดับให้ครบทั้ง 10 รูปก่อนส่ง"
+        );
+
+        return;
+
+    }
+
+
+    /* ดึงข้อมูลเดิม */
+
+    let allRankings =
+        JSON.parse(
+            localStorage.getItem(
+                "allBookRankings"
+            ) || "[]"
+        );
+
+
+    /* เพิ่มการจัดอันดับ */
+
+    allRankings.push(ranking);
+
+
+    localStorage.setItem(
+        "allBookRankings",
+        JSON.stringify(allRankings)
+    );
+
+
+    alert(
+        "✅ บันทึกการจัดอันดับเรียบร้อย!"
+    );
+
+
+    showPage("results");
+
+
+    displayResults();
+
+}
+
+
+/* =====================================
+   DISPLAY RESULTS
+===================================== */
+
+function displayResults() {
+
+    const container =
+        document.getElementById(
+            "resultsContainer"
+        );
+
+
+    container.innerHTML = "";
+
+
+    const allRankings =
+        JSON.parse(
+            localStorage.getItem(
+                "allBookRankings"
+            ) || "[]"
+        );
+
+
+    if (allRankings.length === 0) {
+
+        container.innerHTML = `
+
+            <div class="result-card">
+
+                <h3>
+                    ยังไม่มีการจัดอันดับ
+                </h3>
+
+                <p>
+                    เป็นคนแรกที่มาจัดอันดับหนังสือ!
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    /* สร้างผลรวม */
+
+    for (
+        let i = 1;
+        i <= 10;
+        i++
+    ) {
+
+        const counts = {
+
+            S: 0,
+            A: 0,
+            B: 0,
+            C: 0,
+            D: 0
+
+        };
+
+
+        allRankings.forEach(ranking => {
+
+            const tier =
+                ranking["image" + i];
+
+
+            if (tier) {
+
+                counts[tier]++;
+
+            }
+
+        });
+
+
+        const total =
+            allRankings.length;
+
+
+        const card =
+            document.createElement(
+                "div"
+            );
+
+
+        card.className =
+            "result-card";
+
+
+        card.innerHTML = `
+
+            <div class="result-title">
+
+                📖 หนังสือ / ภาพที่ ${i}
+
+            </div>
+
+
+            <img
+                class="result-image"
+                src="image${i}.jpg"
+            >
+
+
+            <div class="stats">
+
+                <div class="stat stat-S">
+                    S: ${counts.S}
+                </div>
+
+                <div class="stat stat-A">
+                    A: ${counts.A}
+                </div>
+
+                <div class="stat stat-B">
+                    B: ${counts.B}
+                </div>
+
+                <div class="stat stat-C">
+                    C: ${counts.C}
+                </div>
+
+                <div class="stat stat-D">
+                    D: ${counts.D}
+                </div>
+
+            </div>
+
+
+            <div class="total">
+
+                👥 ผู้จัดอันดับทั้งหมด:
+                ${total} คน
+
+            </div>
+
+        `;
+
+
+        container.appendChild(card);
+
+    }
+
+}
+
+
+/* =====================================
+   RESET CURRENT RANKING
+===================================== */
+
+function resetRanking() {
+
+    const pool =
+        document.getElementById(
+            "imagePool"
+        );
+
+
+    document
+        .querySelectorAll(
+            ".image-item"
+        )
+        .forEach(image => {
+
+            pool.appendChild(image);
+
+        });
+
+}
+
+
+/* =====================================
+   LOAD RESULTS
+===================================== */
+
+displayResults();
+
+</script>
+
+</body>
+
+</html>
