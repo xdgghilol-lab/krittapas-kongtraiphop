@@ -1,1359 +1,1004 @@
 <!DOCTYPE html>
-
 <html lang="th">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="icon" href="channels4_profile.jpg" type="image/jpg">
+
     <title>รีวิวหนังสือ</title>
 
-```
-<style>
+    <style>
 
-    * {
-        box-sizing: border-box;
-    }
-
-    body {
-        margin: 0;
-        font-family: Arial, "Tahoma", sans-serif;
-        background: #ffffff;
-        color: #555;
-    }
-
-    /* =========================
-       HEADER
-    ========================= */
-
-    .header {
-        width: 1100px;
-        max-width: 95%;
-        margin: 25px auto 20px;
-        text-align: center;
-    }
-
-    .header h1 {
-        font-size: 28px;
-        color: #555;
-        margin-bottom: 15px;
-    }
-
-    /* =========================
-       MUSIC
-    ========================= */
-
-    .music-player {
-        position: fixed;
-        right: 20px;
-        bottom: 20px;
-        z-index: 10000;
-
-        display: flex;
-        align-items: center;
-        gap: 8px;
-
-        background: rgba(255, 255, 255, 0.96);
-        border: 1px solid #d7e8ef;
-        border-radius: 50px;
-
-        padding: 7px 10px 7px 7px;
-
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
-
-        backdrop-filter: blur(8px);
-    }
-
-    .music-button {
-        width: 42px;
-        height: 42px;
-
-        border: none;
-        border-radius: 50%;
-
-        background: #008fd0;
-        color: white;
-
-        font-size: 19px;
-
-        cursor: pointer;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        transition: 0.2s;
-    }
-
-    .music-button:hover {
-        background: #007ab5;
-        transform: scale(1.05);
-    }
-
-    .music-info {
-        display: flex;
-        flex-direction: column;
-        min-width: 90px;
-    }
-
-    .music-title {
-        font-size: 11px;
-        font-weight: bold;
-        color: #008fd0;
-    }
-
-    .music-status {
-        font-size: 9px;
-        color: #888;
-        margin-top: 2px;
-    }
-
-    .volume-control {
-        width: 75px;
-        cursor: pointer;
-        accent-color: #008fd0;
-    }
-
-    /* =========================
-       VISITOR
-    ========================= */
-
-    .visitor-counter {
-        display: inline-block;
-        margin: 5px auto 20px;
-        padding: 9px 22px;
-        border-radius: 20px;
-        background: #eef8fc;
-        color: #666;
-        font-size: 13px;
-    }
-
-    .visitor-counter strong {
-        color: #008fd0;
-        font-size: 18px;
-        margin: 0 5px;
-    }
-
-    /* =========================
-       SEARCH
-    ========================= */
-
-    .review-search {
-        display: flex;
-        justify-content: center;
-        align-items: end;
-        gap: 10px;
-        flex-wrap: wrap;
-        text-align: left;
-    }
-
-    .search-group {
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-    }
-
-    .search-group label {
-        font-size: 11px;
-        color: #555;
-    }
-
-    .search-group select,
-    .search-group input {
-        height: 25px;
-        border: 1px solid #ccd6dc;
-        border-radius: 15px;
-        padding: 0 12px;
-        font-size: 11px;
-        outline: none;
-        background: white;
-        min-width: 140px;
-    }
-
-    .search-group input {
-        width: 195px;
-    }
-
-    .search-group select:focus,
-    .search-group input:focus {
-        border-color: #1596d1;
-    }
-
-    .search-btn {
-        height: 26px;
-        border: none;
-        border-radius: 15px;
-        padding: 0 28px;
-        background: #008fd0;
-        color: white;
-        cursor: pointer;
-        font-size: 11px;
-    }
-
-    .search-btn:hover {
-        background: #007ab5;
-    }
-
-    .write-review-btn {
-        height: 26px;
-        border: none;
-        border-radius: 15px;
-        padding: 0 35px;
-        background: #19a0b5;
-        color: white;
-        cursor: pointer;
-        font-size: 11px;
-    }
-
-    .write-review-btn:hover {
-        background: #128b9e;
-    }
-
-    /* =========================
-       POPULAR BOOKS
-    ========================= */
-
-    .popular-section {
-        width: 1100px;
-        max-width: 95%;
-        margin: 30px auto 0;
-        background: linear-gradient(135deg, #fff8df, #fffdf5);
-        border: 1px solid #f4df9c;
-        border-radius: 15px;
-        padding: 25px;
-    }
-
-    .popular-title {
-        margin: 0 0 18px;
-        color: #d99400;
-        font-size: 20px;
-    }
-
-    .popular-books {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 18px;
-    }
-
-    .popular-book {
-        background: white;
-        border-radius: 12px;
-        padding: 15px;
-        display: flex;
-        align-items: center;
-        gap: 14px;
-        box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-        transition: 0.2s;
-    }
-
-    .popular-book:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 6px 18px rgba(0,0,0,0.13);
-    }
-
-    .popular-rank {
-        font-size: 25px;
-        font-weight: bold;
-        color: #e2a400;
-        min-width: 35px;
-        text-align: center;
-    }
-
-    .popular-book img {
-        width: 65px;
-        height: 85px;
-        object-fit: contain;
-        border-radius: 5px;
-    }
-
-    .popular-info {
-        min-width: 0;
-    }
-
-    .popular-name {
-        font-size: 13px;
-        font-weight: bold;
-        color: #555;
-        line-height: 1.4;
-    }
-
-    .popular-rating {
-        margin-top: 7px;
-        font-size: 11px;
-        color: #f2a900;
-        font-weight: bold;
-    }
-
-    .popular-reviews {
-        margin-top: 3px;
-        font-size: 10px;
-        color: #888;
-    }
-
-    .no-popular {
-        grid-column: 1 / -1;
-        text-align: center;
-        color: #888;
-        padding: 15px;
-    }
-
-    /* =========================
-       BOOKS
-    ========================= */
-
-    .books-section {
-        width: 1100px;
-        max-width: 95%;
-        margin: 40px auto 0;
-        background: #d9f2ff;
-        padding: 40px 35px;
-    }
-
-    .pick-title {
-        color: #008ed0;
-        font-size: 20px;
-        margin: 0 0 15px;
-    }
-
-    .books {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 35px;
-    }
-
-    .book {
-        background: white;
-        padding: 12px;
-        text-decoration: none;
-        color: #555;
-        box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-        transition: 0.2s;
-        cursor: pointer;
-        display: block;
-    }
-
-    .book:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 6px 18px rgba(0,0,0,0.15);
-    }
-
-    .book img {
-        width: 100%;
-        height: 220px;
-        object-fit: contain;
-        display: block;
-        margin-bottom: 10px;
-    }
-
-    .book-title {
-        font-size: 13px;
-        line-height: 1.4;
-        min-height: 36px;
-    }
-
-    .book-author {
-        font-size: 11px;
-        color: #777;
-        margin-top: 8px;
-    }
-
-    .book-info {
-        font-size: 10px;
-        color: #888;
-        margin-top: 8px;
-        overflow: hidden;
-    }
-
-    .rating {
-        float: right;
-        color: #f2a900;
-        font-weight: bold;
-    }
-
-    .review-summary {
-        font-size: 10px;
-        color: #888;
-        margin-top: 5px;
-    }
-
-    .rating-average {
-        color: #f2a900;
-        font-weight: bold;
-    }
-
-    .no-result {
-        grid-column: 1 / -1;
-        text-align: center;
-        padding: 40px;
-        color: #777;
-        display: none;
-    }
-
-    /* =========================
-       REVIEWS
-    ========================= */
-
-    .reviews-area {
-        width: 1100px;
-        max-width: 95%;
-        margin: 30px auto;
-    }
-
-    .reviews-area h2 {
-        color: #555;
-    }
-
-    .review-item {
-        background: white;
-        border-left: 4px solid #159bd4;
-        padding: 15px;
-        margin-bottom: 12px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    }
-
-    .review-book {
-        color: #008ed0;
-        font-weight: bold;
-    }
-
-    .review-stars {
-        color: #ffc107;
-        margin: 5px 0;
-    }
-
-    .review-text {
-        margin: 8px 0 0;
-        font-size: 13px;
-    }
-
-    /* =========================
-       MODAL
-    ========================= */
-
-    .modal {
-        position: fixed;
-        inset: 0;
-        background: rgba(0,0,0,0.45);
-        display: none;
-        align-items: center;
-        justify-content: center;
-        z-index: 9999;
-        padding: 20px;
-    }
-
-    .modal.active {
-        display: flex;
-    }
-
-    .modal-box {
-        width: 450px;
-        max-width: 100%;
-        background: white;
-        border-radius: 12px;
-        padding: 25px;
-        box-shadow: 0 10px 40px rgba(0,0,0,0.25);
-        position: relative;
-    }
-
-    .modal-box h2 {
-        margin-top: 0;
-        color: #008ed0;
-        font-size: 20px;
-    }
-
-    .close-btn {
-        position: absolute;
-        right: 15px;
-        top: 12px;
-        border: none;
-        background: none;
-        font-size: 25px;
-        cursor: pointer;
-        color: #777;
-    }
-
-    .form-group {
-        margin-bottom: 15px;
-    }
-
-    .form-group label {
-        display: block;
-        font-size: 13px;
-        margin-bottom: 6px;
-        color: #555;
-    }
-
-    .form-group select,
-    .form-group textarea,
-    .form-group input {
-        width: 100%;
-        border: 1px solid #ccd6dc;
-        border-radius: 7px;
-        padding: 10px;
-        font-family: inherit;
-        outline: none;
-    }
-
-    .form-group textarea {
-        height: 100px;
-        resize: vertical;
-    }
-
-    /* =========================
-       STARS
-    ========================= */
-
-    .star-input {
-        display: flex;
-        gap: 5px;
-        direction: rtl;
-        justify-content: flex-end;
-    }
-
-    .star-input input {
-        display: none;
-    }
-
-    .star-input label {
-        font-size: 30px;
-        color: #ccc;
-        cursor: pointer;
-        margin: 0;
-    }
-
-    .star-input input:checked ~ label,
-    .star-input label:hover,
-    .star-input label:hover ~ label {
-        color: #ffc107;
-    }
-
-    /* =========================
-       SUBMIT
-    ========================= */
-
-    .submit-review {
-        width: 100%;
-        border: none;
-        border-radius: 7px;
-        background: #008fd0;
-        color: white;
-        padding: 11px;
-        cursor: pointer;
-    }
-
-    .submit-review:hover {
-        background: #0078b2;
-    }
-
-    /* =========================
-       MOBILE
-    ========================= */
-
-    @media (max-width: 900px) {
-
-        .books {
-            grid-template-columns: repeat(2, 1fr);
+        * {
+            box-sizing: border-box;
         }
 
-        .popular-books {
-            grid-template-columns: 1fr;
+        body {
+            margin: 0;
+            font-family: Arial, "Tahoma", sans-serif;
+            background: #ffffff;
+            color: #555;
         }
 
-        .review-search {
-            align-items: stretch;
-        }
 
-    }
+        /* =========================
+           TOP NAVIGATION
+        ========================= */
 
-    @media (max-width: 500px) {
-
-        .books {
-            grid-template-columns: 1fr;
-        }
-
-        .books-section {
-            padding: 25px 15px;
-        }
-
-        .review-search {
-            flex-direction: column;
-        }
-
-        .search-group select,
-        .search-group input,
-        .search-btn,
-        .write-review-btn {
+        .top-nav {
             width: 100%;
+            background: #ffffff;
+            border-bottom: 1px solid #eeeeee;
+            padding: 14px 0;
+        }
+
+        .nav-menu {
+            width: 1100px;
+            max-width: 95%;
+            margin: 0 auto;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            gap: 32px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #555;
+            font-size: 15px;
+            white-space: nowrap;
+
+            transition: 0.2s;
+        }
+
+        .nav-menu a:hover {
+            color: #008fd0;
+        }
+
+        .nav-menu a.active {
+            color: #008fd0;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        .header {
+            width: 1100px;
+            max-width: 95%;
+            margin: 25px auto 20px;
+            text-align: center;
         }
 
         .header h1 {
-            font-size: 23px;
+            font-size: 28px;
+            color: #555;
+            margin-bottom: 15px;
         }
 
+
+        /* =========================
+           MUSIC
+        ========================= */
+
         .music-player {
-            right: 12px;
-            bottom: 12px;
-            padding: 6px;
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            z-index: 10000;
+
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            background: rgba(255, 255, 255, 0.96);
+            border: 1px solid #d7e8ef;
+            border-radius: 50px;
+
+            padding: 7px 10px 7px 7px;
+
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+
+            backdrop-filter: blur(8px);
+        }
+
+        .music-button {
+            width: 42px;
+            height: 42px;
+
+            border: none;
+            border-radius: 50%;
+
+            background: #008fd0;
+            color: white;
+
+            font-size: 19px;
+
+            cursor: pointer;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            transition: 0.2s;
+        }
+
+        .music-button:hover {
+            background: #007ab5;
+            transform: scale(1.05);
         }
 
         .music-info {
-            display: none;
+            display: flex;
+            flex-direction: column;
+            min-width: 90px;
+        }
+
+        .music-title {
+            font-size: 11px;
+            font-weight: bold;
+            color: #008fd0;
+        }
+
+        .music-status {
+            font-size: 9px;
+            color: #888;
+            margin-top: 2px;
         }
 
         .volume-control {
-            width: 60px;
+            width: 75px;
+            cursor: pointer;
+            accent-color: #008fd0;
         }
+
+
+        /* =========================
+           VISITOR
+        ========================= */
+
+        .visitor-counter {
+            display: inline-block;
+
+            margin: 5px auto 20px;
+
+            padding: 9px 22px;
+
+            border-radius: 20px;
+
+            background: #eef8fc;
+
+            color: #666;
+
+            font-size: 13px;
+        }
+
+        .visitor-counter strong {
+            color: #008fd0;
+            font-size: 18px;
+            margin: 0 5px;
+        }
+
+
+        /* =========================
+           SEARCH
+        ========================= */
+
+        .review-search {
+            display: flex;
+            justify-content: center;
+            align-items: end;
+
+            gap: 10px;
+
+            flex-wrap: wrap;
+
+            text-align: left;
+        }
+
+        .search-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .search-group label {
+            font-size: 11px;
+            color: #555;
+        }
+
+        .search-group select,
+        .search-group input {
+            height: 25px;
+
+            border: 1px solid #ccd6dc;
+            border-radius: 15px;
+
+            padding: 0 12px;
+
+            font-size: 11px;
+
+            outline: none;
+
+            background: white;
+
+            min-width: 140px;
+        }
+
+        .search-group input {
+            width: 195px;
+        }
+
+        .search-group select:focus,
+        .search-group input:focus {
+            border-color: #1596d1;
+        }
+
+        .search-btn {
+            height: 26px;
+
+            border: none;
+            border-radius: 15px;
+
+            padding: 0 28px;
+
+            background: #008fd0;
+            color: white;
+
+            cursor: pointer;
+
+            font-size: 11px;
+        }
+
+        .search-btn:hover {
+            background: #007ab5;
+        }
+
+        .write-review-btn {
+            height: 26px;
+
+            border: none;
+            border-radius: 15px;
+
+            padding: 0 35px;
+
+            background: #19a0b5;
+            color: white;
+
+            cursor: pointer;
+
+            font-size: 11px;
+        }
+
+        .write-review-btn:hover {
+            background: #128b9e;
+        }
+
+
+        /* =========================
+           POPULAR BOOKS
+        ========================= */
 
         .popular-section {
-            padding: 20px 15px;
+            width: 1100px;
+            max-width: 95%;
+
+            margin: 30px auto 0;
+
+            background: linear-gradient(
+                135deg,
+                #fff8df,
+                #fffdf5
+            );
+
+            border: 1px solid #f4df9c;
+
+            border-radius: 15px;
+
+            padding: 25px;
         }
 
-    }
+        .popular-title {
+            margin: 0 0 18px;
 
-</style>
-```
+            color: #d99400;
+
+            font-size: 20px;
+        }
+
+        .popular-books {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 18px;
+        }
+
+        .popular-book {
+            background: white;
+
+            border-radius: 12px;
+
+            padding: 15px;
+
+            display: flex;
+            align-items: center;
+
+            gap: 14px;
+
+            box-shadow:
+                0 3px 12px rgba(0, 0, 0, 0.08);
+
+            transition: 0.2s;
+        }
+
+        .popular-book:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 6px 18px rgba(0, 0, 0, 0.13);
+        }
+
+        .popular-rank {
+            font-size: 25px;
+
+            font-weight: bold;
+
+            color: #e2a400;
+
+            min-width: 35px;
+
+            text-align: center;
+        }
+
+        .popular-book img {
+            width: 65px;
+            height: 85px;
+
+            object-fit: contain;
+
+            border-radius: 5px;
+        }
+
+        .popular-info {
+            min-width: 0;
+        }
+
+        .popular-name {
+            font-size: 13px;
+
+            font-weight: bold;
+
+            color: #555;
+
+            line-height: 1.4;
+        }
+
+        .popular-rating {
+            margin-top: 7px;
+
+            font-size: 11px;
+
+            color: #f2a900;
+
+            font-weight: bold;
+        }
+
+        .popular-reviews {
+            margin-top: 3px;
+
+            font-size: 10px;
+
+            color: #888;
+        }
+
+        .no-popular {
+            grid-column: 1 / -1;
+
+            text-align: center;
+
+            color: #888;
+
+            padding: 15px;
+        }
+
+
+        /* =========================
+           BOOKS
+        ========================= */
+
+        .books-section {
+            width: 1100px;
+            max-width: 95%;
+
+            margin: 40px auto 0;
+
+            background: #d9f2ff;
+
+            padding: 40px 35px;
+        }
+
+        .pick-title {
+            color: #008ed0;
+
+            font-size: 20px;
+
+            margin: 0 0 15px;
+        }
+
+        .books {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 35px;
+        }
+
+        .book {
+            background: white;
+
+            padding: 12px;
+
+            text-decoration: none;
+
+            color: #555;
+
+            box-shadow:
+                0 3px 12px rgba(0, 0, 0, 0.08);
+
+            transition: 0.2s;
+
+            cursor: pointer;
+
+            display: block;
+        }
+
+        .book:hover {
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 6px 18px rgba(0, 0, 0, 0.15);
+        }
+
+        .book img {
+            width: 100%;
+            height: 220px;
+
+            object-fit: contain;
+
+            display: block;
+
+            margin-bottom: 10px;
+        }
+
+        .book-title {
+            font-size: 13px;
+
+            line-height: 1.4;
+
+            min-height: 36px;
+        }
+
+        .book-author {
+            font-size: 11px;
+
+            color: #777;
+
+            margin-top: 8px;
+        }
+
+        .book-info {
+            font-size: 10px;
+
+            color: #888;
+
+            margin-top: 8px;
+
+            overflow: hidden;
+        }
+
+        .rating {
+            float: right;
+
+            color: #f2a900;
+
+            font-weight: bold;
+        }
+
+        .review-summary {
+            font-size: 10px;
+
+            color: #888;
+
+            margin-top: 5px;
+        }
+
+        .rating-average {
+            color: #f2a900;
+
+            font-weight: bold;
+        }
+
+        .no-result {
+            grid-column: 1 / -1;
+
+            text-align: center;
+
+            padding: 40px;
+
+            color: #777;
+
+            display: none;
+        }
+
+
+        /* =========================
+           REVIEWS
+        ========================= */
+
+        .reviews-area {
+            width: 1100px;
+
+            max-width: 95%;
+
+            margin: 30px auto;
+        }
+
+        .reviews-area h2 {
+            color: #555;
+        }
+
+        .review-item {
+            background: white;
+
+            border-left:
+                4px solid #159bd4;
+
+            padding: 15px;
+
+            margin-bottom: 12px;
+
+            box-shadow:
+                0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .review-book {
+            color: #008ed0;
+
+            font-weight: bold;
+        }
+
+        .review-stars {
+            color: #ffc107;
+
+            margin: 5px 0;
+        }
+
+        .review-text {
+            margin: 8px 0 0;
+
+            font-size: 13px;
+        }
+
+
+        /* =========================
+           MODAL
+        ========================= */
+
+        .modal {
+            position: fixed;
+
+            inset: 0;
+
+            background:
+                rgba(0, 0, 0, 0.45);
+
+            display: none;
+
+            align-items: center;
+
+            justify-content: center;
+
+            z-index: 9999;
+
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-box {
+            width: 450px;
+
+            max-width: 100%;
+
+            background: white;
+
+            border-radius: 12px;
+
+            padding: 25px;
+
+            box-shadow:
+                0 10px 40px rgba(0, 0, 0, 0.25);
+
+            position: relative;
+        }
+
+        .modal-box h2 {
+            margin-top: 0;
+
+            color: #008ed0;
+
+            font-size: 20px;
+        }
+
+        .close-btn {
+            position: absolute;
+
+            right: 15px;
+
+            top: 12px;
+
+            border: none;
+
+            background: none;
+
+            font-size: 25px;
+
+            cursor: pointer;
+
+            color: #777;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+
+            font-size: 13px;
+
+            margin-bottom: 6px;
+
+            color: #555;
+        }
+
+        .form-group select,
+        .form-group textarea,
+        .form-group input {
+            width: 100%;
+
+            border: 1px solid #ccd6dc;
+
+            border-radius: 7px;
+
+            padding: 10px;
+
+            font-family: inherit;
+
+            outline: none;
+        }
+
+        .form-group textarea {
+            height: 100px;
+
+            resize: vertical;
+        }
+
+
+        /* =========================
+           STARS
+        ========================= */
+
+        .star-input {
+            display: flex;
+
+            gap: 5px;
+
+            direction: rtl;
+
+            justify-content: flex-end;
+        }
+
+        .star-input input {
+            display: none;
+        }
+
+        .star-input label {
+            font-size: 30px;
+
+            color: #ccc;
+
+            cursor: pointer;
+
+            margin: 0;
+        }
+
+        .star-input input:checked ~ label,
+        .star-input label:hover,
+        .star-input label:hover ~ label {
+            color: #ffc107;
+        }
+
+
+        /* =========================
+           SUBMIT
+        ========================= */
+
+        .submit-review {
+            width: 100%;
+
+            border: none;
+
+            border-radius: 7px;
+
+            background: #008fd0;
+
+            color: white;
+
+            padding: 11px;
+
+            cursor: pointer;
+        }
+
+        .submit-review:hover {
+            background: #0078b2;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            .books {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .popular-books {
+                grid-template-columns: 1fr;
+            }
+
+            .review-search {
+                align-items: stretch;
+            }
+
+        }
+
+
+        @media (max-width: 700px) {
+
+            .top-nav {
+                overflow-x: auto;
+            }
+
+            .nav-menu {
+                justify-content: flex-start;
+
+                width: max-content;
+
+                max-width: none;
+
+                padding: 0 15px;
+
+                gap: 25px;
+            }
+
+            .nav-menu a {
+                font-size: 14px;
+            }
+
+        }
+
+
+        @media (max-width: 500px) {
+
+            .books {
+                grid-template-columns: 1fr;
+            }
+
+            .books-section {
+                padding: 25px 15px;
+            }
+
+            .review-search {
+                flex-direction: column;
+            }
+
+            .search-group select,
+            .search-group input,
+            .search-btn,
+            .write-review-btn {
+                width: 100%;
+            }
+
+            .header h1 {
+                font-size: 23px;
+            }
+
+            .music-player {
+                right: 12px;
+
+                bottom: 12px;
+
+                padding: 6px;
+            }
+
+            .music-info {
+                display: none;
+            }
+
+            .volume-control {
+                width: 60px;
+            }
+
+            .popular-section {
+                padding: 20px 15px;
+            }
+
+        }
+
+    </style>
 
 </head>
 
+
 <body>
 
-```
-<!-- =========================
-     MUSIC
-========================= -->
 
-<audio id="bgMusic" loop>
-    <source src="song.ogg" type="audio/ogg">
-    <source src="song.mp3" type="audio/mpeg">
-</audio>
+    <!-- =========================
+         TOP NAVIGATION
+    ========================= -->
 
+    <nav class="top-nav">
 
-<div class="music-player">
+        <div class="nav-menu">
 
-    <button
-        class="music-button"
-        id="musicButton"
-        type="button"
-        title="เปิด / ปิดเพลง">
+            <a href="activities.html">
+                กิจกรรม
+            </a>
 
-        ▶️
+            <a href="knowledge.html">
+                เรื่องน่ารู้
+            </a>
 
-    </button>
+            <a href="index.html" class="active">
+                รีวิวหนังสือ
+            </a>
 
-    <div class="music-info">
+            <a href="stories.html">
+                แบ่งปันเรื่องราวดีๆ
+            </a>
 
-        <div class="music-title">
-            🎵 เพลงประกอบ
-        </div>
+            <a href="shop.html">
+                ช้อปออนไลน์
+            </a>
 
-        <div
-            class="music-status"
-            id="musicStatus">
-
-            ปิดอยู่
+            <a href="about.html">
+                เกี่ยวกับเรา
+            </a>
 
         </div>
 
-    </div>
-
-    <input
-        type="range"
-        class="volume-control"
-        id="volumeControl"
-        min="0"
-        max="1"
-        step="0.01"
-        value="0.25"
-        title="ระดับเสียง">
-
-</div>
+    </nav>
 
 
-<!-- =========================
-     HEADER
-========================= -->
 
-<div class="header">
+    <!-- =========================
+         MUSIC
+    ========================= -->
 
-    <h1>
-        รีวิวหนังสือ
-    </h1>
+    <audio id="bgMusic" loop>
 
+        <source
+            src="song.ogg"
+            type="audio/ogg">
 
-    <div class="visitor-counter">
+        <source
+            src="song.mp3"
+            type="audio/mpeg">
 
-        👥 ผู้เข้าชมเว็บไซต์
-
-        <strong id="visitorCount">
-            0
-        </strong>
-
-        คน
-
-    </div>
+    </audio>
 
 
-    <div class="review-search">
-
-        <div class="search-group">
-
-            <label>
-                อ่านรีวิว
-            </label>
-
-            <select id="reviewFilter">
-
-                <option value="all">
-                    อ่านรีวิวทั้งหมด
-                </option>
-
-                <option value="reviewed">
-                    เฉพาะหนังสือที่มีรีวิว
-                </option>
-
-            </select>
-
-        </div>
-
-
-        <div class="search-group">
-
-            <label>
-                เลือกอ่านตามประเภทหนังสือ
-            </label>
-
-            <select id="categoryFilter">
-
-                <option value="all">
-                    ประเภทหนังสือทั้งหมด
-                </option>
-
-                <option value="แฟนตาซี">
-                    แฟนตาซี
-                </option>
-
-                <option value="เรื่องสั้น">
-                    เรื่องสั้น
-                </option>
-
-                <option value="เหนือจินตนาการ">
-                    เหนือจินตนาการ
-                </option>
-
-            </select>
-
-        </div>
-
-
-        <div class="search-group">
-
-            <label>
-                ค้นหาหนังสือ
-            </label>
-
-            <input
-                type="text"
-                id="searchInput"
-                placeholder="ชื่อหนังสือ / ผู้เขียน">
-
-        </div>
-
+    <div class="music-player">
 
         <button
-            class="search-btn"
-            onclick="filterBooks()">
+            class="music-button"
+            id="musicButton"
+            type="button"
+            title="เปิด / ปิดเพลง">
 
-            ค้นหา
+            ▶️
 
         </button>
 
 
-        <button
-            class="write-review-btn"
-            onclick="openReviewModal()">
+        <div class="music-info">
 
-            ✎ &nbsp;เขียนรีวิวหนังสือ
+            <div class="music-title">
 
-        </button>
-
-    </div>
-
-</div>
-
-
-<!-- =========================
-     POPULAR BOOKS
-========================= -->
-
-<div class="popular-section">
-
-    <h2 class="popular-title">
-        🔥 หนังสือยอดนิยม
-    </h2>
-
-    <div
-        class="popular-books"
-        id="popularBooks">
-
-    </div>
-
-</div>
-
-
-<!-- =========================
-     BOOKS
-========================= -->
-
-<div class="books-section">
-
-    <h2 class="pick-title">
-        krittapas
-    </h2>
-
-
-    <div
-        class="books"
-        id="booksContainer">
-
-
-        <!-- BOOK 1 -->
-
-        <a
-            href="p1.html"
-            class="book"
-            data-book-id="1"
-            data-category="เรื่องสั้น"
-            data-title="โลกจะแตกแต่การบ้านยังไม่เสร็จ"
-            data-author="Ambatukam">
-
-            <img
-                src="1.png"
-                alt="โลกจะแตกแต่การบ้านยังไม่เสร็จ">
-
-            <div class="book-title">
-                โลกจะแตกแต่การบ้านยังไม่เสร็จ
-            </div>
-
-            <div class="book-author">
-                เรื่องโดย Ambatukam
-            </div>
-
-            <div class="book-info">
-
-                📅 17 ก.พ. 69
-
-                <span class="rating">
-                    ☆ ยังไม่มีคะแนน
-                </span>
+                🎵 เพลงประกอบ
 
             </div>
 
             <div
-                class="review-summary"
-                data-book-id="1">
+                class="music-status"
+                id="musicStatus">
 
-                ยังไม่มีรีวิว
-
-            </div>
-
-        </a>
-
-
-        <!-- BOOK 2 -->
-
-        <a
-            href="p2.html"
-            class="book"
-            data-book-id="2"
-            data-category="เหนือจินตนาการ"
-            data-title="อย่าปลุกผม โลกกำลังพังอยู่"
-            data-author="Ambatukam">
-
-            <img
-                src="2.png"
-                alt="อย่าปลุกผม โลกกำลังพังอยู่">
-
-            <div class="book-title">
-                อย่าปลุกผม โลกกำลังพังอยู่
-            </div>
-
-            <div class="book-author">
-                เรื่องโดย Ambatukam
-            </div>
-
-            <div class="book-info">
-
-                📅 17 ก.พ. 69
-
-                <span class="rating">
-                    ☆ ยังไม่มีคะแนน
-                </span>
+                ปิดอยู่
 
             </div>
-
-            <div
-                class="review-summary"
-                data-book-id="2">
-
-                ยังไม่มีรีวิว
-
-            </div>
-
-        </a>
-
-
-        <!-- BOOK 3 -->
-
-        <a
-            href="p3.html"
-            class="book"
-            data-book-id="3"
-            data-category="แฟนตาซี"
-            data-title="อาณาจักรล่มสลาย แต่ Wi-Fi ยังไม่มี"
-            data-author="Ambatukam">
-
-            <img
-                src="3.png"
-                alt="อาณาจักรล่มสลาย แต่ Wi-Fi ยังไม่มี">
-
-            <div class="book-title">
-                อาณาจักรล่มสลาย แต่ Wi-Fi ยังไม่มี
-            </div>
-
-            <div class="book-author">
-                เรื่องโดย Ambatukam
-            </div>
-
-            <div class="book-info">
-
-                📅 17 ก.พ. 69
-
-                <span class="rating">
-                    ☆ ยังไม่มีคะแนน
-                </span>
-
-            </div>
-
-            <div
-                class="review-summary"
-                data-book-id="3">
-
-                ยังไม่มีรีวิว
-
-            </div>
-
-        </a>
-
-
-        <!-- BOOK 4 -->
-
-        <a
-            href="p4.html"
-            class="book"
-            data-book-id="4"
-            data-category="แฟนตาซี"
-            data-title="SPY067"
-            data-author="Ambatukam">
-
-            <img
-                src="4.png"
-                alt="SPY067">
-
-            <div class="book-title">
-                SPY067
-            </div>
-
-            <div class="book-author">
-                เรื่องโดย Ambatukam
-            </div>
-
-            <div class="book-info">
-
-                📅 17 ก.พ. 69
-
-                <span class="rating">
-                    ☆ ยังไม่มีคะแนน
-                </span>
-
-            </div>
-
-            <div
-                class="review-summary"
-                data-book-id="4">
-
-                ยังไม่มีรีวิว
-
-            </div>
-
-        </a>
-
-
-        <!-- BOOK 5 -->
-
-        <a
-            href="p5.html"
-            class="book"
-            data-book-id="5"
-            data-category="แฟนตาซี"
-            data-title="มังกรจ๋า ไม่ไหวแล้ว"
-            data-author="Ambatukam">
-
-            <img
-                src="5.png"
-                alt="มังกรจ๋า ไม่ไหวแล้ว">
-
-            <div class="book-title">
-                มังกรจ๋า ไม่ไหวแล้ว
-            </div>
-
-            <div class="book-author">
-                เรื่องโดย Ambatukam
-            </div>
-
-            <div class="book-info">
-
-                📅 17 ก.พ. 69
-
-                <span class="rating">
-                    ☆ ยังไม่มีคะแนน
-                </span>
-
-            </div>
-
-            <div
-                class="review-summary"
-                data-book-id="5">
-
-                ยังไม่มีรีวิว
-
-            </div>
-
-        </a>
-
-
-        <!-- BOOK 6 -->
-
-        <a
-            href="p6.html"
-            class="book"
-            data-book-id="6"
-            data-category="เรื่องสั้น"
-            data-title="พี่จ๋า กรุงจะแตกแล้ว"
-            data-author="Ambatukam">
-
-            <img
-                src="6.png"
-                alt="พี่จ๋า กรุงจะแตกแล้ว">
-
-            <div class="book-title">
-                พี่จ๋า กรุงจะแตกแล้ว
-            </div>
-
-            <div class="book-author">
-                เรื่องโดย Ambatukam
-            </div>
-
-            <div class="book-info">
-
-                📅 17 ก.พ. 69
-
-                <span class="rating">
-                    ☆ ยังไม่มีคะแนน
-                </span>
-
-            </div>
-
-            <div
-                class="review-summary"
-                data-book-id="6">
-
-                ยังไม่มีรีวิว
-
-            </div>
-
-        </a>
-
-
-        <!-- BOOK 7 -->
-
-        <a
-            href="p7.html"
-            class="book"
-            data-book-id="7"
-            data-category="เหนือจินตนาการ"
-            data-title="โยมไม่มีบ้าน: THE DOOMDAY"
-            data-author="Ambatukam">
-
-            <img
-                src="7.png"
-                alt="โยมไม่มีบ้าน THE DOOMDAY">
-
-            <div class="book-title">
-                โยมไม่มีบ้าน: THE DOOMDAY
-            </div>
-
-            <div class="book-author">
-                เรื่องโดย Ambatukam
-            </div>
-
-            <div class="book-info">
-
-                📅 17 ก.พ. 69
-
-                <span class="rating">
-                    ☆ ยังไม่มีคะแนน
-                </span>
-
-            </div>
-
-            <div
-                class="review-summary"
-                data-book-id="7">
-
-                ยังไม่มีรีวิว
-
-            </div>
-
-        </a>
-
-
-        <!-- BOOK 8 -->
-
-        <a
-            href="p8.html"
-            class="book"
-            data-book-id="8"
-            data-category="แฟนตาซี"
-            data-title="เกิดใหม่อีกทีก็เป็นนิสสานนนนไปซะละ"
-            data-author="Ambatukam">
-
-            <img
-                src="8.png"
-                alt="เกิดใหม่อีกทีก็เป็นนิสสานนนนไปซะละ">
-
-            <div class="book-title">
-                เกิดใหม่อีกทีก็เป็นนิสสานนนนไปซะละ
-            </div>
-
-            <div class="book-author">
-                เรื่องโดย Ambatukam
-            </div>
-
-            <div class="book-info">
-
-                📅 17 ก.พ. 69
-
-                <span class="rating">
-                    ☆ ยังไม่มีคะแนน
-                </span>
-
-            </div>
-
-            <div
-                class="review-summary"
-                data-book-id="8">
-
-                ยังไม่มีรีวิว
-
-            </div>
-
-        </a>
-
-
-        <!-- BOOK 9 -->
-
-        <a
-            href="p9.html"
-            class="book"
-            data-book-id="9"
-            data-category="เรื่องสั้น"
-            data-title="รักรักรักรักรักเธอหมดหัวใจจากแฟนสาว 100 คน"
-            data-author="Ambatukam">
-
-            <img
-                src="9.png"
-                alt="รักรักรักรักรักเธอหมดหัวใจจากแฟนสาว 100 คน">
-
-            <div class="book-title">
-                รักรักรักรักรักเธอหมดหัวใจจากแฟนสาว 100 คน
-            </div>
-
-            <div class="book-author">
-                เรื่องโดย Ambatukam
-            </div>
-
-            <div class="book-info">
-
-                📅 17 ก.พ. 69
-
-                <span class="rating">
-                    ☆ ยังไม่มีคะแนน
-                </span>
-
-            </div>
-
-            <div
-                class="review-summary"
-                data-book-id="9">
-
-                ยังไม่มีรีวิว
-
-            </div>
-
-        </a>
-
-
-        <!-- BOOK 10 -->
-
-        <a
-            href="p10.html"
-            class="book"
-            data-book-id="10"
-            data-category="เหนือจินตนาการ"
-            data-title="DIDDY PARTY"
-            data-author="Ambatukam">
-
-            <img
-                src="10.png"
-                alt="DIDDY PARTY">
-
-            <div class="book-title">
-                DIDDY PARTY
-            </div>
-
-            <div class="book-author">
-                เรื่องโดย Ambatukam
-            </div>
-
-            <div class="book-info">
-
-                📅 17 ก.พ. 69
-
-                <span class="rating">
-                    ☆ ยังไม่มีคะแนน
-                </span>
-
-            </div>
-
-            <div
-                class="review-summary"
-                data-book-id="10">
-
-                ยังไม่มีรีวิว
-
-            </div>
-
-        </a>
-
-
-        <div
-            class="no-result"
-            id="noResult">
-
-            ไม่พบหนังสือที่ค้นหา
 
         </div>
 
+
+        <input
+            type="range"
+            class="volume-control"
+            id="volumeControl"
+            min="0"
+            max="1"
+            step="0.01"
+            value="0.25"
+            title="ระดับเสียง">
+
     </div>
 
-</div>
 
 
-<!-- =========================
-     REVIEWS
-========================= -->
+    <!-- =========================
+         HEADER
+    ========================= -->
 
-<div class="reviews-area">
+    <div class="header">
 
-    <h2>
-        รีวิวล่าสุด
-    </h2>
-
-    <div id="reviewsList">
-        ยังไม่มีรีวิว
-    </div>
-
-</div>
+        <h1>
+            รีวิวหนังสือ
+        </h1>
 
 
-<!-- =========================
-     MODAL
-========================= -->
+        <div class="visitor-counter">
 
-<div
-    class="modal"
-    id="reviewModal">
+            👥 ผู้เข้าชมเว็บไซต์
 
-    <div class="modal-box">
+            <strong id="visitorCount">
+                0
+            </strong>
 
-        <button
-            class="close-btn"
-            onclick="closeReviewModal()">
+            คน
 
-            ×
-
-        </button>
-
-        <h2>
-            เขียนรีวิวหนังสือ
-        </h2>
+        </div>
 
 
-        <form id="reviewForm">
+        <div class="review-search">
 
 
-            <div class="form-group">
+            <div class="search-group">
 
                 <label>
-                    เลือกหนังสือ
+                    อ่านรีวิว
                 </label>
 
-                <select
-                    id="reviewBook"
-                    required>
+                <select id="reviewFilter">
 
-                    <option value="">
-                        -- เลือกหนังสือ --
+                    <option value="all">
+                        อ่านรีวิวทั้งหมด
                     </option>
 
-                    <option value="1">
-                        โลกจะแตกแต่การบ้านยังไม่เสร็จ
-                    </option>
-
-                    <option value="2">
-                        อย่าปลุกผม โลกกำลังพังอยู่
-                    </option>
-
-                    <option value="3">
-                        อาณาจักรล่มสลาย แต่ Wi-Fi ยังไม่มี
-                    </option>
-
-                    <option value="4">
-                        SPY067
-                    </option>
-
-                    <option value="5">
-                        มังกรจ๋า ไม่ไหวแล้ว
-                    </option>
-
-                    <option value="6">
-                        พี่จ๋า กรุงจะแตกแล้ว
-                    </option>
-
-                    <option value="7">
-                        โยมไม่มีบ้าน: THE DOOMDAY
-                    </option>
-
-                    <option value="8">
-                        เกิดใหม่อีกทีก็เป็นนิสสานนนนไปซะละ
-                    </option>
-
-                    <option value="9">
-                        รักรักรักรักรักเธอหมดหัวใจจากแฟนสาว 100 คน
-                    </option>
-
-                    <option value="10">
-                        DIDDY PARTY
+                    <option value="reviewed">
+                        เฉพาะหนังสือที่มีรีวิว
                     </option>
 
                 </select>
@@ -1361,373 +1006,894 @@
             </div>
 
 
-            <div class="form-group">
+            <div class="search-group">
 
                 <label>
-                    ให้คะแนน
+                    เลือกอ่านตามประเภทหนังสือ
                 </label>
 
-                <div class="star-input">
+                <select id="categoryFilter">
 
-                    <input
-                        type="radio"
-                        name="rating"
-                        id="star5"
-                        value="5"
-                        required>
+                    <option value="all">
+                        ประเภทหนังสือทั้งหมด
+                    </option>
 
-                    <label for="star5">
-                        ★
-                    </label>
+                    <option value="แฟนตาซี">
+                        แฟนตาซี
+                    </option>
 
-                    <input
-                        type="radio"
-                        name="rating"
-                        id="star4"
-                        value="4">
+                    <option value="เรื่องสั้น">
+                        เรื่องสั้น
+                    </option>
 
-                    <label for="star4">
-                        ★
-                    </label>
+                    <option value="เหนือจินตนาการ">
+                        เหนือจินตนาการ
+                    </option>
 
-                    <input
-                        type="radio"
-                        name="rating"
-                        id="star3"
-                        value="3">
-
-                    <label for="star3">
-                        ★
-                    </label>
-
-                    <input
-                        type="radio"
-                        name="rating"
-                        id="star2"
-                        value="2">
-
-                    <label for="star2">
-                        ★
-                    </label>
-
-                    <input
-                        type="radio"
-                        name="rating"
-                        id="star1"
-                        value="1">
-
-                    <label for="star1">
-                        ★
-                    </label>
-
-                </div>
+                </select>
 
             </div>
 
 
-            <div class="form-group">
+            <div class="search-group">
 
                 <label>
-                    ชื่อผู้รีวิว
+                    ค้นหาหนังสือ
                 </label>
 
                 <input
                     type="text"
-                    id="reviewName"
-                    placeholder="ชื่อของคุณ"
-                    required>
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    รีวิว
-                </label>
-
-                <textarea
-                    id="reviewText"
-                    placeholder="เขียนความคิดเห็นของคุณ..."
-                    required></textarea>
+                    id="searchInput"
+                    placeholder="ชื่อหนังสือ / ผู้เขียน">
 
             </div>
 
 
             <button
-                type="submit"
-                class="submit-review">
+                class="search-btn"
+                onclick="filterBooks()">
 
-                ส่งรีวิว
+                ค้นหา
 
             </button>
 
-        </form>
+
+            <button
+                class="write-review-btn"
+                onclick="openReviewModal()">
+
+                ✎ &nbsp;เขียนรีวิวหนังสือ
+
+            </button>
+
+        </div>
 
     </div>
 
-</div>
 
 
-<!-- =========================
-     JAVASCRIPT
-========================= -->
+    <!-- =========================
+         POPULAR BOOKS
+    ========================= -->
 
-<script>
+    <div class="popular-section">
 
-    /* =========================
-       MUSIC
-    ========================= */
+        <h2 class="popular-title">
 
-    const bgMusic =
-        document.getElementById('bgMusic');
+            🔥 หนังสือยอดนิยม
 
-    const musicButton =
-        document.getElementById('musicButton');
-
-    const musicStatus =
-        document.getElementById('musicStatus');
-
-    const volumeControl =
-        document.getElementById('volumeControl');
+        </h2>
 
 
-    bgMusic.volume = 0.25;
+        <div
+            class="popular-books"
+            id="popularBooks">
+
+        </div>
+
+    </div>
 
 
-    let musicEnabled =
-        localStorage.getItem(
-            'background_music'
-        );
+
+    <!-- =========================
+         BOOKS
+    ========================= -->
+
+    <div class="books-section">
 
 
-    if (musicEnabled === null) {
-        musicEnabled = 'true';
-    }
+        <h2 class="pick-title">
+            krittapas
+        </h2>
 
 
-    function updateMusicButton() {
+        <div
+            class="books"
+            id="booksContainer">
 
-        if (!bgMusic.paused) {
 
-            musicButton.innerHTML = '⏸️';
+            <!-- BOOK 1 -->
 
-            musicStatus.innerText =
-                'กำลังเล่น';
+            <a
+                href="p1.html"
+                class="book"
+                data-book-id="1"
+                data-category="เรื่องสั้น"
+                data-title="โลกจะแตกแต่การบ้านยังไม่เสร็จ"
+                data-author="Ambatukam">
 
-        } else {
+                <img
+                    src="1.png"
+                    alt="โลกจะแตกแต่การบ้านยังไม่เสร็จ">
 
-            musicButton.innerHTML = '▶️';
+                <div class="book-title">
+                    โลกจะแตกแต่การบ้านยังไม่เสร็จ
+                </div>
 
-            musicStatus.innerText =
-                'หยุดอยู่';
+                <div class="book-author">
+                    เรื่องโดย Ambatukam
+                </div>
 
+                <div class="book-info">
+
+                    📅 17 ก.พ. 69
+
+                    <span class="rating">
+                        ☆ ยังไม่มีคะแนน
+                    </span>
+
+                </div>
+
+                <div
+                    class="review-summary"
+                    data-book-id="1">
+
+                    ยังไม่มีรีวิว
+
+                </div>
+
+            </a>
+
+
+
+            <!-- BOOK 2 -->
+
+            <a
+                href="p2.html"
+                class="book"
+                data-book-id="2"
+                data-category="เหนือจินตนาการ"
+                data-title="อย่าปลุกผม โลกกำลังพังอยู่"
+                data-author="Ambatukam">
+
+                <img
+                    src="2.png"
+                    alt="อย่าปลุกผม โลกกำลังพังอยู่">
+
+                <div class="book-title">
+                    อย่าปลุกผม โลกกำลังพังอยู่
+                </div>
+
+                <div class="book-author">
+                    เรื่องโดย Ambatukam
+                </div>
+
+                <div class="book-info">
+
+                    📅 17 ก.พ. 69
+
+                    <span class="rating">
+                        ☆ ยังไม่มีคะแนน
+                    </span>
+
+                </div>
+
+                <div
+                    class="review-summary"
+                    data-book-id="2">
+
+                    ยังไม่มีรีวิว
+
+                </div>
+
+            </a>
+
+
+
+            <!-- BOOK 3 -->
+
+            <a
+                href="p3.html"
+                class="book"
+                data-book-id="3"
+                data-category="แฟนตาซี"
+                data-title="อาณาจักรล่มสลาย แต่ Wi-Fi ยังไม่มี"
+                data-author="Ambatukam">
+
+                <img
+                    src="3.png"
+                    alt="อาณาจักรล่มสลาย แต่ Wi-Fi ยังไม่มี">
+
+                <div class="book-title">
+                    อาณาจักรล่มสลาย แต่ Wi-Fi ยังไม่มี
+                </div>
+
+                <div class="book-author">
+                    เรื่องโดย Ambatukam
+                </div>
+
+                <div class="book-info">
+
+                    📅 17 ก.พ. 69
+
+                    <span class="rating">
+                        ☆ ยังไม่มีคะแนน
+                    </span>
+
+                </div>
+
+                <div
+                    class="review-summary"
+                    data-book-id="3">
+
+                    ยังไม่มีรีวิว
+
+                </div>
+
+            </a>
+
+
+
+            <!-- BOOK 4 -->
+
+            <a
+                href="p4.html"
+                class="book"
+                data-book-id="4"
+                data-category="แฟนตาซี"
+                data-title="SPY067"
+                data-author="Ambatukam">
+
+                <img
+                    src="4.png"
+                    alt="SPY067">
+
+                <div class="book-title">
+                    SPY067
+                </div>
+
+                <div class="book-author">
+                    เรื่องโดย Ambatukam
+                </div>
+
+                <div class="book-info">
+
+                    📅 17 ก.พ. 69
+
+                    <span class="rating">
+                        ☆ ยังไม่มีคะแนน
+                    </span>
+
+                </div>
+
+                <div
+                    class="review-summary"
+                    data-book-id="4">
+
+                    ยังไม่มีรีวิว
+
+                </div>
+
+            </a>
+
+
+
+            <!-- BOOK 5 -->
+
+            <a
+                href="p5.html"
+                class="book"
+                data-book-id="5"
+                data-category="แฟนตาซี"
+                data-title="มังกรจ๋า ไม่ไหวแล้ว"
+                data-author="Ambatukam">
+
+                <img
+                    src="5.png"
+                    alt="มังกรจ๋า ไม่ไหวแล้ว">
+
+                <div class="book-title">
+                    มังกรจ๋า ไม่ไหวแล้ว
+                </div>
+
+                <div class="book-author">
+                    เรื่องโดย Ambatukam
+                </div>
+
+                <div class="book-info">
+
+                    📅 17 ก.พ. 69
+
+                    <span class="rating">
+                        ☆ ยังไม่มีคะแนน
+                    </span>
+
+                </div>
+
+                <div
+                    class="review-summary"
+                    data-book-id="5">
+
+                    ยังไม่มีรีวิว
+
+                </div>
+
+            </a>
+
+
+
+            <!-- BOOK 6 -->
+
+            <a
+                href="p6.html"
+                class="book"
+                data-book-id="6"
+                data-category="เรื่องสั้น"
+                data-title="พี่จ๋า กรุงจะแตกแล้ว"
+                data-author="Ambatukam">
+
+                <img
+                    src="6.png"
+                    alt="พี่จ๋า กรุงจะแตกแล้ว">
+
+                <div class="book-title">
+                    พี่จ๋า กรุงจะแตกแล้ว
+                </div>
+
+                <div class="book-author">
+                    เรื่องโดย Ambatukam
+                </div>
+
+                <div class="book-info">
+
+                    📅 17 ก.พ. 69
+
+                    <span class="rating">
+                        ☆ ยังไม่มีคะแนน
+                    </span>
+
+                </div>
+
+                <div
+                    class="review-summary"
+                    data-book-id="6">
+
+                    ยังไม่มีรีวิว
+
+                </div>
+
+            </a>
+
+
+
+            <!-- BOOK 7 -->
+
+            <a
+                href="p7.html"
+                class="book"
+                data-book-id="7"
+                data-category="เหนือจินตนาการ"
+                data-title="โยมไม่มีบ้าน: THE DOOMDAY"
+                data-author="Ambatukam">
+
+                <img
+                    src="7.png"
+                    alt="โยมไม่มีบ้าน THE DOOMDAY">
+
+                <div class="book-title">
+                    โยมไม่มีบ้าน: THE DOOMDAY
+                </div>
+
+                <div class="book-author">
+                    เรื่องโดย Ambatukam
+                </div>
+
+                <div class="book-info">
+
+                    📅 17 ก.พ. 69
+
+                    <span class="rating">
+                        ☆ ยังไม่มีคะแนน
+                    </span>
+
+                </div>
+
+                <div
+                    class="review-summary"
+                    data-book-id="7">
+
+                    ยังไม่มีรีวิว
+
+                </div>
+
+            </a>
+
+
+
+            <!-- BOOK 8 -->
+
+            <a
+                href="p8.html"
+                class="book"
+                data-book-id="8"
+                data-category="แฟนตาซี"
+                data-title="เกิดใหม่อีกทีก็เป็นนิสสานนนนไปซะละ"
+                data-author="Ambatukam">
+
+                <img
+                    src="8.png"
+                    alt="เกิดใหม่อีกทีก็เป็นนิสสานนนนไปซะละ">
+
+                <div class="book-title">
+                    เกิดใหม่อีกทีก็เป็นนิสสานนนนไปซะละ
+                </div>
+
+                <div class="book-author">
+                    เรื่องโดย Ambatukam
+                </div>
+
+                <div class="book-info">
+
+                    📅 17 ก.พ. 69
+
+                    <span class="rating">
+                        ☆ ยังไม่มีคะแนน
+                    </span>
+
+                </div>
+
+                <div
+                    class="review-summary"
+                    data-book-id="8">
+
+                    ยังไม่มีรีวิว
+
+                </div>
+
+            </a>
+
+
+
+            <!-- BOOK 9 -->
+
+            <a
+                href="p9.html"
+                class="book"
+                data-book-id="9"
+                data-category="เรื่องสั้น"
+                data-title="รักรักรักรักรักเธอหมดหัวใจจากแฟนสาว 100 คน"
+                data-author="Ambatukam">
+
+                <img
+                    src="9.png"
+                    alt="รักรักรักรักรักเธอหมดหัวใจจากแฟนสาว 100 คน">
+
+                <div class="book-title">
+                    รักรักรักรักรักเธอหมดหัวใจจากแฟนสาว 100 คน
+                </div>
+
+                <div class="book-author">
+                    เรื่องโดย Ambatukam
+                </div>
+
+                <div class="book-info">
+
+                    📅 17 ก.พ. 69
+
+                    <span class="rating">
+                        ☆ ยังไม่มีคะแนน
+                    </span>
+
+                </div>
+
+                <div
+                    class="review-summary"
+                    data-book-id="9">
+
+                    ยังไม่มีรีวิว
+
+                </div>
+
+            </a>
+
+
+
+            <!-- BOOK 10 -->
+
+            <a
+                href="p10.html"
+                class="book"
+                data-book-id="10"
+                data-category="เหนือจินตนาการ"
+                data-title="DIDDY PARTY"
+                data-author="Ambatukam">
+
+                <img
+                    src="10.png"
+                    alt="DIDDY PARTY">
+
+                <div class="book-title">
+                    DIDDY PARTY
+                </div>
+
+                <div class="book-author">
+                    เรื่องโดย Ambatukam
+                </div>
+
+                <div class="book-info">
+
+                    📅 17 ก.พ. 69
+
+                    <span class="rating">
+                        ☆ ยังไม่มีคะแนน
+                    </span>
+
+                </div>
+
+                <div
+                    class="review-summary"
+                    data-book-id="10">
+
+                    ยังไม่มีรีวิว
+
+                </div>
+
+            </a>
+
+
+
+            <div
+                class="no-result"
+                id="noResult">
+
+                ไม่พบหนังสือที่ค้นหา
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         REVIEWS
+    ========================= -->
+
+    <div class="reviews-area">
+
+        <h2>
+            รีวิวล่าสุด
+        </h2>
+
+        <div id="reviewsList">
+            ยังไม่มีรีวิว
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         MODAL
+    ========================= -->
+
+    <div
+        class="modal"
+        id="reviewModal">
+
+        <div class="modal-box">
+
+            <button
+                class="close-btn"
+                onclick="closeReviewModal()">
+
+                ×
+
+            </button>
+
+
+            <h2>
+                เขียนรีวิวหนังสือ
+            </h2>
+
+
+            <form id="reviewForm">
+
+
+                <div class="form-group">
+
+                    <label>
+                        เลือกหนังสือ
+                    </label>
+
+                    <select
+                        id="reviewBook"
+                        required>
+
+                        <option value="">
+                            -- เลือกหนังสือ --
+                        </option>
+
+                        <option value="1">
+                            โลกจะแตกแต่การบ้านยังไม่เสร็จ
+                        </option>
+
+                        <option value="2">
+                            อย่าปลุกผม โลกกำลังพังอยู่
+                        </option>
+
+                        <option value="3">
+                            อาณาจักรล่มสลาย แต่ Wi-Fi ยังไม่มี
+                        </option>
+
+                        <option value="4">
+                            SPY067
+                        </option>
+
+                        <option value="5">
+                            มังกรจ๋า ไม่ไหวแล้ว
+                        </option>
+
+                        <option value="6">
+                            พี่จ๋า กรุงจะแตกแล้ว
+                        </option>
+
+                        <option value="7">
+                            โยมไม่มีบ้าน: THE DOOMDAY
+                        </option>
+
+                        <option value="8">
+                            เกิดใหม่อีกทีก็เป็นนิสสานนนนไปซะละ
+                        </option>
+
+                        <option value="9">
+                            รักรักรักรักรักเธอหมดหัวใจจากแฟนสาว 100 คน
+                        </option>
+
+                        <option value="10">
+                            DIDDY PARTY
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label>
+                        ให้คะแนน
+                    </label>
+
+                    <div class="star-input">
+
+
+                        <input
+                            type="radio"
+                            name="rating"
+                            id="star5"
+                            value="5"
+                            required>
+
+                        <label for="star5">
+                            ★
+                        </label>
+
+
+                        <input
+                            type="radio"
+                            name="rating"
+                            id="star4"
+                            value="4">
+
+                        <label for="star4">
+                            ★
+                        </label>
+
+
+                        <input
+                            type="radio"
+                            name="rating"
+                            id="star3"
+                            value="3">
+
+                        <label for="star3">
+                            ★
+                        </label>
+
+
+                        <input
+                            type="radio"
+                            name="rating"
+                            id="star2"
+                            value="2">
+
+                        <label for="star2">
+                            ★
+                        </label>
+
+
+                        <input
+                            type="radio"
+                            name="rating"
+                            id="star1"
+                            value="1">
+
+                        <label for="star1">
+                            ★
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label>
+                        ชื่อผู้รีวิว
+                    </label>
+
+                    <input
+                        type="text"
+                        id="reviewName"
+                        placeholder="ชื่อของคุณ"
+                        required>
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label>
+                        รีวิว
+                    </label>
+
+                    <textarea
+                        id="reviewText"
+                        placeholder="เขียนความคิดเห็นของคุณ..."
+                        required></textarea>
+
+                </div>
+
+
+
+                <button
+                    type="submit"
+                    class="submit-review">
+
+                    ส่งรีวิว
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+
+        /* =========================
+           MUSIC
+        ========================= */
+
+        const bgMusic =
+            document.getElementById('bgMusic');
+
+        const musicButton =
+            document.getElementById('musicButton');
+
+        const musicStatus =
+            document.getElementById('musicStatus');
+
+        const volumeControl =
+            document.getElementById('volumeControl');
+
+
+        bgMusic.volume = 0.25;
+
+
+        let musicEnabled =
+            localStorage.getItem(
+                'background_music'
+            );
+
+
+        if (musicEnabled === null) {
+            musicEnabled = 'true';
         }
 
-    }
 
+        function updateMusicButton() {
 
-    function playMusic() {
+            if (!bgMusic.paused) {
 
-        bgMusic.play()
-            .then(function() {
-
-                musicEnabled = 'true';
-
-                localStorage.setItem(
-                    'background_music',
-                    'true'
-                );
-
-                updateMusicButton();
-
-            })
-            .catch(function() {
+                musicButton.innerHTML = '⏸️';
 
                 musicStatus.innerText =
-                    'กด ▶️ เพื่อเล่น';
-
-                updateMusicButton();
-
-            });
-
-    }
-
-
-    musicButton.addEventListener(
-        'click',
-        function() {
-
-            if (bgMusic.paused) {
-
-                playMusic();
+                    'กำลังเล่น';
 
             } else {
 
-                bgMusic.pause();
-
-                musicEnabled = 'false';
-
-                localStorage.setItem(
-                    'background_music',
-                    'false'
-                );
-
-                updateMusicButton();
-
-            }
-
-        }
-    );
-
-
-    volumeControl.addEventListener(
-        'input',
-        function() {
-
-            bgMusic.volume =
-                Number(this.value);
-
-            localStorage.setItem(
-                'background_volume',
-                this.value
-            );
-
-        }
-    );
-
-
-    const savedVolume =
-        localStorage.getItem(
-            'background_volume'
-        );
-
-
-    if (savedVolume !== null) {
-
-        bgMusic.volume =
-            Number(savedVolume);
-
-        volumeControl.value =
-            savedVolume;
-
-    }
-
-
-    if (musicEnabled === 'true') {
-
-        bgMusic.play()
-            .then(function() {
-
-                updateMusicButton();
-
-            })
-            .catch(function() {
+                musicButton.innerHTML = '▶️';
 
                 musicStatus.innerText =
-                    'กด ▶️ เพื่อเล่น';
-
-                updateMusicButton();
-
-            });
-
-    } else {
-
-        updateMusicButton();
-
-    }
-
-
-    document.addEventListener(
-        'click',
-        function() {
-
-            if (
-                musicEnabled === 'true' &&
-                bgMusic.paused
-            ) {
-
-                playMusic();
+                    'หยุดอยู่';
 
             }
 
-        },
-        { once: true }
-    );
+        }
 
 
-    /* =========================
-       VISITOR
-    ========================= */
+        function playMusic() {
 
-    let count =
-        localStorage.getItem('page_view');
+            bgMusic.play()
+                .then(function() {
 
+                    musicEnabled = 'true';
 
-    if (count) {
+                    localStorage.setItem(
+                        'background_music',
+                        'true'
+                    );
 
-        count =
-            Number(count) + 1;
+                    updateMusicButton();
 
-    } else {
+                })
+                .catch(function() {
 
-        count = 1;
+                    musicStatus.innerText =
+                        'กด ▶️ เพื่อเล่น';
 
-    }
+                    updateMusicButton();
 
+                });
 
-    localStorage.setItem(
-        'page_view',
-        count
-    );
-
-
-    document
-        .getElementById('visitorCount')
-        .innerText = count;
+        }
 
 
-    /* =========================
-       REVIEWS
-    ========================= */
-
-    let reviews =
-        JSON.parse(
-            localStorage.getItem(
-                'book_reviews'
-            )
-        ) || [];
-
-
-    function openReviewModal() {
-
-        document
-            .getElementById('reviewModal')
-            .classList.add('active');
-
-    }
-
-
-    function closeReviewModal() {
-
-        document
-            .getElementById('reviewModal')
-            .classList.remove('active');
-
-    }
-
-
-    document
-        .getElementById('reviewModal')
-        .addEventListener(
+        musicButton.addEventListener(
             'click',
-            function(event) {
+            function() {
 
-                if (
-                    event.target === this
-                ) {
+                if (bgMusic.paused) {
 
-                    closeReviewModal();
+                    playMusic();
+
+                } else {
+
+                    bgMusic.pause();
+
+                    musicEnabled = 'false';
+
+                    localStorage.setItem(
+                        'background_music',
+                        'false'
+                    );
+
+                    updateMusicButton();
 
                 }
 
@@ -1735,709 +1901,889 @@
         );
 
 
-    /* =========================
-       SUBMIT REVIEW
-    ========================= */
+        volumeControl.addEventListener(
+            'input',
+            function() {
 
-    document
-        .getElementById('reviewForm')
-        .addEventListener(
-            'submit',
-            function(event) {
-
-                event.preventDefault();
-
-
-                const bookSelect =
-                    document.getElementById(
-                        'reviewBook'
-                    );
-
-
-                const bookId =
-                    bookSelect.value;
-
-
-                const bookName =
-                    bookSelect
-                        .options[
-                            bookSelect.selectedIndex
-                        ]
-                        .text;
-
-
-                const name =
-                    document
-                        .getElementById(
-                            'reviewName'
-                        )
-                        .value
-                        .trim();
-
-
-                const text =
-                    document
-                        .getElementById(
-                            'reviewText'
-                        )
-                        .value
-                        .trim();
-
-
-                const rating =
-                    document
-                        .querySelector(
-                            'input[name="rating"]:checked'
-                        )
-                        .value;
-
-
-                const review = {
-
-                    id: Date.now(),
-
-                    bookId:
-                        bookId,
-
-                    bookName:
-                        bookName,
-
-                    name:
-                        name,
-
-                    text:
-                        text,
-
-                    rating:
-                        Number(rating),
-
-                    date:
-                        new Date()
-                            .toLocaleDateString(
-                                'th-TH'
-                            )
-
-                };
-
-
-                reviews.unshift(
-                    review
-                );
-
+                bgMusic.volume =
+                    Number(this.value);
 
                 localStorage.setItem(
-                    'book_reviews',
-                    JSON.stringify(reviews)
-                );
-
-
-                document
-                    .getElementById(
-                        'reviewForm'
-                    )
-                    .reset();
-
-
-                closeReviewModal();
-
-
-                updateReviewDisplay();
-
-
-                alert(
-                    'ส่งรีวิวเรียบร้อยแล้ว ⭐'
+                    'background_volume',
+                    this.value
                 );
 
             }
         );
 
 
-    /* =========================
-       GET REVIEWS
-    ========================= */
-
-    function getBookReviews(bookId) {
-
-        return reviews.filter(
-            review =>
-                review.bookId ===
-                String(bookId)
-        );
-
-    }
+        const savedVolume =
+            localStorage.getItem(
+                'background_volume'
+            );
 
 
-    /* =========================
-       CALCULATE RATING
-    ========================= */
+        if (savedVolume !== null) {
 
-    function getBookRating(bookId) {
+            bgMusic.volume =
+                Number(savedVolume);
 
-        const bookReviews =
-            getBookReviews(bookId);
-
-
-        if (bookReviews.length === 0) {
-
-            return null;
+            volumeControl.value =
+                savedVolume;
 
         }
 
 
-        const total =
-            bookReviews.reduce(
-                function(sum, review) {
+        if (musicEnabled === 'true') {
 
-                    return sum + review.rating;
+            bgMusic.play()
+                .then(function() {
 
-                },
-                0
+                    updateMusicButton();
+
+                })
+                .catch(function() {
+
+                    musicStatus.innerText =
+                        'กด ▶️ เพื่อเล่น';
+
+                    updateMusicButton();
+
+                });
+
+        } else {
+
+            updateMusicButton();
+
+        }
+
+
+        document.addEventListener(
+            'click',
+            function() {
+
+                if (
+                    musicEnabled === 'true' &&
+                    bgMusic.paused
+                ) {
+
+                    playMusic();
+
+                }
+
+            },
+            { once: true }
+        );
+
+
+
+        /* =========================
+           VISITOR
+        ========================= */
+
+        let count =
+            localStorage.getItem(
+                'page_view'
             );
 
 
-        return total / bookReviews.length;
+        if (count) {
 
-    }
+            count =
+                Number(count) + 1;
+
+        } else {
+
+            count = 1;
+
+        }
 
 
-    /* =========================
-       UPDATE BOOK RATINGS
-    ========================= */
+        localStorage.setItem(
+            'page_view',
+            count
+        );
 
-    function updateReviewDisplay() {
 
         document
-            .querySelectorAll(
-                '.review-summary'
-            )
-            .forEach(
-                function(element) {
-
-                    const bookId =
-                        element.dataset.bookId;
+            .getElementById('visitorCount')
+            .innerText = count;
 
 
-                    const bookReviews =
-                        getBookReviews(
-                            bookId
-                        );
+
+        /* =========================
+           REVIEWS
+        ========================= */
+
+        let reviews =
+            JSON.parse(
+                localStorage.getItem(
+                    'book_reviews'
+                )
+            ) || [];
 
 
-                    const bookCard =
-                        element.closest(
-                            '.book'
-                        );
+        function openReviewModal() {
+
+            document
+                .getElementById('reviewModal')
+                .classList.add('active');
+
+        }
 
 
-                    const ratingElement =
-                        bookCard.querySelector(
-                            '.rating'
-                        );
+        function closeReviewModal() {
 
+            document
+                .getElementById('reviewModal')
+                .classList.remove('active');
+
+        }
+
+
+        document
+            .getElementById('reviewModal')
+            .addEventListener(
+                'click',
+                function(event) {
 
                     if (
-                        bookReviews.length === 0
+                        event.target === this
                     ) {
 
+                        closeReviewModal();
+
+                    }
+
+                }
+            );
+
+
+
+        /* =========================
+           SUBMIT REVIEW
+        ========================= */
+
+        document
+            .getElementById('reviewForm')
+            .addEventListener(
+                'submit',
+                function(event) {
+
+                    event.preventDefault();
+
+
+                    const bookSelect =
+                        document.getElementById(
+                            'reviewBook'
+                        );
+
+
+                    const bookId =
+                        bookSelect.value;
+
+
+                    const bookName =
+                        bookSelect
+                            .options[
+                                bookSelect.selectedIndex
+                            ]
+                            .text;
+
+
+                    const name =
+                        document
+                            .getElementById(
+                                'reviewName'
+                            )
+                            .value
+                            .trim();
+
+
+                    const text =
+                        document
+                            .getElementById(
+                                'reviewText'
+                            )
+                            .value
+                            .trim();
+
+
+                    const rating =
+                        document
+                            .querySelector(
+                                'input[name="rating"]:checked'
+                            )
+                            .value;
+
+
+                    const review = {
+
+                        id: Date.now(),
+
+                        bookId:
+                            bookId,
+
+                        bookName:
+                            bookName,
+
+                        name:
+                            name,
+
+                        text:
+                            text,
+
+                        rating:
+                            Number(rating),
+
+                        date:
+                            new Date()
+                                .toLocaleDateString(
+                                    'th-TH'
+                                )
+
+                    };
+
+
+                    reviews.unshift(
+                        review
+                    );
+
+
+                    localStorage.setItem(
+                        'book_reviews',
+                        JSON.stringify(reviews)
+                    );
+
+
+                    document
+                        .getElementById(
+                            'reviewForm'
+                        )
+                        .reset();
+
+
+                    closeReviewModal();
+
+
+                    updateReviewDisplay();
+
+
+                    alert(
+                        'ส่งรีวิวเรียบร้อยแล้ว ⭐'
+                    );
+
+                }
+            );
+
+
+
+        /* =========================
+           GET REVIEWS
+        ========================= */
+
+        function getBookReviews(bookId) {
+
+            return reviews.filter(
+                review =>
+                    review.bookId ===
+                    String(bookId)
+            );
+
+        }
+
+
+
+        /* =========================
+           CALCULATE RATING
+        ========================= */
+
+        function getBookRating(bookId) {
+
+            const bookReviews =
+                getBookReviews(bookId);
+
+
+            if (
+                bookReviews.length === 0
+            ) {
+
+                return null;
+
+            }
+
+
+            const total =
+                bookReviews.reduce(
+                    function(sum, review) {
+
+                        return sum +
+                            review.rating;
+
+                    },
+                    0
+                );
+
+
+            return total /
+                bookReviews.length;
+
+        }
+
+
+
+        /* =========================
+           UPDATE BOOK RATINGS
+        ========================= */
+
+        function updateReviewDisplay() {
+
+            document
+                .querySelectorAll(
+                    '.review-summary'
+                )
+                .forEach(
+                    function(element) {
+
+                        const bookId =
+                            element.dataset.bookId;
+
+
+                        const bookReviews =
+                            getBookReviews(
+                                bookId
+                            );
+
+
+                        const bookCard =
+                            element.closest(
+                                '.book'
+                            );
+
+
+                        const ratingElement =
+                            bookCard.querySelector(
+                                '.rating'
+                            );
+
+
+                        if (
+                            bookReviews.length === 0
+                        ) {
+
+                            element.innerHTML =
+                                'ยังไม่มีรีวิว';
+
+                            ratingElement.innerHTML =
+                                '☆ ยังไม่มีคะแนน';
+
+                            return;
+
+                        }
+
+
+                        const average =
+                            getBookRating(
+                                bookId
+                            );
+
+
                         element.innerHTML =
-                            'ยังไม่มีรีวิว';
+                            '<span class="rating-average">' +
+                            '★ ' +
+                            average.toFixed(1) +
+                            '</span> · ' +
+                            bookReviews.length +
+                            ' รีวิว';
+
 
                         ratingElement.innerHTML =
-                            '☆ ยังไม่มีคะแนน';
+                            '★ ' +
+                            average.toFixed(1);
 
-                        return;
+                    }
+                );
+
+
+            displayReviews();
+
+            updatePopularBooks();
+
+        }
+
+
+
+        /* =========================
+           POPULAR BOOKS
+        ========================= */
+
+        function updatePopularBooks() {
+
+            const popularContainer =
+                document.getElementById(
+                    'popularBooks'
+                );
+
+
+            const books =
+                [
+                    ...document.querySelectorAll(
+                        '.book'
+                    )
+                ];
+
+
+            const ratedBooks =
+                books
+                    .map(function(book) {
+
+                        const bookId =
+                            book.dataset.bookId;
+
+
+                        const bookReviews =
+                            getBookReviews(
+                                bookId
+                            );
+
+
+                        const average =
+                            getBookRating(
+                                bookId
+                            );
+
+
+                        return {
+
+                            id:
+                                bookId,
+
+                            title:
+                                book.dataset.title,
+
+                            image:
+                                book.querySelector(
+                                    'img'
+                                ).src,
+
+                            average:
+                                average,
+
+                            reviews:
+                                bookReviews.length,
+
+                            link:
+                                book.href
+
+                        };
+
+                    })
+                    .filter(function(book) {
+
+                        return (
+                            book.average !== null
+                        );
+
+                    });
+
+
+            ratedBooks.sort(
+                function(a, b) {
+
+                    if (
+                        b.average !==
+                        a.average
+                    ) {
+
+                        return (
+                            b.average -
+                            a.average
+                        );
 
                     }
 
 
-                    const average =
-                        getBookRating(
-                            bookId
-                        );
-
-
-                    element.innerHTML =
-                        '<span class="rating-average">' +
-                        '★ ' +
-                        average.toFixed(1) +
-                        '</span> · ' +
-                        bookReviews.length +
-                        ' รีวิว';
-
-
-                    ratingElement.innerHTML =
-                        '★ ' +
-                        average.toFixed(1);
+                    return (
+                        b.reviews -
+                        a.reviews
+                    );
 
                 }
             );
 
 
-        displayReviews();
-
-        updatePopularBooks();
-
-    }
+            const topBooks =
+                ratedBooks.slice(0, 3);
 
 
-    /* =========================
-       POPULAR BOOKS
-    ========================= */
+            if (
+                topBooks.length === 0
+            ) {
 
-    function updatePopularBooks() {
+                popularContainer.innerHTML = `
 
-        const popularContainer =
-            document.getElementById(
-                'popularBooks'
-            );
+                    <div class="no-popular">
+
+                        ยังไม่มีหนังสือที่มีรีวิว
+
+                        <br>
+
+                        ⭐ มาเป็นคนแรกที่รีวิวหนังสือกันเถอะ!
+
+                    </div>
+
+                `;
+
+                return;
+
+            }
 
 
-        const books =
-            [...document.querySelectorAll('.book')];
+            popularContainer.innerHTML =
+                topBooks
+                    .map(
+                        function(book, index) {
+
+                            const medals = [
+                                '🥇',
+                                '🥈',
+                                '🥉'
+                            ];
 
 
-        const ratedBooks =
-            books
-                .map(function(book) {
+                            return `
+
+                                <a
+                                    href="${book.link}"
+                                    class="popular-book"
+                                    style="text-decoration:none;"
+                                >
+
+                                    <div class="popular-rank">
+
+                                        ${medals[index]}
+
+                                    </div>
+
+
+                                    <img
+                                        src="${book.image}"
+                                        alt="${escapeHTML(book.title)}"
+                                    >
+
+
+                                    <div class="popular-info">
+
+                                        <div class="popular-name">
+
+                                            ${escapeHTML(book.title)}
+
+                                        </div>
+
+
+                                        <div class="popular-rating">
+
+                                            ⭐ ${book.average.toFixed(1)} / 5
+
+                                        </div>
+
+
+                                        <div class="popular-reviews">
+
+                                            ${book.reviews} รีวิว
+
+                                        </div>
+
+                                    </div>
+
+                                </a>
+
+                            `;
+
+                        }
+                    )
+                    .join('');
+
+        }
+
+
+
+        /* =========================
+           DISPLAY REVIEWS
+        ========================= */
+
+        function displayReviews() {
+
+            const reviewsList =
+                document.getElementById(
+                    'reviewsList'
+                );
+
+
+            if (
+                reviews.length === 0
+            ) {
+
+                reviewsList.innerHTML =
+                    'ยังไม่มีรีวิว';
+
+                return;
+
+            }
+
+
+            reviewsList.innerHTML =
+                reviews
+                    .slice(0, 10)
+                    .map(
+                        function(review) {
+
+                            return `
+
+                                <div class="review-item">
+
+                                    <div class="review-book">
+
+                                        ${escapeHTML(
+                                            review.bookName
+                                        )}
+
+                                    </div>
+
+
+                                    <div class="review-stars">
+
+                                        ${'★'.repeat(
+                                            review.rating
+                                        )}
+
+                                        ${'☆'.repeat(
+                                            5 -
+                                            review.rating
+                                        )}
+
+                                    </div>
+
+
+                                    <strong>
+
+                                        ${escapeHTML(
+                                            review.name
+                                        )}
+
+                                    </strong>
+
+
+                                    <small>
+
+                                        · ${review.date}
+
+                                    </small>
+
+
+                                    <p class="review-text">
+
+                                        ${escapeHTML(
+                                            review.text
+                                        )}
+
+                                    </p>
+
+                                </div>
+
+                            `;
+
+                        }
+                    )
+                    .join('');
+
+        }
+
+
+
+        /* =========================
+           SECURITY
+        ========================= */
+
+        function escapeHTML(text) {
+
+            const div =
+                document.createElement(
+                    'div'
+                );
+
+
+            div.textContent = text;
+
+
+            return div.innerHTML;
+
+        }
+
+
+
+        /* =========================
+           SEARCH
+        ========================= */
+
+        function filterBooks() {
+
+            const search =
+                document
+                    .getElementById(
+                        'searchInput'
+                    )
+                    .value
+                    .toLowerCase()
+                    .trim();
+
+
+            const category =
+                document
+                    .getElementById(
+                        'categoryFilter'
+                    )
+                    .value;
+
+
+            const reviewFilter =
+                document
+                    .getElementById(
+                        'reviewFilter'
+                    )
+                    .value;
+
+
+            const books =
+                document.querySelectorAll(
+                    '.book'
+                );
+
+
+            let visible = 0;
+
+
+            books.forEach(
+                function(book) {
+
+                    const title =
+                        book.dataset.title
+                            .toLowerCase();
+
+
+                    const author =
+                        book.dataset.author
+                            .toLowerCase();
+
+
+                    const bookCategory =
+                        book.dataset.category;
+
 
                     const bookId =
                         book.dataset.bookId;
 
-                    const bookReviews =
+
+                    const hasReview =
                         getBookReviews(
                             bookId
-                        );
-
-                    const average =
-                        getBookRating(
-                            bookId
-                        );
+                        ).length > 0;
 
 
-                    return {
-
-                        id:
-                            bookId,
-
-                        title:
-                            book.dataset.title,
-
-                        image:
-                            book.querySelector(
-                                'img'
-                            ).src,
-
-                        average:
-                            average,
-
-                        reviews:
-                            bookReviews.length,
-
-                        link:
-                            book.href
-
-                    };
-
-                })
-                .filter(function(book) {
-
-                    return (
-                        book.average !== null
-                    );
-
-                });
+                    const matchSearch =
+                        title.includes(search) ||
+                        author.includes(search);
 
 
-        /*
-         * เรียงตามคะแนนก่อน
-         * ถ้าคะแนนเท่ากัน ให้ดูจำนวนรีวิว
-         */
+                    const matchCategory =
+                        category === 'all' ||
+                        bookCategory === category;
 
-        ratedBooks.sort(
-            function(a, b) {
 
-                if (
-                    b.average !==
-                    a.average
-                ) {
+                    const matchReview =
+                        reviewFilter === 'all' ||
+                        hasReview;
 
-                    return (
-                        b.average -
-                        a.average
-                    );
+
+                    if (
+                        matchSearch &&
+                        matchCategory &&
+                        matchReview
+                    ) {
+
+                        book.style.display =
+                            'block';
+
+                        visible++;
+
+                    } else {
+
+                        book.style.display =
+                            'none';
+
+                    }
 
                 }
+            );
 
 
-                return (
-                    b.reviews -
-                    a.reviews
-                );
-
-            }
-        );
-
-
-        const topBooks =
-            ratedBooks.slice(0, 3);
-
-
-        if (
-            topBooks.length === 0
-        ) {
-
-            popularContainer.innerHTML = `
-
-                <div class="no-popular">
-
-                    ยังไม่มีหนังสือที่มีรีวิว
-                    <br>
-                    ⭐ มาเป็นคนแรกที่รีวิวหนังสือกันเถอะ!
-
-                </div>
-
-            `;
-
-            return;
+            document
+                .getElementById(
+                    'noResult'
+                )
+                .style.display =
+                    visible === 0
+                        ? 'block'
+                        : 'none';
 
         }
 
 
-        popularContainer.innerHTML =
-            topBooks
-                .map(
-                    function(book, index) {
 
-                        const medals = [
-                            '🥇',
-                            '🥈',
-                            '🥉'
-                        ];
+        /* =========================
+           SEARCH EVENTS
+        ========================= */
 
-
-                        return `
-
-                            <a
-                                href="${book.link}"
-                                class="popular-book"
-                                style="text-decoration:none;"
-                            >
-
-                                <div class="popular-rank">
-
-                                    ${medals[index]}
-
-                                </div>
-
-
-                                <img
-                                    src="${book.image}"
-                                    alt="${escapeHTML(book.title)}"
-                                >
-
-
-                                <div class="popular-info">
-
-                                    <div class="popular-name">
-
-                                        ${escapeHTML(book.title)}
-
-                                    </div>
-
-
-                                    <div class="popular-rating">
-
-                                        ⭐ ${book.average.toFixed(1)} / 5
-
-                                    </div>
-
-
-                                    <div class="popular-reviews">
-
-                                        ${book.reviews} รีวิว
-
-                                    </div>
-
-                                </div>
-
-                            </a>
-
-                        `;
-
-                    }
-                )
-                .join('');
-
-    }
-
-
-    /* =========================
-       DISPLAY REVIEWS
-    ========================= */
-
-    function displayReviews() {
-
-        const reviewsList =
-            document.getElementById(
-                'reviewsList'
+        document
+            .getElementById(
+                'searchInput'
+            )
+            .addEventListener(
+                'input',
+                filterBooks
             );
-
-
-        if (
-            reviews.length === 0
-        ) {
-
-            reviewsList.innerHTML =
-                'ยังไม่มีรีวิว';
-
-            return;
-
-        }
-
-
-        reviewsList.innerHTML =
-            reviews
-                .slice(0, 10)
-                .map(
-                    function(review) {
-
-                        return `
-
-                            <div class="review-item">
-
-                                <div class="review-book">
-
-                                    ${escapeHTML(
-                                        review.bookName
-                                    )}
-
-                                </div>
-
-
-                                <div class="review-stars">
-
-                                    ${'★'.repeat(
-                                        review.rating
-                                    )}
-
-                                    ${'☆'.repeat(
-                                        5 -
-                                        review.rating
-                                    )}
-
-                                </div>
-
-
-                                <strong>
-
-                                    ${escapeHTML(
-                                        review.name
-                                    )}
-
-                                </strong>
-
-
-                                <small>
-
-                                    · ${review.date}
-
-                                </small>
-
-
-                                <p class="review-text">
-
-                                    ${escapeHTML(
-                                        review.text
-                                    )}
-
-                                </p>
-
-                            </div>
-
-                        `;
-
-                    }
-                )
-                .join('');
-
-    }
-
-
-    /* =========================
-       SECURITY
-    ========================= */
-
-    function escapeHTML(text) {
-
-        const div =
-            document.createElement(
-                'div'
-            );
-
-        div.textContent = text;
-
-        return div.innerHTML;
-
-    }
-
-
-    /* =========================
-       SEARCH
-    ========================= */
-
-    function filterBooks() {
-
-        const search =
-            document
-                .getElementById(
-                    'searchInput'
-                )
-                .value
-                .toLowerCase()
-                .trim();
-
-
-        const category =
-            document
-                .getElementById(
-                    'categoryFilter'
-                )
-                .value;
-
-
-        const reviewFilter =
-            document
-                .getElementById(
-                    'reviewFilter'
-                )
-                .value;
-
-
-        const books =
-            document.querySelectorAll(
-                '.book'
-            );
-
-
-        let visible = 0;
-
-
-        books.forEach(
-            function(book) {
-
-                const title =
-                    book.dataset.title
-                        .toLowerCase();
-
-
-                const author =
-                    book.dataset.author
-                        .toLowerCase();
-
-
-                const bookCategory =
-                    book.dataset.category;
-
-
-                const bookId =
-                    book.dataset.bookId;
-
-
-                const hasReview =
-                    getBookReviews(
-                        bookId
-                    ).length > 0;
-
-
-                const matchSearch =
-                    title.includes(search) ||
-                    author.includes(search);
-
-
-                const matchCategory =
-                    category === 'all' ||
-                    bookCategory === category;
-
-
-                const matchReview =
-                    reviewFilter === 'all' ||
-                    hasReview;
-
-
-                if (
-                    matchSearch &&
-                    matchCategory &&
-                    matchReview
-                ) {
-
-                    book.style.display =
-                        'block';
-
-                    visible++;
-
-                } else {
-
-                    book.style.display =
-                        'none';
-
-                }
-
-            }
-        );
 
 
         document
             .getElementById(
-                'noResult'
+                'categoryFilter'
             )
-            .style.display =
-                visible === 0
-                    ? 'block'
-                    : 'none';
-
-    }
+            .addEventListener(
+                'change',
+                filterBooks
+            );
 
 
-    document
-        .getElementById(
-            'searchInput'
-        )
-        .addEventListener(
-            'input',
-            filterBooks
-        );
+        document
+            .getElementById(
+                'reviewFilter'
+            )
+            .addEventListener(
+                'change',
+                filterBooks
+            );
 
 
-    document
-        .getElementById(
-            'categoryFilter'
-        )
-        .addEventListener(
-            'change',
-            filterBooks
-        );
 
+        /* =========================
+           START
+        ========================= */
 
-    document
-        .getElementById(
-            'reviewFilter'
-        )
-        .addEventListener(
-            'change',
-            filterBooks
-        );
+        updateReviewDisplay();
 
+        filterBooks();
 
-    /* =========================
-       START
-    ========================= */
-
-    updateReviewDisplay();
-
-    filterBooks();
-
-</script>
-```
+    </script>
 
 </body>
 
