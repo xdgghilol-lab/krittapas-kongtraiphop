@@ -50,11 +50,9 @@ body {
     text-decoration: none;
 
     font-size: 14px;
-
     padding: 15px 4px;
 
     position: relative;
-
     transition: 0.2s;
 }
 
@@ -70,13 +68,11 @@ body {
     content: "";
 
     position: absolute;
-
     left: 0;
     right: 0;
     bottom: 0;
 
     height: 2px;
-
     background: #2563eb;
 }
 
@@ -108,16 +104,22 @@ header p {
 .nav {
     display: flex;
     justify-content: center;
+
     gap: 10px;
     padding: 20px;
+
     flex-wrap: wrap;
 }
 
 .nav button {
     border: none;
+
     padding: 12px 22px;
+
     border-radius: 10px;
+
     cursor: pointer;
+
     font-size: 16px;
     font-weight: bold;
 }
@@ -146,97 +148,235 @@ header p {
 }
 
 
-/* =========================
-   RESULTS
-========================= */
+/* =====================================================
+   RESULT PAGE
+===================================================== */
 
-.result-card {
+.result-summary {
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, 1fr);
+
+    gap: 10px;
+
+    margin: 20px 0;
+}
+
+.summary-box {
     background: #1f2937;
 
-    padding: 20px;
-    margin-bottom: 20px;
-
-    border-radius: 15px;
-}
-
-.result-title {
-    font-size: 20px;
-    margin-bottom: 15px;
-}
-
-.result-image {
-    width: 100px;
-    height: 125px;
-
-    object-fit: cover;
-
     border-radius: 10px;
+
+    padding: 15px;
+
+    text-align: center;
 }
 
-.stats {
-    display: flex;
-
-    gap: 8px;
-
-    flex-wrap: wrap;
-
-    margin-top: 15px;
-}
-
-.stat {
-    padding: 8px 12px;
-
-    border-radius: 8px;
-
-    color: #111;
+.summary-number {
+    font-size: 28px;
 
     font-weight: bold;
 }
 
-.stat-S {
-    background: #ff5252;
-}
-
-.stat-A {
-    background: #ff914d;
-}
-
-.stat-B {
-    background: #ffd84d;
-}
-
-.stat-C {
-    background: #72d572;
-}
-
-.stat-D {
-    background: #64b5f6;
-}
-
-.total {
-    margin-top: 10px;
-
+.summary-label {
     color: #cbd5e1;
+
+    font-size: 13px;
+
+    margin-top: 5px;
 }
 
 
 /* =========================
-   TIER LIST
+   RESULT BOARD
+========================= */
+
+.result-board {
+    background: #0b1220;
+
+    border-radius: 14px;
+
+    overflow: hidden;
+
+    border: 2px solid #374151;
+
+    margin-top: 20px;
+}
+
+
+/* =========================
+   RESULT TIER
+========================= */
+
+.result-tier {
+    display: flex;
+
+    min-height: 135px;
+
+    border-bottom: 2px solid #374151;
+}
+
+.result-tier:last-child {
+    border-bottom: none;
+}
+
+
+/* =========================
+   RESULT TIER NAME
+========================= */
+
+.result-tier-name {
+    width: 100px;
+    min-width: 100px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 45px;
+
+    font-weight: bold;
+
+    color: #111;
+}
+
+
+/* =========================
+   RESULT BOOK AREA
+========================= */
+
+.result-books {
+    flex: 1;
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    align-content: flex-start;
+
+    align-items: flex-start;
+
+    gap: 10px;
+
+    padding: 10px;
+
+    min-width: 0;
+}
+
+
+/* =========================
+   RESULT BOOK
+========================= */
+
+.result-book {
+    width: 78px;
+    height: 105px;
+
+    border-radius: 7px;
+
+    overflow: hidden;
+
+    position: relative;
+
+    background: #1f2937;
+
+    box-shadow:
+        0 4px 10px rgba(0,0,0,.5);
+
+    transition:
+        transform .15s;
+}
+
+.result-book:hover {
+    transform: translateY(-4px);
+}
+
+.result-book img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+
+/* =========================
+   VOTE COUNT
+========================= */
+
+.result-book-count {
+    position: absolute;
+
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    background:
+        rgba(0,0,0,.78);
+
+    color: white;
+
+    text-align: center;
+
+    font-size: 12px;
+
+    padding: 4px 2px;
+}
+
+
+/* =========================
+   EMPTY
+========================= */
+
+.result-empty {
+    display: flex;
+
+    align-items: center;
+
+    min-height: 100px;
+
+    color: #64748b;
+
+    font-size: 14px;
+}
+
+
+/* =====================================================
+   TIER MAKER
+===================================================== */
+
+.tier-maker {
+    margin-top: 20px;
+}
+
+
+/* =========================
+   TIER
 ========================= */
 
 .tier {
     display: flex;
 
-    min-height: 145px;
+    min-height: 130px;
 
-    margin-bottom: 12px;
+    margin-bottom: 10px;
 
-    border-radius: 12px;
+    border-radius: 8px;
 
     overflow: hidden;
 
     background: #1f2937;
+
+    border: 2px solid #374151;
 }
+
+
+/* =========================
+   TIER NAME
+========================= */
 
 .tier-name {
     width: 110px;
@@ -247,12 +387,25 @@ header p {
     align-items: center;
     justify-content: center;
 
-    font-size: 48px;
+    font-size: 42px;
 
     font-weight: bold;
 
     color: #111;
+
+    cursor: pointer;
+
+    user-select: none;
 }
+
+.tier-name:hover {
+    filter: brightness(1.08);
+}
+
+
+/* =========================
+   TIER COLORS
+========================= */
 
 .S {
     background: #ff5252;
@@ -274,40 +427,77 @@ header p {
     background: #64b5f6;
 }
 
+.E {
+    background: #b388ff;
+}
+
+
+/* =========================
+   DROP ZONE
+========================= */
+
 .drop-zone {
     flex: 1;
 
-    padding: 12px;
+    padding: 8px;
 
     display: flex;
 
     flex-wrap: wrap;
 
-    gap: 12px;
-
     align-content: flex-start;
 
+    gap: 8px;
+
     min-width: 0;
+
+    background: #1f2937;
+
+    transition:
+        background .15s;
+}
+
+.drop-zone.drag-over {
+    background: #334155;
 }
 
 
 /* =========================
-   BOOK IMAGE
+   BOOK
 ========================= */
 
 .image-item {
-    width: 95px;
-    height: 120px;
+    width: 85px;
+    height: 110px;
 
-    border-radius: 9px;
+    border-radius: 7px;
 
     overflow: hidden;
 
     cursor: grab;
 
-    box-shadow: 0 4px 10px rgba(0,0,0,.4);
+    box-shadow:
+        0 4px 10px rgba(0,0,0,.45);
 
     flex-shrink: 0;
+
+    user-select: none;
+
+    transition:
+        transform .12s,
+        opacity .12s;
+}
+
+.image-item:hover {
+    transform: translateY(-2px);
+}
+
+.image-item:active {
+    cursor: grabbing;
+}
+
+.image-item.dragging {
+    opacity: .4;
 }
 
 .image-item img {
@@ -317,10 +507,8 @@ header p {
     object-fit: cover;
 
     display: block;
-}
 
-.image-item:active {
-    cursor: grabbing;
+    pointer-events: none;
 }
 
 
@@ -331,40 +519,85 @@ header p {
 .pool {
     background: #1f2937;
 
-    padding: 20px;
-
-    border-radius: 15px;
-
-    margin-top: 25px;
-}
-
-#imagePool {
-    min-height: 140px;
-
-    border: 2px dashed #64748b;
+    padding: 18px;
 
     border-radius: 10px;
 
-    padding: 12px;
+    margin-top: 18px;
+}
+
+.pool h3 {
+    margin-top: 0;
+}
+
+#imagePool {
+    min-height: 130px;
+
+    border: 2px dashed #64748b;
+
+    border-radius: 8px;
+
+    padding: 10px;
 
     display: flex;
 
     flex-wrap: wrap;
 
-    gap: 12px;
+    gap: 8px;
+
+    align-content: flex-start;
+}
+
+#imagePool.drag-over {
+    background: #334155;
 }
 
 
-/* =========================
+/* =====================================================
+   TOOLBAR
+===================================================== */
+
+.toolbar {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin: 15px 0;
+}
+
+.toolbar button {
+    border: none;
+
+    padding: 10px 14px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    background: #374151;
+
+    color: white;
+}
+
+.toolbar button:hover {
+    background: #4b5563;
+}
+
+
+/* =====================================================
    BUTTONS
-========================= */
+===================================================== */
 
 .buttons {
     display: flex;
 
     justify-content: center;
 
-    gap: 12px;
+    gap: 10px;
 
     margin: 25px 0 50px;
 
@@ -386,7 +619,7 @@ button {
 }
 
 button:hover {
-    opacity: 0.9;
+    opacity: .9;
 }
 
 .submit {
@@ -402,9 +635,9 @@ button:hover {
 }
 
 
-/* =========================
-   TABLET
-========================= */
+/* =====================================================
+   MOBILE
+===================================================== */
 
 @media (max-width: 900px) {
 
@@ -416,37 +649,40 @@ button:hover {
         font-size: 32px;
     }
 
-    .page {
-        width: 92%;
-    }
-
     .tier {
-        min-height: 130px;
+        min-height: 115px;
     }
 
     .tier-name {
         width: 90px;
         min-width: 90px;
 
-        font-size: 40px;
+        font-size: 36px;
     }
 
     .image-item {
-        width: 85px;
-        height: 110px;
+        width: 75px;
+        height: 98px;
     }
 
-    .drop-zone {
-        gap: 10px;
-        padding: 10px;
+    .result-tier {
+        min-height: 115px;
+    }
+
+    .result-tier-name {
+        width: 90px;
+        min-width: 90px;
+
+        font-size: 36px;
+    }
+
+    .result-book {
+        width: 68px;
+        height: 91px;
     }
 
 }
 
-
-/* =========================
-   MOBILE
-========================= */
 
 @media (max-width: 600px) {
 
@@ -523,24 +759,18 @@ button:hover {
     /* PAGE */
 
     .page {
-        width: 94%;
-
-        max-width: 100%;
-    }
-
-    .page h2 {
-        font-size: 21px;
+        width: 95%;
     }
 
 
     /* TIER */
 
     .tier {
-        min-height: 115px;
+        min-height: 95px;
 
-        margin-bottom: 10px;
+        margin-bottom: 8px;
 
-        border-radius: 10px;
+        border-radius: 7px;
     }
 
     .tier-name {
@@ -548,104 +778,128 @@ button:hover {
 
         min-width: 55px;
 
-        font-size: 28px;
+        font-size: 27px;
     }
 
     .drop-zone {
-        padding: 8px;
+        padding: 5px;
 
-        gap: 7px;
-
-        min-width: 0;
+        gap: 5px;
     }
 
 
     /* BOOK */
 
     .image-item {
-        width: 62px;
+        width: 58px;
 
-        height: 82px;
+        height: 77px;
 
-        border-radius: 7px;
+        border-radius: 5px;
     }
 
 
-    /* IMAGE POOL */
+    /* POOL */
 
     .pool {
-        padding: 14px;
+        padding: 12px;
 
-        margin-top: 18px;
-
-        border-radius: 12px;
+        border-radius: 10px;
     }
 
     #imagePool {
-        padding: 8px;
+        min-height: 105px;
 
-        gap: 7px;
+        padding: 7px;
 
-        min-height: 110px;
-    }
-
-
-    /* RESULT */
-
-    .result-card {
-        padding: 15px;
-
-        border-radius: 12px;
-    }
-
-    .result-title {
-        font-size: 17px;
-    }
-
-    .result-image {
-        width: 80px;
-
-        height: 105px;
-    }
-
-
-    /* STATS */
-
-    .stats {
         gap: 5px;
     }
 
-    .stat {
-        padding: 6px 9px;
 
-        font-size: 12px;
+    /* TOOLBAR */
+
+    .toolbar {
+        gap: 6px;
+    }
+
+    .toolbar button {
+        flex: 1;
+
+        min-width: 120px;
+
+        font-size: 13px;
+
+        padding: 10px 8px;
     }
 
 
-    /* BUTTON */
+    /* BUTTONS */
 
     .buttons {
         flex-direction: column;
 
         gap: 8px;
-
-        margin: 20px 0 35px;
     }
 
     .buttons button {
         width: 100%;
+    }
 
-        padding: 13px;
 
-        font-size: 14px;
+    /* RESULT SUMMARY */
+
+    .result-summary {
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 7px;
+    }
+
+    .summary-box {
+        padding: 11px;
+    }
+
+    .summary-number {
+        font-size: 22px;
+    }
+
+
+    /* RESULT BOARD */
+
+    .result-tier {
+        min-height: 95px;
+    }
+
+    .result-tier-name {
+        width: 55px;
+
+        min-width: 55px;
+
+        font-size: 27px;
+    }
+
+    .result-books {
+        padding: 5px;
+
+        gap: 5px;
+    }
+
+    .result-book {
+        width: 55px;
+
+        height: 73px;
+
+        border-radius: 5px;
+    }
+
+    .result-book-count {
+        font-size: 9px;
+
+        padding: 2px;
     }
 
 }
 
-
-/* =========================
-   VERY SMALL MOBILE
-========================= */
 
 @media (max-width: 380px) {
 
@@ -662,25 +916,33 @@ button:hover {
 
         min-width: 48px;
 
-        font-size: 24px;
+        font-size: 23px;
     }
 
     .image-item {
-        width: 55px;
+        width: 52px;
 
-        height: 73px;
+        height: 69px;
     }
 
     .drop-zone {
-        gap: 5px;
+        gap: 4px;
 
-        padding: 6px;
+        padding: 4px;
     }
 
-    .result-image {
-        width: 70px;
+    .result-tier-name {
+        width: 48px;
 
-        height: 92px;
+        min-width: 48px;
+
+        font-size: 23px;
+    }
+
+    .result-book {
+        width: 50px;
+
+        height: 67px;
     }
 
 }
@@ -693,9 +955,9 @@ button:hover {
 <body>
 
 
-<!-- =========================
+<!-- =====================================================
      TOP MENU
-========================= -->
+===================================================== -->
 
 <nav class="top-menu">
 
@@ -711,8 +973,12 @@ button:hover {
         รีวิวหนังสือ
     </a>
 
-    <a href="t.html" class="active-menu">
+    <a
+        href="t.html"
+        class="active-menu">
+
         tier list
+
     </a>
 
     <a href="online.html">
@@ -726,9 +992,9 @@ button:hover {
 </nav>
 
 
-<!-- =========================
+<!-- =====================================================
      HEADER
-========================= -->
+===================================================== -->
 
 <header>
 
@@ -737,15 +1003,15 @@ button:hover {
     </h1>
 
     <p>
-        ดูอันดับหนังสือจากผู้จัดอันดับทั้งหมด
+        จัดอันดับหนังสือแบบ Tier List
     </p>
 
 </header>
 
 
-<!-- =========================
-     NAVIGATION
-========================= -->
+<!-- =====================================================
+     PAGE BUTTONS
+===================================================== -->
 
 <div class="nav">
 
@@ -770,32 +1036,33 @@ button:hover {
 </div>
 
 
-<!-- =========================
+<!-- =====================================================
      RESULT PAGE
-========================= -->
+===================================================== -->
 
 <section
     id="results"
     class="page active-page">
 
     <h2>
-        📊 ผลการจัดอันดับจากผู้ใช้
+        📊 ผลการจัดอันดับ
     </h2>
 
     <p style="color:#cbd5e1;">
 
-        ดูว่าผู้จัดอันดับส่วนใหญ่นำหนังสือแต่ละเล่มไว้ Tier ไหน
+        ดูภาพรวมการจัดอันดับหนังสือทั้งหมดในครั้งเดียว
 
     </p>
+
 
     <div id="resultsContainer"></div>
 
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      RANKING PAGE
-========================= -->
+===================================================== -->
 
 <section
     id="ranking"
@@ -812,99 +1079,156 @@ button:hover {
     </p>
 
 
-    <!-- S -->
+    <!-- TOOLBAR -->
 
-    <div class="tier">
+    <div class="toolbar">
 
-        <div class="tier-name S">
-            S
-        </div>
+        <button onclick="addTier()">
+            ➕ เพิ่ม Tier
+        </button>
+
+        <button onclick="renameSelectedTier()">
+            ✏️ เปลี่ยนชื่อ
+        </button>
+
+        <button onclick="changeSelectedColor()">
+            🎨 เปลี่ยนสี
+        </button>
+
+        <button onclick="deleteSelectedTier()">
+            🗑️ ลบ Tier
+        </button>
+
+    </div>
+
+
+    <!-- TIER MAKER -->
+
+    <div
+        id="tierMaker"
+        class="tier-maker">
+
+
+        <!-- S -->
 
         <div
-            id="tierS"
-            class="drop-zone"
-            ondrop="dropHandler(event)"
-            ondragover="dragoverHandler(event)">
+            class="tier"
+            data-tier="S">
+
+            <div
+                class="tier-name S"
+                onclick="selectTier(this)">
+
+                S
+
+            </div>
+
+            <div
+                id="tierS"
+                class="drop-zone">
+
+            </div>
+
+        </div>
+
+
+        <!-- A -->
+
+        <div
+            class="tier"
+            data-tier="A">
+
+            <div
+                class="tier-name A"
+                onclick="selectTier(this)">
+
+                A
+
+            </div>
+
+            <div
+                id="tierA"
+                class="drop-zone">
+
+            </div>
+
+        </div>
+
+
+        <!-- B -->
+
+        <div
+            class="tier"
+            data-tier="B">
+
+            <div
+                class="tier-name B"
+                onclick="selectTier(this)">
+
+                B
+
+            </div>
+
+            <div
+                id="tierB"
+                class="drop-zone">
+
+            </div>
+
+        </div>
+
+
+        <!-- C -->
+
+        <div
+            class="tier"
+            data-tier="C">
+
+            <div
+                class="tier-name C"
+                onclick="selectTier(this)">
+
+                C
+
+            </div>
+
+            <div
+                id="tierC"
+                class="drop-zone">
+
+            </div>
+
+        </div>
+
+
+        <!-- D -->
+
+        <div
+            class="tier"
+            data-tier="D">
+
+            <div
+                class="tier-name D"
+                onclick="selectTier(this)">
+
+                D
+
+            </div>
+
+            <div
+                id="tierD"
+                class="drop-zone">
+
+            </div>
+
         </div>
 
     </div>
 
 
-    <!-- A -->
-
-    <div class="tier">
-
-        <div class="tier-name A">
-            A
-        </div>
-
-        <div
-            id="tierA"
-            class="drop-zone"
-            ondrop="dropHandler(event)"
-            ondragover="dragoverHandler(event)">
-        </div>
-
-    </div>
-
-
-    <!-- B -->
-
-    <div class="tier">
-
-        <div class="tier-name B">
-            B
-        </div>
-
-        <div
-            id="tierB"
-            class="drop-zone"
-            ondrop="dropHandler(event)"
-            ondragover="dragoverHandler(event)">
-        </div>
-
-    </div>
-
-
-    <!-- C -->
-
-    <div class="tier">
-
-        <div class="tier-name C">
-            C
-        </div>
-
-        <div
-            id="tierC"
-            class="drop-zone"
-            ondrop="dropHandler(event)"
-            ondragover="dragoverHandler(event)">
-        </div>
-
-    </div>
-
-
-    <!-- D -->
-
-    <div class="tier">
-
-        <div class="tier-name D">
-            D
-        </div>
-
-        <div
-            id="tierD"
-            class="drop-zone"
-            ondrop="dropHandler(event)"
-            ondragover="dragoverHandler(event)">
-        </div>
-
-    </div>
-
-
-    <!-- =========================
-         IMAGE POOL
-    ========================== -->
+    <!-- =================================================
+         BOOK POOL
+    ================================================== -->
 
     <div class="pool">
 
@@ -912,151 +1236,14 @@ button:hover {
             🖼️ หนังสือทั้งหมด
         </h3>
 
-        <div
-            id="imagePool"
-            ondrop="dropHandler(event)"
-            ondragover="dragoverHandler(event)"
-        >
-
-
-            <!-- 1 -->
-
-            <div
-                id="image1"
-                class="image-item"
-                draggable="true"
-                ondragstart="dragstartHandler(event)">
-
-                <img src="1.png">
-
-            </div>
-
-
-            <!-- 2 -->
-
-            <div
-                id="image2"
-                class="image-item"
-                draggable="true"
-                ondragstart="dragstartHandler(event)">
-
-                <img src="2.png">
-
-            </div>
-
-
-            <!-- 3 -->
-
-            <div
-                id="image3"
-                class="image-item"
-                draggable="true"
-                ondragstart="dragstartHandler(event)">
-
-                <img src="3.png">
-
-            </div>
-
-
-            <!-- 4 -->
-
-            <div
-                id="image4"
-                class="image-item"
-                draggable="true"
-                ondragstart="dragstartHandler(event)">
-
-                <img src="4.png">
-
-            </div>
-
-
-            <!-- 5 -->
-
-            <div
-                id="image5"
-                class="image-item"
-                draggable="true"
-                ondragstart="dragstartHandler(event)">
-
-                <img src="5.png">
-
-            </div>
-
-
-            <!-- 6 -->
-
-            <div
-                id="image6"
-                class="image-item"
-                draggable="true"
-                ondragstart="dragstartHandler(event)">
-
-                <img src="6.png">
-
-            </div>
-
-
-            <!-- 7 -->
-
-            <div
-                id="image7"
-                class="image-item"
-                draggable="true"
-                ondragstart="dragstartHandler(event)">
-
-                <img src="7.png">
-
-            </div>
-
-
-            <!-- 8 -->
-
-            <div
-                id="image8"
-                class="image-item"
-                draggable="true"
-                ondragstart="dragstartHandler(event)">
-
-                <img src="8.png">
-
-            </div>
-
-
-            <!-- 9 -->
-
-            <div
-                id="image9"
-                class="image-item"
-                draggable="true"
-                ondragstart="dragstartHandler(event)">
-
-                <img src="9.png">
-
-            </div>
-
-
-            <!-- 10 -->
-
-            <div
-                id="image10"
-                class="image-item"
-                draggable="true"
-                ondragstart="dragstartHandler(event)">
-
-                <img src="10.png">
-
-            </div>
-
-
-        </div>
+        <div id="imagePool"></div>
 
     </div>
 
 
-    <!-- =========================
+    <!-- =================================================
          BUTTONS
-    ========================== -->
+    ================================================== -->
 
     <div class="buttons">
 
@@ -1085,83 +1272,337 @@ button:hover {
 <script>
 
 
-/* =====================================
-   DRAG AND DROP API
-===================================== */
+/* =====================================================
+   SETTINGS
+===================================================== */
 
-function dragstartHandler(ev) {
+const bookCount = 10;
 
-    ev.dataTransfer.setData(
-        "text",
-        ev.target.id
+let selectedTier = null;
+
+
+/* =====================================================
+   CREATE BOOKS
+===================================================== */
+
+function createBooks() {
+
+    const pool =
+        document.getElementById(
+            "imagePool"
+        );
+
+
+    pool.innerHTML = "";
+
+
+    for (
+        let i = 1;
+        i <= bookCount;
+        i++
+    ) {
+
+        const item =
+            document.createElement(
+                "div"
+            );
+
+
+        item.className =
+            "image-item";
+
+
+        item.id =
+            "image" + i;
+
+
+        item.draggable =
+            true;
+
+
+        item.innerHTML = `
+
+            <img
+                src="${i}.png"
+                alt="หนังสือ ${i}">
+
+        `;
+
+
+        item.addEventListener(
+            "dragstart",
+            dragstartHandler
+        );
+
+
+        item.addEventListener(
+            "dragend",
+            dragendHandler
+        );
+
+
+        pool.appendChild(
+            item
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   DRAG START
+===================================================== */
+
+function dragstartHandler(event) {
+
+    event.dataTransfer.effectAllowed =
+        "move";
+
+
+    event.dataTransfer.setData(
+        "text/plain",
+        event.currentTarget.id
+    );
+
+
+    event.currentTarget.classList.add(
+        "dragging"
     );
 
 }
 
 
-function dragoverHandler(ev) {
+/* =====================================================
+   DRAG END
+===================================================== */
 
-    ev.preventDefault();
+function dragendHandler(event) {
+
+    event.currentTarget.classList.remove(
+        "dragging"
+    );
+
+
+    document
+        .querySelectorAll(
+            ".drag-over"
+        )
+        .forEach(
+            element => {
+
+                element.classList.remove(
+                    "drag-over"
+                );
+
+            }
+        );
 
 }
 
 
-function dropHandler(ev) {
+/* =====================================================
+   DRAG OVER
+===================================================== */
 
-    ev.preventDefault();
+document.addEventListener(
+    "dragover",
+    function(event) {
 
-
-    const data =
-        ev.dataTransfer.getData("text");
-
-
-    const image =
-        document.getElementById(data);
-
-
-    if (!image) return;
-
-
-    let target = ev.target;
-
-
-    if (
-        !target.classList.contains("drop-zone") &&
-        target.id !== "imagePool"
-    ) {
-
-        target =
-            target.closest(
+        const zone =
+            event.target.closest(
                 ".drop-zone, #imagePool"
             );
 
+
+        if (!zone)
+            return;
+
+
+        event.preventDefault();
+
     }
+);
 
 
-    if (target) {
+/* =====================================================
+   DRAG ENTER
+===================================================== */
 
-        target.appendChild(image);
+document.addEventListener(
+    "dragenter",
+    function(event) {
+
+        const zone =
+            event.target.closest(
+                ".drop-zone, #imagePool"
+            );
+
+
+        if (!zone)
+            return;
+
+
+        zone.classList.add(
+            "drag-over"
+        );
 
     }
+);
 
-}
+
+/* =====================================================
+   DRAG LEAVE
+===================================================== */
+
+document.addEventListener(
+    "dragleave",
+    function(event) {
+
+        const zone =
+            event.target.closest(
+                ".drop-zone, #imagePool"
+            );
 
 
-/* =====================================
+        if (!zone)
+            return;
+
+
+        if (
+            !zone.contains(
+                event.relatedTarget
+            )
+        ) {
+
+            zone.classList.remove(
+                "drag-over"
+            );
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   DROP
+===================================================== */
+
+document.addEventListener(
+    "drop",
+    function(event) {
+
+        const zone =
+            event.target.closest(
+                ".drop-zone, #imagePool"
+            );
+
+
+        if (!zone)
+            return;
+
+
+        event.preventDefault();
+
+
+        zone.classList.remove(
+            "drag-over"
+        );
+
+
+        const id =
+            event.dataTransfer.getData(
+                "text/plain"
+            );
+
+
+        const image =
+            document.getElementById(
+                id
+            );
+
+
+        if (!image)
+            return;
+
+
+        /*
+            ถ้าวางบนหนังสือ
+            จะจัดตำแหน่งก่อน/หลัง
+        */
+
+        const targetBook =
+            event.target.closest(
+                ".image-item"
+            );
+
+
+        if (
+            targetBook &&
+            targetBook !== image &&
+            targetBook.parentElement === zone
+        ) {
+
+            const rect =
+                targetBook.getBoundingClientRect();
+
+
+            const middle =
+                rect.left +
+                rect.width / 2;
+
+
+            if (
+                event.clientX <
+                middle
+            ) {
+
+                zone.insertBefore(
+                    image,
+                    targetBook
+                );
+
+            } else {
+
+                zone.insertBefore(
+                    image,
+                    targetBook.nextSibling
+                );
+
+            }
+
+        } else {
+
+            zone.appendChild(
+                image
+            );
+
+        }
+
+    }
+);
+
+
+/* =====================================================
    PAGE SWITCH
-===================================== */
+===================================================== */
 
 function showPage(page) {
 
     document
-        .querySelectorAll(".page")
-        .forEach(p => {
+        .querySelectorAll(
+            ".page"
+        )
+        .forEach(
+            element => {
 
-            p.classList.remove(
-                "active-page"
-            );
+                element.classList.remove(
+                    "active-page"
+                );
 
-        });
+            }
+        );
 
 
     document
@@ -1172,23 +1613,31 @@ function showPage(page) {
 
 
     document
-        .querySelectorAll(".nav button")
-        .forEach(b => {
+        .querySelectorAll(
+            ".nav button"
+        )
+        .forEach(
+            button => {
 
-            b.classList.remove(
-                "active"
-            );
+                button.classList.remove(
+                    "active"
+                );
 
-        });
+            }
+        );
 
 
-    if (page === "results") {
+    if (
+        page === "results"
+    ) {
 
         document
             .getElementById(
                 "resultButton"
             )
-            .classList.add("active");
+            .classList.add(
+                "active"
+            );
 
     } else {
 
@@ -1196,59 +1645,143 @@ function showPage(page) {
             .getElementById(
                 "rankingButton"
             )
-            .classList.add("active");
+            .classList.add(
+                "active"
+            );
 
     }
 
 }
 
 
-/* =====================================
-   SUBMIT RANKING
-===================================== */
+/* =====================================================
+   SELECT TIER
+===================================================== */
 
-function submitRanking() {
+function selectTier(element) {
 
-    const tiers = [
-        "tierS",
-        "tierA",
-        "tierB",
-        "tierC",
-        "tierD"
-    ];
+    document
+        .querySelectorAll(
+            ".tier-name"
+        )
+        .forEach(
+            name => {
 
+                name.style.outline =
+                    "none";
 
-    let ranking = {};
-
-    let total = 0;
-
-
-    tiers.forEach(tier => {
-
-        document
-            .getElementById(tier)
-            .querySelectorAll(".image-item")
-            .forEach(image => {
-
-                ranking[image.id] =
-                    tier.replace(
-                        "tier",
-                        ""
-                    );
-
-                total++;
-
-            });
-
-    });
+            }
+        );
 
 
-    /* ต้องจัดครบ 10 รูป */
+    element.style.outline =
+        "4px solid white";
 
-    if (total !== 10) {
+
+    selectedTier =
+        element.closest(
+            ".tier"
+        );
+
+}
+
+
+/* =====================================================
+   ADD TIER
+===================================================== */
+
+function addTier() {
+
+    const maker =
+        document.getElementById(
+            "tierMaker"
+        );
+
+
+    const tier =
+        document.createElement(
+            "div"
+        );
+
+
+    tier.className =
+        "tier";
+
+
+    const number =
+        maker.querySelectorAll(
+            ".tier"
+        ).length + 1;
+
+
+    tier.dataset.tier =
+        "custom" + number;
+
+
+    const name =
+        document.createElement(
+            "div"
+        );
+
+
+    name.className =
+        "tier-name E";
+
+
+    name.textContent =
+        "NEW";
+
+
+    name.onclick =
+        function() {
+
+            selectTier(this);
+
+        };
+
+
+    const zone =
+        document.createElement(
+            "div"
+        );
+
+
+    zone.className =
+        "drop-zone";
+
+
+    tier.appendChild(
+        name
+    );
+
+
+    tier.appendChild(
+        zone
+    );
+
+
+    maker.appendChild(
+        tier
+    );
+
+
+    selectTier(
+        name
+    );
+
+}
+
+
+/* =====================================================
+   RENAME TIER
+===================================================== */
+
+function renameSelectedTier() {
+
+    if (!selectedTier) {
 
         alert(
-            "⚠️ กรุณาจัดอันดับให้ครบทั้ง 10 รูปก่อนส่ง"
+            "⚠️ กรุณาคลิกชื่อ Tier ที่ต้องการแก้ก่อน"
         );
 
         return;
@@ -1256,7 +1789,265 @@ function submitRanking() {
     }
 
 
-    /* ดึงข้อมูลเดิม */
+    const nameElement =
+        selectedTier.querySelector(
+            ".tier-name"
+        );
+
+
+    const newName =
+        prompt(
+            "ใส่ชื่อ Tier ใหม่:",
+            nameElement.textContent
+        );
+
+
+    if (
+        newName !== null &&
+        newName.trim() !== ""
+    ) {
+
+        nameElement.textContent =
+            newName.trim();
+
+    }
+
+}
+
+
+/* =====================================================
+   CHANGE COLOR
+===================================================== */
+
+function changeSelectedColor() {
+
+    if (!selectedTier) {
+
+        alert(
+            "⚠️ กรุณาเลือก Tier ก่อน"
+        );
+
+        return;
+
+    }
+
+
+    const color =
+        prompt(
+            "ใส่สี HEX เช่น #ff5252",
+            "#ff5252"
+        );
+
+
+    if (
+        color &&
+        /^#[0-9A-F]{6}$/i.test(
+            color
+        )
+    ) {
+
+        selectedTier
+            .querySelector(
+                ".tier-name"
+            )
+            .style.background =
+            color;
+
+    } else if (color) {
+
+        alert(
+            "❌ รูปแบบสีไม่ถูกต้อง"
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   DELETE TIER
+===================================================== */
+
+function deleteSelectedTier() {
+
+    if (!selectedTier) {
+
+        alert(
+            "⚠️ กรุณาเลือก Tier ก่อน"
+        );
+
+        return;
+
+    }
+
+
+    const confirmDelete =
+        confirm(
+            "ต้องการลบ Tier นี้หรือไม่?\nหนังสือใน Tier จะถูกส่งกลับไปที่หนังสือทั้งหมด"
+        );
+
+
+    if (!confirmDelete)
+        return;
+
+
+    const pool =
+        document.getElementById(
+            "imagePool"
+        );
+
+
+    selectedTier
+        .querySelectorAll(
+            ".image-item"
+        )
+        .forEach(
+            image => {
+
+                pool.appendChild(
+                    image
+                );
+
+            }
+        );
+
+
+    selectedTier.remove();
+
+
+    selectedTier = null;
+
+}
+
+
+/* =====================================================
+   RESET
+===================================================== */
+
+function resetRanking() {
+
+    const pool =
+        document.getElementById(
+            "imagePool"
+        );
+
+
+    document
+        .querySelectorAll(
+            ".drop-zone .image-item"
+        )
+        .forEach(
+            image => {
+
+                pool.appendChild(
+                    image
+                );
+
+            }
+        );
+
+
+    selectedTier = null;
+
+
+    document
+        .querySelectorAll(
+            ".tier-name"
+        )
+        .forEach(
+            name => {
+
+                name.style.outline =
+                    "none";
+
+            }
+        );
+
+
+    alert(
+        "🔄 รีเซ็ตการจัดอันดับแล้ว"
+    );
+
+}
+
+
+/* =====================================================
+   SUBMIT RANKING
+===================================================== */
+
+function submitRanking() {
+
+    const tiers =
+        document.querySelectorAll(
+            "#tierMaker .tier"
+        );
+
+
+    let ranking = {};
+
+    let total = 0;
+
+
+    tiers.forEach(
+        (tier, index) => {
+
+            const name =
+                tier
+                    .querySelector(
+                        ".tier-name"
+                    )
+                    .textContent
+                    .trim();
+
+
+            const books =
+                tier.querySelectorAll(
+                    ".image-item"
+                );
+
+
+            books.forEach(
+                (book, position) => {
+
+                    ranking[
+                        book.id
+                    ] = {
+
+                        tier:
+                            name,
+
+                        position:
+                            position,
+
+                        tierIndex:
+                            index
+
+                    };
+
+
+                    total++;
+
+                }
+            );
+
+        }
+    );
+
+
+    /* ต้องครบ 10 เล่ม */
+
+    if (
+        total !== bookCount
+    ) {
+
+        alert(
+            "⚠️ กรุณาจัดอันดับให้ครบทั้ง 10 เล่มก่อนส่ง"
+        );
+
+        return;
+
+    }
+
 
     let allRankings =
         JSON.parse(
@@ -1266,14 +2057,16 @@ function submitRanking() {
         );
 
 
-    /* เพิ่มการจัดอันดับ */
-
-    allRankings.push(ranking);
+    allRankings.push(
+        ranking
+    );
 
 
     localStorage.setItem(
         "allBookRankings",
-        JSON.stringify(allRankings)
+        JSON.stringify(
+            allRankings
+        )
     );
 
 
@@ -1282,17 +2075,19 @@ function submitRanking() {
     );
 
 
-    showPage("results");
-
-
     displayResults();
+
+
+    showPage(
+        "results"
+    );
 
 }
 
 
-/* =====================================
+/* =====================================================
    DISPLAY RESULTS
-===================================== */
+===================================================== */
 
 function displayResults() {
 
@@ -1313,14 +2108,20 @@ function displayResults() {
         );
 
 
-    if (allRankings.length === 0) {
+    /* =========================
+       NO DATA
+    ========================= */
+
+    if (
+        allRankings.length === 0
+    ) {
 
         container.innerHTML = `
 
             <div class="result-card">
 
                 <h3>
-                    ยังไม่มีการจัดอันดับ
+                    📊 ยังไม่มีผลการจัดอันดับ
                 </h3>
 
                 <p>
@@ -1336,141 +2137,467 @@ function displayResults() {
     }
 
 
-    /* สร้างผลรวม */
+    /* =========================
+       BOOK DATA
+    ========================= */
+
+    const books = {};
+
 
     for (
         let i = 1;
-        i <= 10;
+        i <= bookCount;
         i++
     ) {
 
-        const counts = {
+        books[
+            "image" + i
+        ] = {
 
-            S: 0,
-            A: 0,
-            B: 0,
-            C: 0,
-            D: 0
+            id:
+                "image" + i,
+
+            image:
+                i + ".png",
+
+            votes: {}
 
         };
 
-
-        allRankings.forEach(ranking => {
-
-            const tier =
-                ranking["image" + i];
+    }
 
 
-            if (tier) {
+    /* =========================
+       COUNT VOTES
+    ========================= */
 
-                counts[tier]++;
+    allRankings.forEach(
+        ranking => {
 
-            }
+            Object.keys(
+                ranking
+            ).forEach(
+                bookId => {
 
-        });
+                    const data =
+                        ranking[
+                            bookId
+                        ];
 
 
-        const total =
-            allRankings.length;
+                    if (
+                        !books[bookId]
+                    )
+                        return;
 
 
-        const card =
-            document.createElement(
-                "div"
+                    const tier =
+                        typeof data === "string"
+                            ? data
+                            : data.tier;
+
+
+                    if (
+                        !books[
+                            bookId
+                        ].votes[tier]
+                    ) {
+
+                        books[
+                            bookId
+                        ].votes[tier] = 0;
+
+                    }
+
+
+                    books[
+                        bookId
+                    ].votes[tier]++;
+
+                }
+            );
+
+        }
+    );
+
+
+    /* =========================
+       FIND BEST TIER
+    ========================= */
+
+    const tierBooks = {
+
+        S: [],
+        A: [],
+        B: [],
+        C: [],
+        D: []
+
+    };
+
+
+    Object.keys(
+        books
+    ).forEach(
+        bookId => {
+
+            const book =
+                books[bookId];
+
+
+            const votes =
+                book.votes;
+
+
+            let bestTier = null;
+
+            let bestVotes = 0;
+
+
+            Object.keys(
+                votes
+            ).forEach(
+                tier => {
+
+                    if (
+                        votes[tier] >
+                        bestVotes
+                    ) {
+
+                        bestVotes =
+                            votes[tier];
+
+                        bestTier =
+                            tier;
+
+                    }
+
+                }
             );
 
 
-        card.className =
-            "result-card";
+            /*
+                ถ้าไม่มีข้อมูล
+                ไม่ต้องแสดง
+            */
+
+            if (!bestTier)
+                return;
 
 
-        card.innerHTML = `
+            if (
+                !tierBooks[bestTier]
+            ) {
 
-            <div class="result-title">
+                tierBooks[
+                    bestTier
+                ] = [];
 
-                📖 หนังสือ / ภาพที่ ${i}
-
-            </div>
-
-
-            <img
-                class="result-image"
-                src="image${i}.jpg"
-            >
+            }
 
 
-            <div class="stats">
+            tierBooks[
+                bestTier
+            ].push({
 
-                <div class="stat stat-S">
-                    S: ${counts.S}
-                </div>
+                ...book,
 
-                <div class="stat stat-A">
-                    A: ${counts.A}
-                </div>
+                bestVotes:
+                    bestVotes
 
-                <div class="stat stat-B">
-                    B: ${counts.B}
-                </div>
+            });
 
-                <div class="stat stat-C">
-                    C: ${counts.C}
-                </div>
-
-                <div class="stat stat-D">
-                    D: ${counts.D}
-                </div>
-
-            </div>
+        }
+    );
 
 
-            <div class="total">
+    /* =========================
+       SUMMARY
+    ========================= */
 
-                👥 ผู้จัดอันดับทั้งหมด:
-                ${total} คน
-
-            </div>
-
-        `;
-
-
-        container.appendChild(card);
-
-    }
-
-}
-
-
-/* =====================================
-   RESET CURRENT RANKING
-===================================== */
-
-function resetRanking() {
-
-    const pool =
-        document.getElementById(
-            "imagePool"
+    const summary =
+        document.createElement(
+            "div"
         );
 
 
-    document
-        .querySelectorAll(
-            ".image-item"
-        )
-        .forEach(image => {
+    summary.className =
+        "result-summary";
 
-            pool.appendChild(image);
 
-        });
+    const summaryTiers =
+        [
+            "S",
+            "A",
+            "B",
+            "C",
+            "D"
+        ];
+
+
+    summaryTiers.forEach(
+        tier => {
+
+            const count =
+                tierBooks[tier]
+                    ? tierBooks[tier].length
+                    : 0;
+
+
+            summary.innerHTML += `
+
+                <div class="summary-box">
+
+                    <div class="summary-number">
+
+                        ${count}
+
+                    </div>
+
+                    <div class="summary-label">
+
+                        หนังสือ Tier ${tier}
+
+                    </div>
+
+                </div>
+
+            `;
+
+        }
+    );
+
+
+    container.appendChild(
+        summary
+    );
+
+
+    /* =========================
+       BOARD
+    ========================= */
+
+    const board =
+        document.createElement(
+            "div"
+        );
+
+
+    board.className =
+        "result-board";
+
+
+    const colors = {
+
+        S:
+            "#ff5252",
+
+        A:
+            "#ff914d",
+
+        B:
+            "#ffd84d",
+
+        C:
+            "#72d572",
+
+        D:
+            "#64b5f6"
+
+    };
+
+
+    summaryTiers.forEach(
+        tier => {
+
+            const row =
+                document.createElement(
+                    "div"
+                );
+
+
+            row.className =
+                "result-tier";
+
+
+            const name =
+                document.createElement(
+                    "div"
+                );
+
+
+            name.className =
+                "result-tier-name";
+
+
+            name.textContent =
+                tier;
+
+
+            name.style.background =
+                colors[tier];
+
+
+            const booksArea =
+                document.createElement(
+                    "div"
+                );
+
+
+            booksArea.className =
+                "result-books";
+
+
+            const list =
+                tierBooks[tier] || [];
+
+
+            /* =========================
+               BOOKS
+            ========================= */
+
+            list.forEach(
+                book => {
+
+                    const item =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    item.className =
+                        "result-book";
+
+
+                    item.title =
+                        `หนังสือ ${book.id.replace(
+                            "image",
+                            ""
+                        )} - ${book.bestVotes} คนโหวต`;
+
+
+                    item.innerHTML = `
+
+                        <img
+                            src="${book.image}"
+                            alt="หนังสือ">
+
+
+                        <div
+                            class="result-book-count">
+
+                            ${book.bestVotes} คน
+
+                        </div>
+
+                    `;
+
+
+                    booksArea.appendChild(
+                        item
+                    );
+
+                }
+            );
+
+
+            if (
+                list.length === 0
+            ) {
+
+                booksArea.innerHTML = `
+
+                    <div class="result-empty">
+
+                        ยังไม่มีหนังสือใน Tier นี้
+
+                    </div>
+
+                `;
+
+            }
+
+
+            row.appendChild(
+                name
+            );
+
+
+            row.appendChild(
+                booksArea
+            );
+
+
+            board.appendChild(
+                row
+            );
+
+        }
+    );
+
+
+    container.appendChild(
+        board
+    );
+
+
+    /* =========================
+       INFO
+    ========================= */
+
+    const info =
+        document.createElement(
+            "p"
+        );
+
+
+    info.style.color =
+        "#94a3b8";
+
+
+    info.style.margin =
+        "15px 0 40px";
+
+
+    info.innerHTML = `
+
+        👥 ผู้จัดอันดับทั้งหมด:
+        <strong>
+            ${allRankings.length}
+        </strong>
+        คน
+
+        <br>
+
+        📚 หนังสือทั้งหมด:
+        <strong>
+            ${bookCount}
+        </strong>
+        เล่ม
+
+        <br>
+
+        💡 แต่ละเล่มจะอยู่ใน Tier
+        ที่ได้รับคะแนนโหวตมากที่สุด
+
+    `;
+
+
+    container.appendChild(
+        info
+    );
 
 }
 
 
-/* =====================================
-   LOAD RESULTS
-===================================== */
+/* =====================================================
+   START
+===================================================== */
+
+createBooks();
 
 displayResults();
+
 
 </script>
 
