@@ -530,6 +530,81 @@
         }
 
 
+
+        /* =========================
+           REVIEWER REVIEWS
+        ========================== */
+        .reviewer-reviews {
+            width: 1100px;
+            max-width: calc(100% - 40px);
+            margin: 30px auto 0;
+            padding: 30px;
+            background: #ffffff;
+            border: 1px solid #e7eef3;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(35, 70, 90, 0.07);
+        }
+
+        .reviewer-reviews h2 {
+            margin: 0 0 20px;
+            color: #263746;
+            font-size: 20px;
+        }
+
+        .reviewer-reviews h2 span {
+            color: #0087c8;
+        }
+
+        .reviewer-card {
+            padding: 22px;
+            background: #f8fbfd;
+            border: 1px solid #edf2f5;
+            border-radius: 10px;
+        }
+
+        .reviewer-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e5edf1;
+        }
+
+        .reviewer-name {
+            color: #263746;
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .reviewer-role {
+            margin-top: 2px;
+            color: #8b98a3;
+            font-size: 11px;
+        }
+
+        .reviewer-rating {
+            color: #f3b400;
+            font-size: 16px;
+            letter-spacing: 2px;
+            white-space: nowrap;
+        }
+
+        .reviewer-text {
+            margin: 18px 0;
+            color: #505d67;
+            font-size: 14px;
+            line-height: 1.9;
+        }
+
+        .reviewer-footer {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            color: #8b98a3;
+            font-size: 11px;
+        }
+
         /* =========================
            RESPONSIVE
         ========================== */
@@ -603,6 +678,20 @@
                 padding: 22px;
             }
 
+            .reviewer-reviews {
+                padding: 22px;
+            }
+
+            .reviewer-header {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .reviewer-footer {
+                flex-direction: column;
+                gap: 5px;
+            }
+
             .comment-form button {
                 width: 100%;
             }
@@ -627,6 +716,14 @@
 
             .comments {
                 padding: 18px;
+            }
+
+            .reviewer-reviews {
+                padding: 18px;
+            }
+
+            .reviewer-card {
+                padding: 17px;
             }
 
             .section-title {
@@ -677,7 +774,7 @@
 
                 <img
                     src="8.png"
-                    alt="เกิดใหม่อีกทีก็เป็นนิสสานนนนไปซะละ"
+                    alt="ปกหนังสือ เกิดใหม่อีกทีก็เป็นนิสสานนนนไปซะละ"
                 >
 
                 <div class="cover-label">
@@ -701,16 +798,16 @@
 
             <p class="details-description">
 
-              ชายธรรมดาคนหนึ่งประสบเหตุการณ์ที่ทำให้ชีวิตของเขาเปลี่ยนไป และเมื่อตื่นขึ้นมาอีกครั้ง เขากลับพบว่าตัวเองไม่ได้เกิดใหม่เป็นผู้กล้า ไม่ได้เป็นจอมเวท และไม่ได้เป็นเจ้าชาย
+                ชายธรรมดาคนหนึ่งประสบเหตุการณ์ที่ทำให้ชีวิตของเขาเปลี่ยนไป และเมื่อตื่นขึ้นมาอีกครั้ง เขากลับพบว่าตัวเองไม่ได้เกิดใหม่เป็นผู้กล้า ไม่ได้เป็นจอมเวท และไม่ได้เป็นเจ้าชาย
 
                 <br><br>
 
-                แต่เขากลายเป็น...
+                ท่ามกลางความวุ่นวาย มีชายคนหนึ่งเดินทางอยู่ตามซากเมืองพร้อมสิ่งของเพียงไม่กี่อย่าง โดยมีคำถามสำคัญในใจว่า
 
                 <br><br>
 
                 <strong>
-                    รถยนต์ Nissan
+             รถยนต์ Nissan
                 </strong>
 
             </p>
@@ -744,7 +841,7 @@
 
                 <div class="info-box">
                     <h3>ราคา</h3>
-                    <p>59 บาท</p>
+                    <p>199 บาท</p>
                 </div>
 
                 <div class="info-box">
@@ -875,6 +972,38 @@
 
     </div>
 
+
+
+    <!-- =========================
+         REVIEWS FROM REVIEWERS
+    ========================== -->
+
+    <section class="reviewer-reviews">
+        <h2><span>⭐</span> รีวิวจากนักรีวิว</h2>
+
+        <div class="reviewer-card">
+            <div class="reviewer-header">
+                <div>
+                    <div class="reviewer-name">นักรีวิวประจำเว็บไซต์</div>
+                    <div class="reviewer-role">Book Reviewer</div>
+                </div>
+                <div class="reviewer-rating">★★★★★</div>
+            </div>
+
+            <p class="reviewer-text">
+นิยายต่างโลกมักให้ตัวเอกเกิดใหม่เป็นผู้กล้า จอมเวท หรือสิ่งมีชีวิตสุดพิเศษ แต่เรื่องนี้เลือกคำตอบที่บ้ากว่านั้นมาก — รถยนต์
+นี่คือหนังสือที่ใช้ความไร้สาระเป็นจุดขายอย่างเต็มที่ แต่เบื้องหลังความตลกกลับมีโครงสร้างแบบนิยาย Isekai ที่คุ้นเคย ไม่ว่าจะเป็นการเรียนรู้โลกใหม่ การพบตัวละครใหม่ การออกเดินทาง และการค้นหาความหมายของชีวิต
+การให้ตัวเอกเป็นรถทำให้ทุกปัญหาธรรมดากลายเป็นปัญหาใหญ่ เช่น การเดินทาง การดูแลตัวเอง หรือการสื่อสารกับคนอื่น
+สิ่งที่นักเขียนควรให้ความสำคัญคือ บุคลิกของรถ หากตัวเอกมีความคิดและพัฒนาการที่ชัดเจน หนังสือจะไม่ใช่แค่ “มุกที่ยืดเป็นนิยาย” แต่จะกลายเป็นเรื่องที่ผู้อ่านผูกพันกับตัวละครได้จริง
+สรุป: นิยายที่ตั้งคำถามว่า “ถ้าเกิดใหม่เป็นรถจริง ๆ ชีวิตจะเป็นยังไง?” และเลือกจะตอบด้วยความบ้าคลั่งเต็มรูปแบบ
+            </p>
+
+            <div class="reviewer-footer">
+                <span>📚 รีวิวโดยนักรีวิว</span>
+                <span>คะแนน 5/5</span>
+            </div>
+        </div>
+    </section>
 
     <!-- =========================
          COMMENTS
