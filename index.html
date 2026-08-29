@@ -389,31 +389,6 @@
 
 
         /* =========================
-           ปุ่มเพลง
-        ========================= */
-
-        #musicBtn {
-            position: fixed;
-            right: 20px;
-            bottom: 20px;
-            z-index: 10000;
-            border: none;
-            border-radius: 25px;
-            padding: 11px 18px;
-            background: #008fd0;
-            color: white;
-            cursor: pointer;
-            font-size: 13px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.18);
-            transition: 0.2s;
-        }
-
-        #musicBtn:hover {
-            background: #007ab5;
-            transform: translateY(-2px);
-        }
-
-        /* =========================
            MOBILE
         ========================= */
 
@@ -462,11 +437,9 @@
 
 
 <body>
-<audio id="bgMusic" loop>
+<audio id="bgMusic" autoplay loop>
     <source src="Excuse Me Sir - Billy Butcher but it's FNAF - Phoenix Mario.mp3" type="audio/mpeg">
 </audio>
-
-<button id="musicBtn" onclick="toggleMusic()">🎵 เปิดเพลง</button>
 
     <!-- =========================
          HEADER
@@ -1303,26 +1276,6 @@
             .innerText = count;
 
 
-
-        /* =========================
-           ระบบเพลง
-        ========================= */
-
-        const bgMusic = document.getElementById('bgMusic');
-        const musicBtn = document.getElementById('musicBtn');
-
-        function toggleMusic() {
-            if (bgMusic.paused) {
-                bgMusic.play().then(() => {
-                    musicBtn.innerHTML = '🔊 ปิดเพลง';
-                }).catch(() => {
-                    alert('ไม่สามารถเปิดเพลงได้ กรุณาตรวจสอบว่าไฟล์ MP3 อยู่ในโฟลเดอร์เดียวกับ HTML');
-                });
-            } else {
-                bgMusic.pause();
-                musicBtn.innerHTML = '🎵 เปิดเพลง';
-            }
-        }
 
         /* =========================
            ระบบรีวิว
