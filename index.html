@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="th">
 
@@ -5,7 +6,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="channels4_profile.jpg" type="image/jpg">
-
     <title>รีวิวหนังสือ</title>
 
     <style>
@@ -37,6 +37,82 @@
             font-size: 28px;
             color: #555;
             margin-bottom: 15px;
+        }
+
+
+        /* =========================
+           ปุ่มเพลงประกอบ
+        ========================= */
+
+        .music-player {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            z-index: 10000;
+
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            background: rgba(255, 255, 255, 0.96);
+            border: 1px solid #d7e8ef;
+            border-radius: 50px;
+
+            padding: 7px 10px 7px 7px;
+
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+
+            backdrop-filter: blur(8px);
+        }
+
+        .music-button {
+            width: 42px;
+            height: 42px;
+
+            border: none;
+            border-radius: 50%;
+
+            background: #008fd0;
+            color: white;
+
+            font-size: 19px;
+
+            cursor: pointer;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            transition: 0.2s;
+        }
+
+        .music-button:hover {
+            background: #007ab5;
+            transform: scale(1.05);
+        }
+
+        .music-info {
+            display: flex;
+            flex-direction: column;
+            min-width: 90px;
+        }
+
+        .music-title {
+            font-size: 11px;
+            font-weight: bold;
+            color: #008fd0;
+        }
+
+        .music-status {
+            font-size: 9px;
+            color: #888;
+            margin-top: 2px;
+        }
+
+        .volume-control {
+            width: 75px;
+            cursor: pointer;
+            accent-color: #008fd0;
         }
 
 
@@ -268,54 +344,6 @@
 
 
         /* =========================
-           ปุ่มเพลงประกอบ 🎵
-        ========================= */
-
-        .music-player {
-            position: fixed;
-            right: 20px;
-            bottom: 20px;
-            z-index: 10000;
-        }
-
-        .music-btn {
-            width: 52px;
-            height: 52px;
-            border: none;
-            border-radius: 50%;
-            background: #008fd0;
-            color: white;
-            font-size: 24px;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.25);
-            transition: 0.2s;
-        }
-
-        .music-btn:hover {
-            transform: scale(1.08);
-            background: #007ab5;
-        }
-
-        .music-btn.playing {
-            animation: musicPulse 1.2s infinite;
-        }
-
-        @keyframes musicPulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(0,143,208,0.5);
-            }
-
-            70% {
-                box-shadow: 0 0 0 12px rgba(0,143,208,0);
-            }
-
-            100% {
-                box-shadow: 0 0 0 0 rgba(0,143,208,0);
-            }
-        }
-
-
-        /* =========================
            MODAL
         ========================= */
 
@@ -479,9 +507,20 @@
                 font-size: 23px;
             }
 
+            /* ปรับปุ่มเพลงบนมือถือ */
+
             .music-player {
-                right: 15px;
-                bottom: 15px;
+                right: 12px;
+                bottom: 12px;
+                padding: 6px;
+            }
+
+            .music-info {
+                display: none;
+            }
+
+            .volume-control {
+                width: 60px;
             }
 
         }
@@ -497,27 +536,57 @@
          เพลงประกอบ
     ========================= -->
 
-    <audio id="backgroundMusic" loop preload="auto">
-        <source src="song.mp3" type="audio/mpeg">
+    <audio id="bgMusic" loop>
         <source src="song.ogg" type="audio/ogg">
+        <source src="song.mp3" type="audio/mpeg">
     </audio>
 
 
-    <!-- ปุ่มเพลง -->
+    <!-- =========================
+         ปุ่มควบคุมเพลง
+    ========================= -->
 
     <div class="music-player">
 
         <button
+            class="music-button"
             id="musicButton"
-            class="music-btn"
-            title="เปิด/ปิดเพลงประกอบ">
+            type="button"
+            title="เปิด / ปิดเพลง">
 
-            🎵
+            ▶️
 
         </button>
 
-    </div>
 
+        <div class="music-info">
+
+            <div class="music-title">
+                🎵 เพลงประกอบ
+            </div>
+
+            <div
+                class="music-status"
+                id="musicStatus">
+
+                ปิดอยู่
+
+            </div>
+
+        </div>
+
+
+        <input
+            type="range"
+            class="volume-control"
+            id="volumeControl"
+            min="0"
+            max="1"
+            step="0.01"
+            value="0.25"
+            title="ระดับเสียง">
+
+    </div>
 
 
     <!-- =========================
@@ -654,14 +723,16 @@
 
             <!-- หนังสือ 1 -->
 
-            <a href="p1.html"
-               class="book"
-               data-category="เรื่องสั้น"
-               data-title="โลกจะแตกแต่การบ้านยังไม่เสร็จ"
-               data-author="Ambatukam">
+            <a
+                href="p1.html"
+                class="book"
+                data-category="เรื่องสั้น"
+                data-title="โลกจะแตกแต่การบ้านยังไม่เสร็จ"
+                data-author="Ambatukam">
 
-                <img src="1.png"
-                     alt="โลกจะแตกแต่การบ้านยังไม่เสร็จ">
+                <img
+                    src="1.png"
+                    alt="โลกจะแตกแต่การบ้านยังไม่เสร็จ">
 
                 <div class="book-title">
                     โลกจะแตกแต่การบ้านยังไม่เสร็จ
@@ -681,8 +752,9 @@
 
                 </div>
 
-                <div class="review-summary"
-                     data-book-id="1">
+                <div
+                    class="review-summary"
+                    data-book-id="1">
 
                     ยังไม่มีรีวิว
 
@@ -694,14 +766,16 @@
 
             <!-- หนังสือ 2 -->
 
-            <a href="p2.html"
-               class="book"
-               data-category="เหนือจินตนาการ"
-               data-title="อย่าปลุกผม โลกกำลังพังอยู่"
-               data-author="Ambatukam">
+            <a
+                href="p2.html"
+                class="book"
+                data-category="เหนือจินตนาการ"
+                data-title="อย่าปลุกผม โลกกำลังพังอยู่"
+                data-author="Ambatukam">
 
-                <img src="2.png"
-                     alt="อย่าปลุกผม โลกกำลังพังอยู่">
+                <img
+                    src="2.png"
+                    alt="อย่าปลุกผม โลกกำลังพังอยู่">
 
                 <div class="book-title">
                     อย่าปลุกผม โลกกำลังพังอยู่
@@ -721,8 +795,9 @@
 
                 </div>
 
-                <div class="review-summary"
-                     data-book-id="2">
+                <div
+                    class="review-summary"
+                    data-book-id="2">
 
                     ยังไม่มีรีวิว
 
@@ -734,14 +809,16 @@
 
             <!-- หนังสือ 3 -->
 
-            <a href="p3.html"
-               class="book"
-               data-category="แฟนตาซี"
-               data-title="อาณาจักรล่มสลาย แต่ Wi-Fi ยังไม่มี"
-               data-author="Ambatukam">
+            <a
+                href="p3.html"
+                class="book"
+                data-category="แฟนตาซี"
+                data-title="อาณาจักรล่มสลาย แต่ Wi-Fi ยังไม่มี"
+                data-author="Ambatukam">
 
-                <img src="3.png"
-                     alt="อาณาจักรล่มสลาย แต่ Wi-Fi ยังไม่มี">
+                <img
+                    src="3.png"
+                    alt="อาณาจักรล่มสลาย แต่ Wi-Fi ยังไม่มี">
 
                 <div class="book-title">
                     อาณาจักรล่มสลาย แต่ Wi-Fi ยังไม่มี
@@ -761,8 +838,9 @@
 
                 </div>
 
-                <div class="review-summary"
-                     data-book-id="3">
+                <div
+                    class="review-summary"
+                    data-book-id="3">
 
                     ยังไม่มีรีวิว
 
@@ -774,14 +852,16 @@
 
             <!-- หนังสือ 4 -->
 
-            <a href="p4.html"
-               class="book"
-               data-category="แฟนตาซี"
-               data-title="SPY067"
-               data-author="Ambatukam">
+            <a
+                href="p4.html"
+                class="book"
+                data-category="แฟนตาซี"
+                data-title="SPY067"
+                data-author="Ambatukam">
 
-                <img src="4.png"
-                     alt="SPY067">
+                <img
+                    src="4.png"
+                    alt="SPY067">
 
                 <div class="book-title">
                     SPY067
@@ -801,8 +881,9 @@
 
                 </div>
 
-                <div class="review-summary"
-                     data-book-id="4">
+                <div
+                    class="review-summary"
+                    data-book-id="4">
 
                     ยังไม่มีรีวิว
 
@@ -814,14 +895,16 @@
 
             <!-- หนังสือ 5 -->
 
-            <a href="p5.html"
-               class="book"
-               data-category="แฟนตาซี"
-               data-title="มังกรจ๋า ไม่ไหวแล้ว"
-               data-author="Ambatukam">
+            <a
+                href="p5.html"
+                class="book"
+                data-category="แฟนตาซี"
+                data-title="มังกรจ๋า ไม่ไหวแล้ว"
+                data-author="Ambatukam">
 
-                <img src="5.png"
-                     alt="มังกรจ๋า ไม่ไหวแล้ว">
+                <img
+                    src="5.png"
+                    alt="มังกรจ๋า ไม่ไหวแล้ว">
 
                 <div class="book-title">
                     มังกรจ๋า ไม่ไหวแล้ว
@@ -841,8 +924,9 @@
 
                 </div>
 
-                <div class="review-summary"
-                     data-book-id="5">
+                <div
+                    class="review-summary"
+                    data-book-id="5">
 
                     ยังไม่มีรีวิว
 
@@ -854,14 +938,16 @@
 
             <!-- หนังสือ 6 -->
 
-            <a href="p6.html"
-               class="book"
-               data-category="เรื่องสั้น"
-               data-title="พี่จ๋า กรุงจะแตกแล้ว"
-               data-author="Ambatukam">
+            <a
+                href="p6.html"
+                class="book"
+                data-category="เรื่องสั้น"
+                data-title="พี่จ๋า กรุงจะแตกแล้ว"
+                data-author="Ambatukam">
 
-                <img src="6.png"
-                     alt="พี่จ๋า กรุงจะแตกแล้ว">
+                <img
+                    src="6.png"
+                    alt="พี่จ๋า กรุงจะแตกแล้ว">
 
                 <div class="book-title">
                     พี่จ๋า กรุงจะแตกแล้ว
@@ -881,8 +967,9 @@
 
                 </div>
 
-                <div class="review-summary"
-                     data-book-id="6">
+                <div
+                    class="review-summary"
+                    data-book-id="6">
 
                     ยังไม่มีรีวิว
 
@@ -894,14 +981,16 @@
 
             <!-- หนังสือ 7 -->
 
-            <a href="p7.html"
-               class="book"
-               data-category="เหนือจินตนาการ"
-               data-title="โยมไม่มีบ้าน: THE DOOMDAY"
-               data-author="Ambatukam">
+            <a
+                href="p7.html"
+                class="book"
+                data-category="เหนือจินตนาการ"
+                data-title="โยมไม่มีบ้าน: THE DOOMDAY"
+                data-author="Ambatukam">
 
-                <img src="7.png"
-                     alt="โยมไม่มีบ้าน THE DOOMDAY">
+                <img
+                    src="7.png"
+                    alt="โยมไม่มีบ้าน THE DOOMDAY">
 
                 <div class="book-title">
                     โยมไม่มีบ้าน: THE DOOMDAY
@@ -921,8 +1010,9 @@
 
                 </div>
 
-                <div class="review-summary"
-                     data-book-id="7">
+                <div
+                    class="review-summary"
+                    data-book-id="7">
 
                     ยังไม่มีรีวิว
 
@@ -934,14 +1024,16 @@
 
             <!-- หนังสือ 8 -->
 
-            <a href="p8.html"
-               class="book"
-               data-category="แฟนตาซี"
-               data-title="เกิดใหม่อีกทีก็เป็นนิสสานนนนไปซะละ"
-               data-author="Ambatukam">
+            <a
+                href="p8.html"
+                class="book"
+                data-category="แฟนตาซี"
+                data-title="เกิดใหม่อีกทีก็เป็นนิสสานนนนไปซะละ"
+                data-author="Ambatukam">
 
-                <img src="8.png"
-                     alt="เกิดใหม่อีกทีก็เป็นนิสสานนนนไปซะละ">
+                <img
+                    src="8.png"
+                    alt="เกิดใหม่อีกทีก็เป็นนิสสานนนนไปซะละ">
 
                 <div class="book-title">
                     เกิดใหม่อีกทีก็เป็นนิสสานนนนไปซะละ
@@ -961,8 +1053,9 @@
 
                 </div>
 
-                <div class="review-summary"
-                     data-book-id="8">
+                <div
+                    class="review-summary"
+                    data-book-id="8">
 
                     ยังไม่มีรีวิว
 
@@ -974,14 +1067,16 @@
 
             <!-- หนังสือ 9 -->
 
-            <a href="p9.html"
-               class="book"
-               data-category="เรื่องสั้น"
-               data-title="รักรักรักรักรักเธอหมดหัวใจจากแฟนสาว 100 คน"
-               data-author="Ambatukam">
+            <a
+                href="p9.html"
+                class="book"
+                data-category="เรื่องสั้น"
+                data-title="รักรักรักรักรักเธอหมดหัวใจจากแฟนสาว 100 คน"
+                data-author="Ambatukam">
 
-                <img src="9.png"
-                     alt="รักรักรักรักรักเธอหมดหัวใจจากแฟนสาว 100 คน">
+                <img
+                    src="9.png"
+                    alt="รักรักรักรักรักเธอหมดหัวใจจากแฟนสาว 100 คน">
 
                 <div class="book-title">
                     รักรักรักรักรักเธอหมดหัวใจจากแฟนสาว 100 คน
@@ -1001,8 +1096,9 @@
 
                 </div>
 
-                <div class="review-summary"
-                     data-book-id="9">
+                <div
+                    class="review-summary"
+                    data-book-id="9">
 
                     ยังไม่มีรีวิว
 
@@ -1014,14 +1110,16 @@
 
             <!-- หนังสือ 10 -->
 
-            <a href="p10.html"
-               class="book"
-               data-category="เหนือจินตนาการ"
-               data-title="DIDDY PARTY"
-               data-author="Ambatukam">
+            <a
+                href="p10.html"
+                class="book"
+                data-category="เหนือจินตนาการ"
+                data-title="DIDDY PARTY"
+                data-author="Ambatukam">
 
-                <img src="10.png"
-                     alt="DIDDY PARTY">
+                <img
+                    src="10.png"
+                    alt="DIDDY PARTY">
 
                 <div class="book-title">
                     DIDDY PARTY
@@ -1041,8 +1139,9 @@
 
                 </div>
 
-                <div class="review-summary"
-                     data-book-id="10">
+                <div
+                    class="review-summary"
+                    data-book-id="10">
 
                     ยังไม่มีรีวิว
 
@@ -1052,8 +1151,9 @@
 
 
 
-            <div class="no-result"
-                 id="noResult">
+            <div
+                class="no-result"
+                id="noResult">
 
                 ไม่พบหนังสือที่ค้นหา
 
@@ -1087,13 +1187,15 @@
          MODAL รีวิว
     ========================= -->
 
-    <div class="modal"
-         id="reviewModal">
+    <div
+        class="modal"
+        id="reviewModal">
 
         <div class="modal-box">
 
-            <button class="close-btn"
-                    onclick="closeReviewModal()">
+            <button
+                class="close-btn"
+                onclick="closeReviewModal()">
 
                 ×
 
@@ -1114,8 +1216,9 @@
                         เลือกหนังสือ
                     </label>
 
-                    <select id="reviewBook"
-                            required>
+                    <select
+                        id="reviewBook"
+                        required>
 
                         <option value="">
                             -- เลือกหนังสือ --
@@ -1175,51 +1278,56 @@
 
                     <div class="star-input">
 
-                        <input type="radio"
-                               name="rating"
-                               id="star5"
-                               value="5"
-                               required>
+                        <input
+                            type="radio"
+                            name="rating"
+                            id="star5"
+                            value="5"
+                            required>
 
                         <label for="star5">
                             ★
                         </label>
 
 
-                        <input type="radio"
-                               name="rating"
-                               id="star4"
-                               value="4">
+                        <input
+                            type="radio"
+                            name="rating"
+                            id="star4"
+                            value="4">
 
                         <label for="star4">
                             ★
                         </label>
 
 
-                        <input type="radio"
-                               name="rating"
-                               id="star3"
-                               value="3">
+                        <input
+                            type="radio"
+                            name="rating"
+                            id="star3"
+                            value="3">
 
                         <label for="star3">
                             ★
                         </label>
 
 
-                        <input type="radio"
-                               name="rating"
-                               id="star2"
-                               value="2">
+                        <input
+                            type="radio"
+                            name="rating"
+                            id="star2"
+                            value="2">
 
                         <label for="star2">
                             ★
                         </label>
 
 
-                        <input type="radio"
-                               name="rating"
-                               id="star1"
-                               value="1">
+                        <input
+                            type="radio"
+                            name="rating"
+                            id="star1"
+                            value="1">
 
                         <label for="star1">
                             ★
@@ -1237,10 +1345,11 @@
                         ชื่อผู้รีวิว
                     </label>
 
-                    <input type="text"
-                           id="reviewName"
-                           placeholder="ชื่อของคุณ"
-                           required>
+                    <input
+                        type="text"
+                        id="reviewName"
+                        placeholder="ชื่อของคุณ"
+                        required>
 
                 </div>
 
@@ -1252,16 +1361,18 @@
                         รีวิว
                     </label>
 
-                    <textarea id="reviewText"
-                              placeholder="เขียนความคิดเห็นของคุณ..."
-                              required></textarea>
+                    <textarea
+                        id="reviewText"
+                        placeholder="เขียนความคิดเห็นของคุณ..."
+                        required></textarea>
 
                 </div>
 
 
 
-                <button type="submit"
-                        class="submit-review">
+                <button
+                    type="submit"
+                    class="submit-review">
 
                     ส่งรีวิว
 
@@ -1283,41 +1394,89 @@
 
 
         /* =========================
-           เพลงประกอบ
+           ระบบเพลงประกอบ
         ========================= */
 
-        const backgroundMusic =
-            document.getElementById("backgroundMusic");
+        const bgMusic =
+            document.getElementById('bgMusic');
 
         const musicButton =
-            document.getElementById("musicButton");
+            document.getElementById('musicButton');
+
+        const musicStatus =
+            document.getElementById('musicStatus');
+
+        const volumeControl =
+            document.getElementById('volumeControl');
 
 
-        let musicStarted = false;
+        // เสียงเริ่มต้น 25%
+        bgMusic.volume = 0.25;
 
 
-        /* เปิดเพลง */
+        // อ่านสถานะเพลงจาก localStorage
+        let musicEnabled =
+            localStorage.getItem('background_music');
 
-        function playBackgroundMusic() {
 
-            backgroundMusic.volume = 0.35;
+        // ถ้ายังไม่เคยตั้งค่า ให้เปิดเพลงเป็นค่าเริ่มต้น
+        if (musicEnabled === null) {
 
-            backgroundMusic.play()
+            musicEnabled = 'true';
+
+        }
+
+
+        /* =========================
+           อัปเดตหน้าปุ่มเพลง
+        ========================= */
+
+        function updateMusicButton() {
+
+            if (!bgMusic.paused) {
+
+                musicButton.innerHTML = '⏸️';
+
+                musicStatus.innerText =
+                    'กำลังเล่น';
+
+            } else {
+
+                musicButton.innerHTML = '▶️';
+
+                musicStatus.innerText =
+                    'หยุดอยู่';
+
+            }
+
+        }
+
+
+        /* =========================
+           เล่นเพลง
+        ========================= */
+
+        function playMusic() {
+
+            bgMusic.play()
                 .then(function() {
 
-                    musicStarted = true;
+                    musicEnabled = 'true';
 
-                    musicButton.classList.add("playing");
+                    localStorage.setItem(
+                        'background_music',
+                        'true'
+                    );
 
-                    musicButton.innerHTML = "🔊";
+                    updateMusicButton();
 
                 })
                 .catch(function() {
 
-                    /*
-                     Browser บล็อก autoplay
-                     จะลองใหม่เมื่อผู้ใช้คลิกเว็บ
-                    */
+                    musicStatus.innerText =
+                        'กด ▶️ เพื่อเล่น';
+
+                    updateMusicButton();
 
                 });
 
@@ -1325,35 +1484,29 @@
 
 
         /* =========================
-           ปุ่มเปิด/ปิดเพลง
+           ปุ่ม Play / Pause
         ========================= */
 
         musicButton.addEventListener(
-            "click",
-            function(event) {
+            'click',
+            function() {
 
-                event.stopPropagation();
+                if (bgMusic.paused) {
 
-                if (backgroundMusic.paused) {
-
-                    backgroundMusic.play()
-                        .then(function() {
-
-                            musicStarted = true;
-
-                            musicButton.classList.add("playing");
-
-                            musicButton.innerHTML = "🔊";
-
-                        });
+                    playMusic();
 
                 } else {
 
-                    backgroundMusic.pause();
+                    bgMusic.pause();
 
-                    musicButton.classList.remove("playing");
+                    musicEnabled = 'false';
 
-                    musicButton.innerHTML = "🎵";
+                    localStorage.setItem(
+                        'background_music',
+                        'false'
+                    );
+
+                    updateMusicButton();
 
                 }
 
@@ -1362,38 +1515,97 @@
 
 
         /* =========================
-           พยายามเปิดอัตโนมัติ
+           ปรับเสียง
         ========================= */
 
-        window.addEventListener(
-            "load",
+        volumeControl.addEventListener(
+            'input',
             function() {
 
-                playBackgroundMusic();
+                bgMusic.volume =
+                    Number(this.value);
+
+                localStorage.setItem(
+                    'background_volume',
+                    this.value
+                );
 
             }
         );
 
 
         /* =========================
-           ถ้า Browser บล็อก
-           ให้เริ่มเพลงเมื่อคลิกเว็บ
+           โหลดระดับเสียงที่เคยตั้ง
+        ========================= */
+
+        const savedVolume =
+            localStorage.getItem(
+                'background_volume'
+            );
+
+
+        if (savedVolume !== null) {
+
+            bgMusic.volume =
+                Number(savedVolume);
+
+            volumeControl.value =
+                savedVolume;
+
+        }
+
+
+        /* =========================
+           พยายามเล่นอัตโนมัติ
+        ========================= */
+
+        if (musicEnabled === 'true') {
+
+            bgMusic.play()
+                .then(function() {
+
+                    updateMusicButton();
+
+                })
+                .catch(function() {
+
+                    musicStatus.innerText =
+                        'กด ▶️ เพื่อเล่น';
+
+                    updateMusicButton();
+
+                });
+
+        } else {
+
+            bgMusic.pause();
+
+            updateMusicButton();
+
+        }
+
+
+        /* =========================
+           ถ้า autoplay ถูกบล็อก
+           คลิกหน้าเว็บครั้งแรก = เล่นเพลง
         ========================= */
 
         document.addEventListener(
-            "click",
+            'click',
             function() {
 
-                if (!musicStarted) {
+                if (
+                    musicEnabled === 'true' &&
+                    bgMusic.paused
+                ) {
 
-                    playBackgroundMusic();
+                    playMusic();
 
                 }
 
             },
             { once: true }
         );
-
 
 
         /* =========================
@@ -1831,6 +2043,7 @@
 
             books.forEach(
                 function(book) {
+
 
                     const title =
                         book.dataset.title
