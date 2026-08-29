@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
+
     <link rel="icon" href="channels4_profile.jpg" type="image/jpg">
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>อย่าปลุกผม โลกกำลังพังอยู่</title>
 
+
     <style>
+
         /* =========================
            RESET
-        ========================== */
+        ========================= */
 
         * {
             box-sizing: border-box;
@@ -34,29 +40,114 @@
 
 
         /* =========================
+           MUSIC PLAYER
+        ========================= */
+
+        .music-player {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+
+            z-index: 10000;
+
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            background: rgba(255, 255, 255, 0.96);
+
+            border: 1px solid #d7e8ef;
+            border-radius: 50px;
+
+            padding: 7px 10px 7px 7px;
+
+            box-shadow:
+                0 5px 20px rgba(0, 0, 0, 0.15);
+
+            backdrop-filter: blur(8px);
+        }
+
+        .music-button {
+            width: 42px;
+            height: 42px;
+
+            border: none;
+            border-radius: 50%;
+
+            background: #008fd0;
+            color: white;
+
+            font-size: 19px;
+
+            cursor: pointer;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            transition: 0.2s;
+        }
+
+        .music-button:hover {
+            background: #007ab5;
+            transform: scale(1.05);
+        }
+
+        .music-info {
+            display: flex;
+            flex-direction: column;
+            min-width: 90px;
+        }
+
+        .music-title {
+            font-size: 11px;
+            font-weight: bold;
+            color: #008fd0;
+        }
+
+        .music-status {
+            font-size: 9px;
+            color: #888;
+            margin-top: 2px;
+        }
+
+        .volume-control {
+            width: 75px;
+            cursor: pointer;
+            accent-color: #008fd0;
+        }
+
+
+        /* =========================
            HEADER
-        ========================== */
+        ========================= */
 
         .header {
             width: 1100px;
             max-width: calc(100% - 40px);
+
             margin: 40px auto 25px;
         }
 
         .back-button {
             display: inline-flex;
+
             align-items: center;
+
             gap: 7px;
 
             padding: 9px 17px;
 
             background: #ffffff;
+
             color: #0087c8;
 
             border: 1px solid #d9eaf3;
+
             border-radius: 8px;
 
             font-size: 14px;
+
             font-weight: 600;
 
             transition: 0.2s ease;
@@ -64,8 +155,11 @@
 
         .back-button:hover {
             background: #0087c8;
+
             color: white;
+
             border-color: #0087c8;
+
             transform: translateX(-2px);
         }
 
@@ -73,13 +167,17 @@
             margin: 22px 0 0;
 
             color: #263746;
+
             font-size: 30px;
+
             font-weight: 700;
+
             letter-spacing: -0.5px;
         }
 
         .header h1::after {
             content: "";
+
             display: block;
 
             width: 55px;
@@ -88,21 +186,29 @@
             margin-top: 12px;
 
             background: #0087c8;
+
             border-radius: 10px;
         }
 
 
         /* =========================
            MAIN BOOK LAYOUT
-        ========================== */
+        ========================= */
 
         .container {
             width: 1100px;
+
             max-width: calc(100% - 40px);
+
             margin: 0 auto;
 
             display: grid;
-            grid-template-columns: 190px minmax(0, 1fr) 260px;
+
+            grid-template-columns:
+                190px
+                minmax(0, 1fr)
+                260px;
+
             gap: 25px;
 
             align-items: start;
@@ -111,60 +217,73 @@
 
         /* =========================
            BOOK COVER
-        ========================== */
+        ========================= */
 
         .book-cover {
             display: flex;
+
             justify-content: center;
+
             align-items: flex-start;
         }
 
         .book-cover-card {
             width: 100%;
+
             padding: 15px;
 
             background: white;
+
             border: 1px solid #e7eef3;
+
             border-radius: 12px;
 
-            box-shadow: 0 8px 25px rgba(35, 70, 90, 0.08);
+            box-shadow:
+                0 8px 25px rgba(35, 70, 90, 0.08);
 
             text-align: center;
         }
 
         .book-cover img {
             width: 100%;
+
             max-width: 160px;
+
             height: 225px;
 
             object-fit: cover;
 
             display: block;
+
             margin: auto;
 
             border-radius: 7px;
 
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            box-shadow:
+                0 8px 20px rgba(0, 0, 0, 0.15);
 
             transition: 0.25s ease;
         }
 
         .book-cover img:hover {
             transform: translateY(-4px);
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.18);
+
+            box-shadow:
+                0 12px 25px rgba(0, 0, 0, 0.18);
         }
 
         .cover-label {
             margin-top: 12px;
 
             font-size: 12px;
+
             color: #8a98a5;
         }
 
 
         /* =========================
-           DETAILS CARD
-        ========================== */
+           DETAILS
+        ========================= */
 
         .details {
             background: #ffffff;
@@ -172,22 +291,28 @@
             padding: 30px;
 
             border: 1px solid #e7eef3;
+
             border-radius: 12px;
 
-            box-shadow: 0 8px 25px rgba(35, 70, 90, 0.07);
+            box-shadow:
+                0 8px 25px rgba(35, 70, 90, 0.07);
         }
 
         .section-title {
             margin: 0 0 15px;
 
             color: #0087c8;
+
             font-size: 20px;
+
             font-weight: 700;
         }
 
         .details-description {
             color: #5f6c77;
+
             font-size: 14px;
+
             line-height: 1.9;
 
             margin: 0;
@@ -200,15 +325,18 @@
 
         /* =========================
            BOOK INFORMATION
-        ========================== */
+        ========================= */
 
         .book-info {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+
+            grid-template-columns:
+                repeat(2, 1fr);
 
             gap: 12px;
 
             margin-top: 25px;
+
             padding-top: 22px;
 
             border-top: 1px solid #edf2f5;
@@ -220,6 +348,7 @@
             background: #f8fbfd;
 
             border: 1px solid #edf3f6;
+
             border-radius: 8px;
 
             transition: 0.2s ease;
@@ -227,6 +356,7 @@
 
         .info-box:hover {
             border-color: #cfe8f4;
+
             background: #f4fbfe;
         }
 
@@ -234,7 +364,9 @@
             margin: 0 0 4px;
 
             color: #0087c8;
+
             font-size: 12px;
+
             font-weight: 600;
         }
 
@@ -242,13 +374,14 @@
             margin: 0;
 
             color: #46535e;
+
             font-size: 13px;
         }
 
 
         /* =========================
            RELATED BOOKS
-        ========================== */
+        ========================= */
 
         .related {
             background: white;
@@ -256,41 +389,50 @@
             padding: 22px;
 
             border: 1px solid #e7eef3;
+
             border-radius: 12px;
 
-            box-shadow: 0 8px 25px rgba(35, 70, 90, 0.07);
+            box-shadow:
+                0 8px 25px rgba(35, 70, 90, 0.07);
         }
 
         .related h2 {
             margin: 0 0 17px;
 
             color: #263746;
+
             font-size: 18px;
         }
 
         .related h2::after {
             content: "";
+
             display: block;
 
             width: 35px;
+
             height: 3px;
 
             margin-top: 7px;
 
             background: #0087c8;
+
             border-radius: 10px;
         }
 
         .related-book {
             display: flex;
+
             gap: 12px;
 
             padding: 10px;
+
             margin-bottom: 10px;
 
             background: #f8fbfd;
 
             border: 1px solid #edf2f5;
+
             border-radius: 8px;
 
             transition: 0.2s ease;
@@ -302,7 +444,9 @@
 
         .related-book:hover {
             background: #f1f9fd;
+
             border-color: #cde7f3;
+
             transform: translateY(-2px);
         }
 
@@ -312,13 +456,15 @@
 
         .related-book img {
             width: 50px;
+
             height: 70px;
 
             object-fit: cover;
 
             border-radius: 5px;
 
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+            box-shadow:
+                0 3px 8px rgba(0, 0, 0, 0.12);
         }
 
         .related-book-info {
@@ -329,7 +475,9 @@
             margin: 2px 0 5px;
 
             color: #354552;
+
             font-size: 12px;
+
             line-height: 1.5;
 
             font-weight: 600;
@@ -339,16 +487,238 @@
             margin: 0;
 
             color: #8b98a3;
+
             font-size: 11px;
         }
 
 
         /* =========================
+           REVIEWER REVIEWS
+        ========================= */
+
+        .reviewer-reviews {
+            width: 1100px;
+
+            max-width: calc(100% - 40px);
+
+            margin: 30px auto 0;
+
+            padding: 30px;
+
+            background: #ffffff;
+
+            border: 1px solid #e7eef3;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 8px 25px rgba(35, 70, 90, 0.07);
+        }
+
+        .reviewer-reviews h2 {
+            margin: 0 0 20px;
+
+            color: #263746;
+
+            font-size: 20px;
+        }
+
+        .reviewer-reviews h2 span {
+            color: #0087c8;
+        }
+
+        .reviewer-card {
+            padding: 22px;
+
+            background: #f8fbfd;
+
+            border: 1px solid #edf2f5;
+
+            border-radius: 10px;
+        }
+
+        .reviewer-header {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+            padding-bottom: 15px;
+
+            border-bottom: 1px solid #e5edf1;
+        }
+
+        .reviewer-name {
+            color: #263746;
+
+            font-size: 15px;
+
+            font-weight: 700;
+        }
+
+        .reviewer-role {
+            margin-top: 2px;
+
+            color: #8b98a3;
+
+            font-size: 11px;
+        }
+
+        .reviewer-rating {
+            color: #f3b400;
+
+            font-size: 16px;
+
+            letter-spacing: 2px;
+
+            white-space: nowrap;
+        }
+
+        .reviewer-text {
+            margin: 18px 0;
+
+            color: #505d67;
+
+            font-size: 14px;
+
+            line-height: 1.9;
+        }
+
+        .reviewer-footer {
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+            color: #8b98a3;
+
+            font-size: 11px;
+        }
+
+
+        /* =========================
+           USER REVIEWS
+        ========================= */
+
+        .user-reviews {
+            width: 1100px;
+
+            max-width: calc(100% - 40px);
+
+            margin: 30px auto 0;
+
+            padding: 30px;
+
+            background: white;
+
+            border: 1px solid #e7eef3;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 8px 25px rgba(35, 70, 90, 0.07);
+        }
+
+        .user-reviews h2 {
+            margin: 0 0 20px;
+
+            color: #263746;
+
+            font-size: 20px;
+        }
+
+        .user-reviews h2 span {
+            color: #0087c8;
+        }
+
+        .user-review-item {
+            padding: 18px;
+
+            margin-bottom: 12px;
+
+            background: #f8fbfd;
+
+            border-left: 4px solid #159bd4;
+
+            border-radius: 8px;
+        }
+
+        .user-review-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .user-review-book {
+            color: #0087c8;
+
+            font-weight: bold;
+
+            font-size: 13px;
+        }
+
+        .user-review-stars {
+            color: #ffc107;
+
+            margin: 5px 0;
+        }
+
+        .user-review-name {
+            color: #354552;
+
+            font-size: 13px;
+
+            font-weight: bold;
+        }
+
+        .user-review-date {
+            color: #9aa6af;
+
+            font-size: 11px;
+
+            margin-left: 5px;
+        }
+
+        .user-review-text {
+            margin: 8px 0 0;
+
+            color: #505d67;
+
+            font-size: 13px;
+
+            line-height: 1.7;
+
+            white-space: pre-wrap;
+
+            word-break: break-word;
+        }
+
+        .no-user-review {
+            padding: 25px;
+
+            background: #f8fbfd;
+
+            border: 1px dashed #d9e5eb;
+
+            border-radius: 8px;
+
+            color: #98a5ae;
+
+            text-align: center;
+
+            font-size: 13px;
+        }
+
+
+        /* =========================
            COMMENTS
-        ========================== */
+        ========================= */
 
         .comments {
             width: 1100px;
+
             max-width: calc(100% - 40px);
 
             margin: 30px auto 50px;
@@ -358,15 +728,18 @@
             background: white;
 
             border: 1px solid #e7eef3;
+
             border-radius: 12px;
 
-            box-shadow: 0 8px 25px rgba(35, 70, 90, 0.07);
+            box-shadow:
+                0 8px 25px rgba(35, 70, 90, 0.07);
         }
 
         .comments h2 {
             margin: 0 0 20px;
 
             color: #263746;
+
             font-size: 20px;
         }
 
@@ -377,11 +750,13 @@
 
         /* =========================
            COMMENT FORM
-        ========================== */
+        ========================= */
 
         .comment-form {
             display: flex;
+
             flex-direction: column;
+
             gap: 12px;
         }
 
@@ -394,11 +769,13 @@
             background: #fafcfd;
 
             border: 1px solid #dfe8ed;
+
             border-radius: 8px;
 
             color: #3f4a54;
 
             font-family: Arial, "Tahoma", sans-serif;
+
             font-size: 14px;
 
             outline: none;
@@ -412,7 +789,9 @@
 
             border-color: #0087c8;
 
-            box-shadow: 0 0 0 3px rgba(0, 135, 200, 0.08);
+            box-shadow:
+                0 0 0 3px
+                rgba(0, 135, 200, 0.08);
         }
 
         .comment-form input::placeholder,
@@ -432,12 +811,15 @@
             padding: 11px 18px;
 
             background: #0087c8;
+
             color: white;
 
             border: none;
+
             border-radius: 8px;
 
             font-size: 14px;
+
             font-weight: 600;
 
             cursor: pointer;
@@ -447,14 +829,18 @@
 
         .comment-form button:hover {
             background: #006f9f;
+
             transform: translateY(-1px);
-            box-shadow: 0 5px 12px rgba(0, 135, 200, 0.18);
+
+            box-shadow:
+                0 5px 12px
+                rgba(0, 135, 200, 0.18);
         }
 
 
         /* =========================
            COMMENT LIST
-        ========================== */
+        ========================= */
 
         .comment-list {
             margin-top: 30px;
@@ -472,7 +858,9 @@
 
         .comment-name {
             color: #0087c8;
+
             font-size: 14px;
+
             font-weight: 700;
         }
 
@@ -480,15 +868,19 @@
             margin: 7px 0;
 
             color: #505d67;
+
             font-size: 14px;
+
             line-height: 1.7;
 
             white-space: pre-wrap;
+
             word-break: break-word;
         }
 
         .comment-date {
             color: #9aa6af;
+
             font-size: 11px;
         }
 
@@ -498,9 +890,11 @@
             padding: 5px 10px;
 
             background: #fff3f3;
+
             color: #e14b4b;
 
             border: 1px solid #ffd6d6;
+
             border-radius: 6px;
 
             font-size: 11px;
@@ -512,7 +906,9 @@
 
         .delete-comment:hover {
             background: #e14b4b;
+
             color: white;
+
             border-color: #e14b4b;
         }
 
@@ -522,98 +918,26 @@
             background: #f8fbfd;
 
             border: 1px dashed #d9e5eb;
+
             border-radius: 8px;
 
             color: #98a5ae;
 
             text-align: center;
+
             font-size: 13px;
         }
 
 
-
-        /* =========================
-           REVIEWER REVIEWS
-        ========================== */
-        .reviewer-reviews {
-            width: 1100px;
-            max-width: calc(100% - 40px);
-            margin: 30px auto 0;
-            padding: 30px;
-            background: #ffffff;
-            border: 1px solid #e7eef3;
-            border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(35, 70, 90, 0.07);
-        }
-
-        .reviewer-reviews h2 {
-            margin: 0 0 20px;
-            color: #263746;
-            font-size: 20px;
-        }
-
-        .reviewer-reviews h2 span {
-            color: #0087c8;
-        }
-
-        .reviewer-card {
-            padding: 22px;
-            background: #f8fbfd;
-            border: 1px solid #edf2f5;
-            border-radius: 10px;
-        }
-
-        .reviewer-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 15px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #e5edf1;
-        }
-
-        .reviewer-name {
-            color: #263746;
-            font-size: 15px;
-            font-weight: 700;
-        }
-
-        .reviewer-role {
-            margin-top: 2px;
-            color: #8b98a3;
-            font-size: 11px;
-        }
-
-        .reviewer-rating {
-            color: #f3b400;
-            font-size: 16px;
-            letter-spacing: 2px;
-            white-space: nowrap;
-        }
-
-        .reviewer-text {
-            margin: 18px 0;
-            color: #505d67;
-            font-size: 14px;
-            line-height: 1.9;
-        }
-
-        .reviewer-footer {
-            display: flex;
-            justify-content: space-between;
-            gap: 15px;
-            color: #8b98a3;
-            font-size: 11px;
-        }
-
         /* =========================
            RESPONSIVE
-        ========================== */
+        ========================= */
 
         @media (max-width: 950px) {
 
             .container {
-                grid-template-columns: 170px 1fr;
+                grid-template-columns:
+                    170px 1fr;
             }
 
             .related {
@@ -622,12 +946,14 @@
 
             .related-book {
                 display: inline-flex;
+
                 vertical-align: top;
 
                 width: calc(50% - 7px);
 
                 margin-right: 8px;
             }
+
         }
 
 
@@ -671,12 +997,10 @@
 
             .related-book {
                 display: flex;
-                width: 100%;
-                margin-right: 0;
-            }
 
-            .comments {
-                padding: 22px;
+                width: 100%;
+
+                margin-right: 0;
             }
 
             .reviewer-reviews {
@@ -685,17 +1009,44 @@
 
             .reviewer-header {
                 align-items: flex-start;
+
                 flex-direction: column;
             }
 
             .reviewer-footer {
                 flex-direction: column;
+
                 gap: 5px;
+            }
+
+            .user-reviews {
+                padding: 22px;
+            }
+
+            .comments {
+                padding: 22px;
             }
 
             .comment-form button {
                 width: 100%;
             }
+
+            .music-player {
+                right: 12px;
+
+                bottom: 12px;
+
+                padding: 6px;
+            }
+
+            .music-info {
+                display: none;
+            }
+
+            .volume-control {
+                width: 60px;
+            }
+
         }
 
 
@@ -703,8 +1054,11 @@
 
             .header,
             .container,
+            .reviewer-reviews,
+            .user-reviews,
             .comments {
-                max-width: calc(100% - 24px);
+                max-width:
+                    calc(100% - 24px);
             }
 
             .header h1 {
@@ -715,16 +1069,18 @@
                 padding: 18px;
             }
 
+            .reviewer-reviews,
+            .user-reviews,
             .comments {
-                padding: 18px;
-            }
-
-            .reviewer-reviews {
                 padding: 18px;
             }
 
             .reviewer-card {
                 padding: 17px;
+            }
+
+            .user-review-item {
+                padding: 15px;
             }
 
             .section-title {
@@ -734,22 +1090,96 @@
             .details-description {
                 font-size: 13px;
             }
+
         }
+
     </style>
+
 </head>
 
 
 <body>
 
+
+    <!-- =========================
+         MUSIC
+    ========================= -->
+
+    <audio id="bgMusic" loop>
+
+        <source
+            src="song.ogg"
+            type="audio/ogg"
+        >
+
+        <source
+            src="song.mp3"
+            type="audio/mpeg"
+        >
+
+    </audio>
+
+
+    <div class="music-player">
+
+        <button
+            class="music-button"
+            id="musicButton"
+            type="button"
+            title="เปิด / ปิดเพลง">
+
+            ▶️
+
+        </button>
+
+
+        <div class="music-info">
+
+            <div class="music-title">
+                🎵 เพลงประกอบ
+            </div>
+
+            <div
+                class="music-status"
+                id="musicStatus">
+
+                ปิดอยู่
+
+            </div>
+
+        </div>
+
+
+        <input
+            type="range"
+            class="volume-control"
+            id="volumeControl"
+            min="0"
+            max="1"
+            step="0.01"
+            value="0.25"
+            title="ระดับเสียง"
+        >
+
+    </div>
+
+
+
     <!-- =========================
          HEADER
-    ========================== -->
+    ========================= -->
 
     <div class="header">
 
-        <a class="back-button" href="index.html">
+        <a
+            class="back-button"
+            href="index.html"
+        >
+
             ← กลับหน้าหลัก
+
         </a>
+
 
         <h1>
             อย่าปลุกผม โลกกำลังพังอยู่
@@ -758,16 +1188,15 @@
     </div>
 
 
+
     <!-- =========================
          BOOK
-    ========================== -->
+    ========================= -->
 
     <div class="container">
 
 
-        <!-- =========================
-             BOOK COVER
-        ========================== -->
+        <!-- BOOK COVER -->
 
         <div class="book-cover">
 
@@ -787,9 +1216,8 @@
         </div>
 
 
-        <!-- =========================
-             DETAILS
-        ========================== -->
+
+        <!-- DETAILS -->
 
         <div class="details">
 
@@ -797,9 +1225,12 @@
                 รายละเอียดหนังสือ
             </h2>
 
+
             <p class="details-description">
 
-                เมื่อโลกกำลังจะเข้าสู่วันสิ้นสุด ผู้คนทั่วโลกต่างกำลังพยายามหาทางเอาชีวิตรอด
+                เมื่อโลกกำลังจะเข้าสู่วันสิ้นสุด
+                ผู้คนทั่วโลกต่างกำลังพยายาม
+                หาทางเอาชีวิตรอด
                 แต่มีชายคนหนึ่งที่ไม่สนใจเรื่องทั้งหมด
 
                 <br><br>
@@ -815,40 +1246,87 @@
             </p>
 
 
-            <!-- =========================
-                 BOOK INFORMATION
-            ========================== -->
+
+            <!-- BOOK INFORMATION -->
 
             <div class="book-info">
 
                 <div class="info-box">
-                    <h3>ผู้เขียน</h3>
-                    <p>MR.Ambatukam</p>
+
+                    <h3>
+                        ผู้เขียน
+                    </h3>
+
+                    <p>
+                        MR.Ambatukam
+                    </p>
+
                 </div>
 
-                <div class="info-box">
-                    <h3>ผู้แปล</h3>
-                    <p>-</p>
-                </div>
 
                 <div class="info-box">
-                    <h3>สำนักพิมพ์</h3>
-                    <p>-</p>
+
+                    <h3>
+                        ผู้แปล
+                    </h3>
+
+                    <p>
+                        -
+                    </p>
+
                 </div>
 
-                <div class="info-box">
-                    <h3>ประเภทหนังสือ</h3>
-                    <p>นิยาย / วันสิ้นโลก / ตลก / ชีวิตประจำวัน</p>
-                </div>
 
                 <div class="info-box">
-                    <h3>ราคา</h3>
-                    <p>59 บาท</p>
+
+                    <h3>
+                        สำนักพิมพ์
+                    </h3>
+
+                    <p>
+                        -
+                    </p>
+
                 </div>
 
+
                 <div class="info-box">
-                    <h3>ISBN</h3>
-                    <p>-</p>
+
+                    <h3>
+                        ประเภทหนังสือ
+                    </h3>
+
+                    <p>
+                        นิยาย / วันสิ้นโลก /
+                        ตลก / ชีวิตประจำวัน
+                    </p>
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <h3>
+                        ราคา
+                    </h3>
+
+                    <p>
+                        59 บาท
+                    </p>
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <h3>
+                        ISBN
+                    </h3>
+
+                    <p>
+                        -
+                    </p>
+
                 </div>
 
             </div>
@@ -856,9 +1334,8 @@
         </div>
 
 
-        <!-- =========================
-             RELATED BOOKS
-        ========================== -->
+
+        <!-- RELATED BOOKS -->
 
         <div class="related">
 
@@ -893,6 +1370,7 @@
             </div>
 
 
+
             <div class="related-book">
 
                 <a href="p3.html">
@@ -907,7 +1385,8 @@
                 <div class="related-book-info">
 
                     <h3>
-                        อาณาจักรล่มสลาย แต่ Wi-Fi ยังไม่มี
+                        อาณาจักรล่มสลาย
+                        แต่ Wi-Fi ยังไม่มี
                     </h3>
 
                     <p>
@@ -917,6 +1396,7 @@
                 </div>
 
             </div>
+
 
 
             <div class="related-book">
@@ -943,6 +1423,7 @@
                 </div>
 
             </div>
+
 
 
             <div class="related-book">
@@ -977,43 +1458,120 @@
 
 
     <!-- =========================
-         REVIEWS FROM REVIEWERS
-    ========================== -->
+         REVIEWER REVIEW
+    ========================= -->
 
     <section class="reviewer-reviews">
-        <h2><span>⭐</span> รีวิวจากนักรีวิว</h2>
+
+        <h2>
+            <span>⭐</span>
+            รีวิวจากนักรีวิว
+        </h2>
+
 
         <div class="reviewer-card">
+
             <div class="reviewer-header">
+
                 <div>
-                    <div class="reviewer-name">นักรีวิวประจำเว็บไซต์</div>
-                    <div class="reviewer-role">Book Reviewer</div>
+
+                    <div class="reviewer-name">
+                        นักรีวิวประจำเว็บไซต์
+                    </div>
+
+                    <div class="reviewer-role">
+                        Book Reviewer
+                    </div>
+
                 </div>
-                <div class="reviewer-rating">★★★★★</div>
+
+
+                <div class="reviewer-rating">
+                    ★★★★★
+                </div>
+
             </div>
+
 
             <p class="reviewer-text">
-                หนังสือเล่มนี้นำเหตุการณ์วันสิ้นโลกมาผสมกับชีวิตประจำวัน
-                ได้อย่างแปลกและน่าสนใจ จุดเด่นคือแนวคิดที่เรียบง่ายแต่สร้าง
-                สถานการณ์ชวนขำได้ดี เหมาะสำหรับคนที่อยากอ่านนิยายเบา ๆ
-                ที่มีบรรยากาศวุ่นวายและมุกตลกเป็นจุดขาย
+
+                หนังสือเล่มนี้นำเหตุการณ์วันสิ้นโลก
+                มาผสมกับชีวิตประจำวันได้อย่างแปลก
+                และน่าสนใจ จุดเด่นคือแนวคิดที่เรียบง่าย
+                แต่สามารถสร้างสถานการณ์ชวนขำได้ดี
+
+                <br><br>
+
+                ตัวละครหลักมีความแตกต่างจากตัวละคร
+                ในเรื่องวันสิ้นโลกทั่วไปอย่างชัดเจน
+                เพราะในขณะที่ทุกคนกำลังดิ้นรนเพื่อเอาชีวิตรอด
+                เขากลับให้ความสำคัญกับการนอนมากกว่า
+
+                <br><br>
+
+                เหมาะสำหรับคนที่อยากอ่านนิยายเบา ๆ
+                ที่มีบรรยากาศวุ่นวาย มุกตลก
+                และสถานการณ์เหนือความคาดหมาย
+
             </p>
 
+
             <div class="reviewer-footer">
-                <span>📚 รีวิวโดยนักรีวิว</span>
-                <span>คะแนน 5/5</span>
+
+                <span>
+                    📚 รีวิวโดยนักรีวิว
+                </span>
+
+                <span>
+                    คะแนน 5/5
+                </span>
+
             </div>
+
         </div>
+
     </section>
+
+
+
+    <!-- =========================
+         USER REVIEWS
+    ========================= -->
+
+    <section class="user-reviews">
+
+        <h2>
+            <span>⭐</span>
+            รีวิวจากผู้อ่าน
+        </h2>
+
+
+        <div id="userReviewsList">
+
+            <div class="no-user-review">
+
+                กำลังโหลดรีวิว...
+
+            </div>
+
+        </div>
+
+    </section>
+
+
 
     <!-- =========================
          COMMENTS
-    ========================== -->
+    ========================= -->
 
     <div class="comments">
 
         <h2>
-            <span>💬</span> แสดงความคิดเห็น
+
+            <span>💬</span>
+
+            แสดงความคิดเห็น
+
         </h2>
 
 
@@ -1030,6 +1588,7 @@
                 required
             >
 
+
             <textarea
                 id="commentText"
                 placeholder="เขียนความคิดเห็นเกี่ยวกับหนังสือ..."
@@ -1037,8 +1596,11 @@
                 required
             ></textarea>
 
+
             <button type="submit">
+
                 แสดงความคิดเห็น
+
             </button>
 
         </form>
@@ -1052,42 +1614,385 @@
     </div>
 
 
+
     <!-- =========================
          JAVASCRIPT
-    ========================== -->
+    ========================= -->
 
     <script>
 
-        /*
-         * ==========================================
-         * BOOK ID
-         *
-         * หน้านี้ = book1
-         *
-         * p2.html = book2
-         * p3.html = book3
-         * p4.html = book4
-         * p5.html = book5
-         *
-         * ห้ามใช้ bookID ซ้ำกัน
-         * ==========================================
-         */
 
-        const bookID = "book2";
+        /* =========================
+           MUSIC SYSTEM
+        ========================= */
 
+        const bgMusic =
+            document.getElementById("bgMusic");
+
+        const musicButton =
+            document.getElementById("musicButton");
+
+        const musicStatus =
+            document.getElementById("musicStatus");
+
+        const volumeControl =
+            document.getElementById("volumeControl");
+
+
+        bgMusic.volume = 0.25;
+
+
+        let musicEnabled =
+            localStorage.getItem(
+                "background_music"
+            );
+
+
+        if (musicEnabled === null) {
+
+            musicEnabled = "true";
+
+        }
+
+
+        const savedVolume =
+            localStorage.getItem(
+                "background_volume"
+            );
+
+
+        if (savedVolume !== null) {
+
+            bgMusic.volume =
+                Number(savedVolume);
+
+            volumeControl.value =
+                savedVolume;
+
+        }
+
+
+        function updateMusicButton() {
+
+            if (!bgMusic.paused) {
+
+                musicButton.innerHTML =
+                    "⏸️";
+
+                musicStatus.innerText =
+                    "กำลังเล่น";
+
+            } else {
+
+                musicButton.innerHTML =
+                    "▶️";
+
+                musicStatus.innerText =
+                    "หยุดอยู่";
+
+            }
+
+        }
+
+
+        function playMusic() {
+
+            bgMusic.play()
+
+                .then(function() {
+
+                    musicEnabled =
+                        "true";
+
+                    localStorage.setItem(
+                        "background_music",
+                        "true"
+                    );
+
+                    updateMusicButton();
+
+                })
+
+                .catch(function() {
+
+                    musicStatus.innerText =
+                        "กด ▶️ เพื่อเล่น";
+
+                    updateMusicButton();
+
+                });
+
+        }
+
+
+        musicButton.addEventListener(
+            "click",
+            function() {
+
+                if (bgMusic.paused) {
+
+                    playMusic();
+
+                } else {
+
+                    bgMusic.pause();
+
+                    musicEnabled =
+                        "false";
+
+                    localStorage.setItem(
+                        "background_music",
+                        "false"
+                    );
+
+                    updateMusicButton();
+
+                }
+
+            }
+        );
+
+
+        volumeControl.addEventListener(
+            "input",
+            function() {
+
+                bgMusic.volume =
+                    Number(this.value);
+
+                localStorage.setItem(
+                    "background_volume",
+                    this.value
+                );
+
+            }
+        );
+
+
+        /* =========================
+           AUTOPLAY
+        ========================= */
+
+        if (musicEnabled === "true") {
+
+            bgMusic.play()
+
+                .then(function() {
+
+                    updateMusicButton();
+
+                })
+
+                .catch(function() {
+
+                    musicStatus.innerText =
+                        "กด ▶️ เพื่อเล่น";
+
+                    updateMusicButton();
+
+                });
+
+        } else {
+
+            bgMusic.pause();
+
+            updateMusicButton();
+
+        }
+
+
+        document.addEventListener(
+            "click",
+            function() {
+
+                if (
+                    musicEnabled === "true" &&
+                    bgMusic.paused
+                ) {
+
+                    playMusic();
+
+                }
+
+            },
+            { once: true }
+        );
+
+
+
+        /* =========================
+           BOOK ID
+        ========================= */
+
+        const bookID =
+            "book2";
+
+
+
+        /* =========================
+           USER REVIEWS
+           ใช้ข้อมูลเดียวกับ index.html
+        ========================= */
+
+        let reviews =
+            JSON.parse(
+                localStorage.getItem(
+                    "book_reviews"
+                )
+            ) || [];
+
+
+        function escapeHTML(text) {
+
+            const div =
+                document.createElement(
+                    "div"
+                );
+
+            div.textContent =
+                text;
+
+            return div.innerHTML;
+
+        }
+
+
+        function displayUserReviews() {
+
+            const list =
+                document.getElementById(
+                    "userReviewsList"
+                );
+
+
+            const bookReviews =
+                reviews.filter(
+                    function(review) {
+
+                        return (
+                            String(review.bookId) ===
+                            "2"
+                        );
+
+                    }
+                );
+
+
+            if (
+                bookReviews.length === 0
+            ) {
+
+                list.innerHTML = `
+
+                    <div class="no-user-review">
+
+                        ยังไม่มีรีวิวจากผู้อ่าน
+
+                        <br>
+
+                        สามารถเขียนรีวิวได้จาก
+                        หน้าหลักของเว็บไซต์ 😊
+
+                    </div>
+
+                `;
+
+                return;
+
+            }
+
+
+            list.innerHTML =
+                bookReviews
+                    .map(
+                        function(review) {
+
+                            return `
+
+                                <div class="user-review-item">
+
+                                    <div class="user-review-book">
+
+                                        ${escapeHTML(
+                                            review.bookName
+                                        )}
+
+                                    </div>
+
+
+                                    <div class="user-review-stars">
+
+                                        ${"★".repeat(
+                                            Number(review.rating)
+                                        )}
+
+                                        ${"☆".repeat(
+                                            5 -
+                                            Number(review.rating)
+                                        )}
+
+                                    </div>
+
+
+                                    <span class="user-review-name">
+
+                                        👤
+                                        ${escapeHTML(
+                                            review.name
+                                        )}
+
+                                    </span>
+
+
+                                    <span class="user-review-date">
+
+                                        ·
+                                        ${escapeHTML(
+                                            review.date
+                                        )}
+
+                                    </span>
+
+
+                                    <p class="user-review-text">
+
+                                        ${escapeHTML(
+                                            review.text
+                                        )}
+
+                                    </p>
+
+                                </div>
+
+                            `;
+
+                        }
+                    )
+                    .join("");
+
+        }
+
+
+        displayUserReviews();
+
+
+
+        /* =========================
+           COMMENT SYSTEM
+           เฉพาะ book2
+        ========================= */
 
         const commentForm =
-            document.getElementById("commentForm");
+            document.getElementById(
+                "commentForm"
+            );
+
 
         const commentList =
-            document.getElementById("commentList");
+            document.getElementById(
+                "commentList"
+            );
 
-
-        /*
-         * ==========================================
-         * โหลดคอมเมนต์เฉพาะหนังสือเล่มนี้
-         * ==========================================
-         */
 
         let comments =
             JSON.parse(
@@ -1097,75 +2002,105 @@
             ) || [];
 
 
-        /*
-         * ==========================================
-         * แสดงคอมเมนต์
-         * ==========================================
-         */
-
         function showComments() {
 
-            commentList.innerHTML = "";
+            commentList.innerHTML =
+                "";
 
 
-            if (comments.length === 0) {
+            if (
+                comments.length === 0
+            ) {
 
                 commentList.innerHTML = `
+
                     <div class="no-comment">
+
                         ยังไม่มีความคิดเห็น
+
                         <br>
+
                         เป็นคนแรกที่แสดงความคิดเห็นเลย! 😊
+
                     </div>
+
                 `;
 
                 return;
+
             }
 
 
-            comments.forEach((comment, index) => {
+            comments.forEach(
+                function(comment, index) {
 
-                const commentBox =
-                    document.createElement("div");
-
-                commentBox.className = "comment";
-
-
-                commentBox.innerHTML = `
-
-                    <div class="comment-name">
-                        👤 ${escapeHTML(comment.name)}
-                    </div>
-
-                    <div class="comment-text">
-                        ${escapeHTML(comment.text)}
-                    </div>
-
-                    <div class="comment-date">
-                        📅 ${comment.date}
-                    </div>
-
-                    <button
-                        class="delete-comment"
-                        onclick="deleteComment(${index})"
-                    >
-                        ลบความคิดเห็น
-                    </button>
-
-                `;
+                    const commentBox =
+                        document.createElement(
+                            "div"
+                        );
 
 
-                commentList.appendChild(commentBox);
+                    commentBox.className =
+                        "comment";
 
-            });
+
+                    commentBox.innerHTML = `
+
+                        <div class="comment-name">
+
+                            👤
+                            ${escapeHTML(
+                                comment.name
+                            )}
+
+                        </div>
+
+
+                        <div class="comment-text">
+
+                            ${escapeHTML(
+                                comment.text
+                            )}
+
+                        </div>
+
+
+                        <div class="comment-date">
+
+                            📅
+                            ${escapeHTML(
+                                comment.date
+                            )}
+
+                        </div>
+
+
+                        <button
+                            class="delete-comment"
+                            onclick="deleteComment(${index})"
+                            type="button"
+                        >
+
+                            ลบความคิดเห็น
+
+                        </button>
+
+                    `;
+
+
+                    commentList.appendChild(
+                        commentBox
+                    );
+
+                }
+            );
 
         }
 
 
-        /*
-         * ==========================================
-         * เพิ่มคอมเมนต์
-         * ==========================================
-         */
+        /* =========================
+           ADD COMMENT
+        ========================= */
 
         commentForm.addEventListener(
             "submit",
@@ -1176,16 +2111,20 @@
 
                 const name =
                     document
-                    .getElementById("commentName")
-                    .value
-                    .trim();
+                        .getElementById(
+                            "commentName"
+                        )
+                        .value
+                        .trim();
 
 
                 const text =
                     document
-                    .getElementById("commentText")
-                    .value
-                    .trim();
+                        .getElementById(
+                            "commentText"
+                        )
+                        .value
+                        .trim();
 
 
                 if (
@@ -1198,6 +2137,7 @@
                     );
 
                     return;
+
                 }
 
 
@@ -1209,22 +2149,27 @@
 
                     date:
                         new Date()
-                        .toLocaleString("th-TH")
+                            .toLocaleString(
+                                "th-TH"
+                            )
 
                 };
 
 
-                comments.push(newComment);
+                comments.push(
+                    newComment
+                );
 
-
-                /*
-                 * บันทึกคอมเมนต์
-                 * แยกตามหนังสือ
-                 */
 
                 localStorage.setItem(
-                    bookID + "_comments",
-                    JSON.stringify(comments)
+
+                    bookID +
+                    "_comments",
+
+                    JSON.stringify(
+                        comments
+                    )
+
                 );
 
 
@@ -1237,11 +2182,10 @@
         );
 
 
-        /*
-         * ==========================================
-         * ลบคอมเมนต์
-         * ==========================================
-         */
+
+        /* =========================
+           DELETE COMMENT
+        ========================= */
 
         function deleteComment(index) {
 
@@ -1251,12 +2195,21 @@
                 )
             ) {
 
-                comments.splice(index, 1);
+                comments.splice(
+                    index,
+                    1
+                );
 
 
                 localStorage.setItem(
-                    bookID + "_comments",
-                    JSON.stringify(comments)
+
+                    bookID +
+                    "_comments",
+
+                    JSON.stringify(
+                        comments
+                    )
+
                 );
 
 
@@ -1267,33 +2220,15 @@
         }
 
 
-        /*
-         * ==========================================
-         * ป้องกัน HTML / JavaScript
-         * ==========================================
-         */
 
-        function escapeHTML(text) {
-
-            const div =
-                document.createElement("div");
-
-            div.textContent = text;
-
-            return div.innerHTML;
-
-        }
-
-
-        /*
-         * ==========================================
-         * เริ่มระบบ
-         * ==========================================
-         */
+        /* =========================
+           START
+        ========================= */
 
         showComments();
 
     </script>
 
 </body>
+
 </html>
